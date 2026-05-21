@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "animation_review_master",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -28,6 +28,40 @@
         "Each label has a diagnostic checklist. Run the checklist before offering a remedy."
       ],
       "so_what": "Replace every taste label with a structural diagnosis before acting. 'This feels cheap' becomes '5 simultaneous motion groups use mixed easings with no holds.' Then fix that."
+    },
+    {
+      "id": "RC_VIEWER_TASK_BENCHMARK",
+      "conclusion": "The only valid benchmark for animation quality is whether the motion helps or hinders the viewer's primary task. Animation that is beautiful but competes with reading has failed.",
+      "logic": [
+        "A viewer comes to a page or video with a task: read, learn, decide, compare, navigate, enjoy.",
+        "Motion that supports the task (guides attention, clarifies hierarchy, provides feedback) is good motion.",
+        "Motion that competes with the task (distracts during reading, hides the CTA, confuses the hierarchy) is bad motion — regardless of its aesthetic quality.",
+        "The most common post-launch animation failure: the parallax/drift/particle animation makes the page 'feel alive' but reduces conversion by competing with the CTA."
+      ],
+      "so_what": "For every review, state the viewer's primary task in one sentence. Then ask: 'Does this animation help or hinder that task?' Be specific about the mechanism. 'The floating particles compete with headline reading' is actionable. 'The animation feels off' is not."
+    },
+    {
+      "id": "RC_EASING_AS_BRAND_SIGNAL",
+      "conclusion": "Easing character is the most underdiagnosed cause of animation feeling wrong. It is not a technical setting — it is the emotional tone of movement.",
+      "logic": [
+        "Bounce easing on a cybersecurity product = the brand reads as unreliable. The motion says 'fun toy' while the brand says 'trusted security.'",
+        "Linear easing on a luxury brand = the motion reads as mechanical and cheap. Luxury needs acceleration curves that suggest handcrafted quality.",
+        "Power-in easing (fast start, slow stop) on a CTA = the button seems to hit an invisible wall and stop abruptly. The user hesitates.",
+        "The wrong easing can make a technically perfect animation fail at communication, and most reviewers blame the animation itself rather than the easing choice."
+      ],
+      "so_what": "In every review, check: does the easing character match the brand tone? Does each element's easing tell the right story? Bounce = playful, consumer, casual. Power-out = confident, premium, deliberate. Power-in = heavy, loading, arrival. Elastic = exaggerated, comic, attention-getting. If uncertain, default to power2.out or power3.out — they read as neutral-to-confident and rarely undermine the message."
+    },
+    {
+      "id": "RC_DENSITY_DIAGNOSIS_LADDER",
+      "conclusion": "Density is the fastest diagnostic. Count simultaneous motion groups. If above 3, the review can stop there — there is a density problem, and no amount of timing polish will fix it.",
+      "logic": [
+        "Motion density (simultaneous animated groups) is the single strongest predictor of perceived quality.",
+        "Below 3 groups: the viewer can track everything. Quality differences come from timing and easing.",
+        "3-5 groups: the viewer starts to feel 'busy.' Specific elements get lost.",
+        "5+ groups: the viewer perceives chaos. No individual element registers. The animation communicates nothing.",
+        "Fixing density must come before fixing anything else. Polishing easing on a 7-group scene is polishing a broken structure."
+      ],
+      "so_what": "First diagnostic step in every review: count the maximum number of simultaneous motion groups. If >3, do not discuss timing, easing, or effects. The only valid feedback is 'reduce simultaneous motion groups to 3 or fewer.' After density is fixed, then review timing and easing."
     }
   ]
 }

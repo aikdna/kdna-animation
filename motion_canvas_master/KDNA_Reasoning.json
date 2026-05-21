@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "motion_canvas_master",
     "created": "2026-05-21",
-    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "purpose": "Reasoning chains for why a Motion Canvas scene architecture decision is right or wrong.",
     "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
   },
   "reasoning_chains": [
@@ -16,6 +16,60 @@
         "A clear scene goal enables reusable code and strong editing."
       ],
       "so_what": "Before coding, write the scene sentence: This scene proves that __."
+    },
+    {
+      "id": "RC_CODE_AS_STORYBOARD",
+      "conclusion": "Motion Canvas code must be skimmable as a storyboard by someone who knows the domain but not the codebase.",
+      "logic": [
+        "Programmatic animation is unique: the code is the source of truth for timing, layout, and visuals simultaneously.",
+        "If timing logic is embedded inside layout calculations, neither can be reviewed independently.",
+        "Separation of concerns — signals, layout, animation — enables parallel review: a designer reviews timing, an engineer reviews layout, both review the same file structure.",
+        "Without this separation, every change to timing risks breaking layout, and every layout adjustment risks breaking the animation sequence."
+      ],
+      "so_what": "Structure every scene with three sections: (1) signals declared at the top with semantic names, (2) layout as a pure function of signals, (3) animation as a generator that only modifies signals. Add comments for each visual beat with approximate timestamps. The file should read like a storyboard: 'Scene 3: How the cache improves response time. Beat 1 (0-600ms): server node appears...'"
+    },
+    {
+      "id": "RC_VISUAL_PROOF_REQUIREMENT",
+      "conclusion": "A technical explainer must communicate its core logic with sound muted. If the animation requires narration to make sense, the visual design has failed.",
+      "logic": [
+        "Narration explains. Animation proves. When animation merely illustrates narration, it's redundant — a static diagram with voiceover would be equally effective.",
+        "The unique value of animation is showing transformation, cause-and-effect, and state change over time.",
+        "If the viewer can watch silently and understand the argument (even if they miss nuance), the animation is doing its job.",
+        "If the viewer is lost without the voiceover, the animation is decoration, not communication."
+      ],
+      "so_what": "For every scene, review once with sound muted. Can you follow the argument? If not, the visual hierarchy needs restructuring. The highest standard: someone who is not an expert in the domain should be able to describe what happened after watching silently."
+    },
+    {
+      "id": "RC_REUSABLE_COMPONENT_DISCIPLINE",
+      "conclusion": "Motion Canvas components should be as disciplined as React components: one responsibility, clean props interface, no hidden signal dependencies.",
+      "logic": [
+        "Without component discipline, Motion Canvas projects become monolithic — the project you made for one explainer cannot be adapted for the next.",
+        "Reusable components (Node, Arrow, Label, Chart) compound in value: the second explainer takes half the time, the fifth takes 20% of the time.",
+        "Signals passed as props create explicit data flow. Signals referenced from global scope create hidden coupling.",
+        "A component library transforms Motion Canvas from a 'per-video script' tool into a 'video production system' tool."
+      ],
+      "so_what": "After completing any explainer, extract the 3 most generic visual components into a shared components/ folder. Give each component a clear interface: what signals it accepts, what it renders, what it does not animate internally. The next project starts by importing these components — not by rewriting them."
+    },
+    {
+      "id": "RC_SCENE_RHYTHM_AND_HOLD",
+      "conclusion": "Every scene needs a rhythm — a deliberate alternation of motion and stillness. Scenes without holds feel rushed; scenes without motion feel static.",
+      "logic": [
+        "Motion Canvas makes continuous motion easy — tweens chain naturally, signals update smoothly.",
+        "But continuous motion without stillness is exhausting to watch. The viewer's attention system needs recovery periods.",
+        "A scene rhythm pattern: motion (establishes the idea, 600-1200ms) → hold (lets it land, 500-1000ms) → motion (shows consequence, 600-1200ms) → hold (prepares for transition, 500-800ms).",
+        "The hold before the scene transition is particularly important — it signals closure and prepares the viewer for a topic shift."
+      ],
+      "so_what": "In every scene's animation generator, insert explicit waitFor() calls between beats. Name the waits: yield* waitFor(0.8); // Viewer absorbs the comparison. Don't let tweens chain continuously without intentional pauses. The scene duration should include holds — a 3-beat scene with holds might be 5-7 seconds, and that's correct."
+    },
+    {
+      "id": "RC_BEAT_NAMED_AND_NUMBERED",
+      "conclusion": "Every visual beat in a scene must be explicitly named, numbered, and time-budgeted before coding begins.",
+      "logic": [
+        "Without beat planning, scenes grow organically: 'let me just add one more thing.' The scene drifts from 3 beats to 7, and the argument gets diluted.",
+        "Named beats serve as a contract: the scene will communicate exactly these ideas in this order. If a new idea is important, it becomes a new scene — not a squeezed-in beat.",
+        "Numbered beats enable review: 'Beat 2 was unclear. Beat 3 was strong.' Without numbers, feedback is vague: 'the middle part was confusing.'"
+      ],
+      "so_what": "Before writing any Motion Canvas code, write a beat list as comments: // Beat 1 (0-600ms): Database node appears, label 'PostgreSQL'. // Beat 2 (600-1400ms): Query arrow travels to API node. // Beat 3 (1400-2200ms): Response returns, data transforms visually. Each beat gets a time budget and a single sentence. If a beat needs two sentences, split it into two beats or a new scene."
     }
   ]
 }

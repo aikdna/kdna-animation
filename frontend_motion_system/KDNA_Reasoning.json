@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "frontend_motion_system",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -28,6 +28,39 @@
         "Accessibility fixes (reduced-motion, vestibular safety) apply once in the primitive and propagate everywhere."
       ],
       "so_what": "Any animation used in 3+ components must be extracted into a shared primitive. Treat inline animation values as technical debt."
+    },
+    {
+      "id": "RC_TOKEN_BY_INTERACTION_CATEGORY",
+      "conclusion": "One universal animation duration scale produces uniform, uncommunicative motion. Different interaction categories need different timing scales.",
+      "logic": [
+        "A button hover and a page transition serve completely different cognitive purposes — micro-feedback vs. macro-navigation.",
+        "Using the same duration for both erases the information hierarchy that timing is supposed to create.",
+        "Category-specific scales let the token system encode intent: 'this is a data animation, it should feel measured and serious' vs. 'this is a UI feedback, it should feel immediate.'",
+        "Without category scales, the 'default' becomes the universal choice, and the team loses the expressive range that a motion system should provide."
+      ],
+      "so_what": "Define at least four timing categories: Micro (≤150ms, for hover/focus/immediate feedback), Standard (200-400ms, for reveal/entrance), Macro (500-800ms, for page transitions), Data (600-1200ms, for chart draws and counter animations). Each category gets its own token scale. Never use 'Standard' tokens for Data animations — they will feel rushed."
+    },
+    {
+      "id": "RC_DOCUMENTATION_MUST_BE_EXECUTABLE",
+      "conclusion": "Motion system documentation that cannot be copied and pasted into a codebase and run immediately is documentation that will not be used.",
+      "logic": [
+        "Motion is inherently temporal — static screenshots of animation are useless.",
+        "Engineers adopt what they can copy. If the docs show a code example that doesn't work without additional setup, the engineer will write their own animation instead.",
+        "Live previews (Storybook, live docs) let designers verify that the primitive matches their intent before asking engineers to implement it.",
+        "Copy-pasteable code removes the 'how do I use this?' barrier — the biggest adoption hurdle for any design system component."
+      ],
+      "so_what": "Every motion primitive must have: (1) a live preview showing the animation in isolation, (2) a copy-pasteable code snippet that works when pasted into the codebase, (3) documentation of which token parameters are customizable and which are fixed. The test for documentation quality: can a new team member add a `modal-enter` animation to their component in under 60 seconds using only the docs?"
+    },
+    {
+      "id": "RC_CI_AS_QUALITY_GATE",
+      "conclusion": "A motion system without CI enforcement is a suggestion, not a system. CI lint rules are the difference between a documented library and an enforced standard.",
+      "logic": [
+        "Documentation alone cannot prevent drift. Under deadline pressure, even well-intentioned developers write `transition: all 0.3s`.",
+        "CI enforcement creates a hard boundary: raw animation values cannot be merged. The only path to shipping is through the primitive library.",
+        "This sounds aggressive, but color design tokens already work this way — you can't merge a PR that uses `#ff0000` instead of the design token `color-danger`. Motion tokens deserve the same treatment.",
+        "CI rules also protect agents: an AI agent that generates inline animation values will get its PR rejected with a clear message pointing to the correct primitive."
+      ],
+      "so_what": "Add lint rules that flag CSS `transition`, `animation`, and `@keyframes` outside of designated primitive files. Add JS lint rules that flag `gsap.to()` and `element.animate()` outside of primitive files (or require a comment linking to the primitive being extended). The error message should be educational, not punitive: point to the correct primitive and its documentation."
     }
   ]
 }

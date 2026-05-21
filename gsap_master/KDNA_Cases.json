@@ -1,17 +1,47 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "gsap_master",
     "created": "2026-05-21",
-    "purpose": "Examples that show judgment structure rather than scripts.",
+    "purpose": "Examples that show judgment structure rather than scripts. Production failures and their transformation into maintainable, performant GSAP architecture.",
     "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
   },
   "cases": [
     {
       "id": "CASE_BAD_STAGGER",
       "brief": "A grid enters with every card flying from a different direction.",
-      "bad_pattern": "Random directions make the interface feel unstable.",
-      "master_pattern": "Use consistent direction, subtle stagger, and opacity/transform only; stop once hierarchy is established."
+      "bad_pattern": "Random directions make the interface feel unstable. Each card gets a unique fromTo animation from a random edge. The visual result is chaotic — no single entrance direction gives the grid a coherent feel. Additionally, each card is a separate tween with no shared timeline, making timing adjustments across the grid require touching every card individually.",
+      "master_pattern": "Use consistent direction, subtle stagger, and opacity/transform only. Place all card tweens on a single timeline with a stagger object. Use one entrance direction (e.g., from bottom, y: 30). Set stagger to { each: 0.06, from: 'start' }. Use autoAlpha instead of opacity for cleaner render. Stop once hierarchy is established — the last cards don't need individual emphasis."
+    },
+    {
+      "id": "CASE_REACT_CLEANUP_LEAK",
+      "brief": "A React component with GSAP animations does not clean up on unmount, causing duplicated animations after navigation.",
+      "bad_pattern": "A useEffect hook creates a GSAP timeline but returns no cleanup function. When the user navigates away and back, a new timeline is created while the old one continues running on detached DOM nodes. Result: animations overlap, performance degrades, and on repeated navigation the page becomes unresponsive.",
+      "master_pattern": "Use gsap.context() inside useEffect, scoped to a container ref. Return ctx.revert() from the cleanup function. The context auto-collects all GSAP animations created within its scope. On unmount, revert() kills all animations and restores original styles. For useGSAP hook: return cleanup via the hook's return value or use the scope option with a container ref."
+    },
+    {
+      "id": "CASE_SCROLLTRIGGER_OVERREACH",
+      "brief": "A long-form article uses ScrollTrigger to animate every paragraph, image, and pull-quote independently.",
+      "bad_pattern": "Each content element has its own ScrollTrigger with staggered reveal. 40+ ScrollTrigger instances run simultaneously. On scroll, the main thread is saturated recalculating trigger positions. The user experiences scroll jank, delayed visual feedback, and a sense that the page is fighting their scroll intent rather than responding to it.",
+      "master_pattern": "Group related elements into a single ScrollTrigger with a shared timeline. A section with a headline, paragraph, and image should be one trigger, not three. Batch reveals by semantic section. Limit total ScrollTrigger instances to under 10 for any page. For long article reveals, prefer a single scroll-driven timeline with labels over many individual triggers. Call ScrollTrigger.refresh() after any DOM mutation or image load."
+    },
+    {
+      "id": "CASE_NESTED_TIMELINE_CHAOS",
+      "brief": "A complex interaction nests timelines without labels or clear parent-child relationships.",
+      "bad_pattern": "Three independent timelines control different parts of the same interaction. They coordinate via hardcoded delays (delay: 0.8) rather than timeline positioning. When the design team requests a timing change to one phase, the delays on all subsequent timelines break. The code is functionally correct but structurally unmaintainable — a single timing adjustment requires recalculating delays across three files.",
+      "master_pattern": "Use a single master timeline with named labels for each phase (intro, reveal, interact, settle). Nest child timelines using the position parameter: master.add(childTimeline, 'reveal+=0.2'). When timing changes, adjust the label position on the master — all child timelines shift accordingly. Labels create a shared vocabulary between designers ('speed up the settle phase') and engineers ('move the settle label from 2.0 to 1.5')."
+    },
+    {
+      "id": "CASE_LAYOUT_ANIMATION_ABUSE",
+      "brief": "A card expand animation animates width, height, padding, and margin simultaneously for a 'smooth' effect.",
+      "bad_pattern": "gsap.to(card, { width: 400, height: 300, padding: 24, margin: 16, duration: 0.5 }). Every property triggers layout recalculation. On each frame, the browser recalculates the positions of the expanding card AND all sibling elements affected by the margin change. At 60fps, that's 30 layout recalculations in 0.5 seconds. On mid-range devices, the animation drops to 12-18fps with visible stutter.",
+      "master_pattern": "Animate only transform: scale and opacity for the visual expansion. Use a CSS transition or GSAP tween on transform alone. Set the final layout dimensions via CSS class before the animation starts so layout recalculation happens once at the beginning. Use overflow: hidden on the card container. The visual result is indistinguishable from animating width/height, but the performance is GPU-composited at 60fps."
+    },
+    {
+      "id": "CASE_STAGGER_BY_SEMANTIC_GROUP_NOT_INDEX",
+      "brief": "A list of notifications staggers by array index, treating every item equally.",
+      "bad_pattern": "notifications.forEach((n, i) => { tl.to(n.ref, { x: 0, opacity: 1 }, i * 0.08); }). All notifications enter at uniform stagger regardless of urgency. A critical alert enters 5th because it's 5th in the array. The motion undermines the information hierarchy.",
+      "master_pattern": "Sort notifications by priority before animating. Urgent items enter first at `-=0.05` (overlapping slightly to convey urgency). Normal items follow at `+=0.08`. Read items can use a gentler stagger or even skip animation. The stagger rhythm should communicate priority: tight grouping = urgent, relaxed spacing = informational, no animation = already processed."
     }
   ]
 }

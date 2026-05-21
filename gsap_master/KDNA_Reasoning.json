@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "gsap_master",
     "created": "2026-05-21",
-    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "purpose": "Reasoning chains for why a GSAP architecture decision is right or wrong. Production-grade logic scaffolds.",
     "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
   },
   "reasoning_chains": [
@@ -16,6 +16,63 @@
         "Labels let designers and engineers discuss beats precisely."
       ],
       "so_what": "Create named beats such as intro, reveal, settle, exit."
+    },
+    {
+      "id": "RC_CLEANUP_IS_NOT_OPTIONAL",
+      "conclusion": "Every GSAP animation in a framework component must have a documented cleanup strategy. Without cleanup, the animation is broken in production.",
+      "logic": [
+        "Modern SPAs navigate without full page reloads. Components mount and unmount frequently.",
+        "A GSAP tween holds a reference to a DOM node. When the node unmounts but the tween persists, the tween continues to calculate values on garbage-collected targets.",
+        "On re-mount, a new tween is created alongside the old one, now animating the same element twice with conflicting values.",
+        "After 3-4 navigations, the page accumulates N overlapping animations per element. CPU usage climbs. Interactions become unresponsive.",
+        "Cleanup is not a 'nice to have' — without it, the animation system degrades on every navigation cycle."
+      ],
+      "so_what": "In React: use gsap.context() with ctx.revert() in useEffect cleanup. In Vue: kill animations in onBeforeUnmount. In Svelte: kill in onDestroy. In vanilla JS: track animation references and call .kill() before creating new ones. Add a lint rule that flags useEffect without animation cleanup when GSAP is imported."
+    },
+    {
+      "id": "RC_SCROLLTRIGGER_RESTRAINT",
+      "conclusion": "ScrollTrigger density above ~10 instances per page reliably degrades scroll performance, not animation quality.",
+      "logic": [
+        "Each ScrollTrigger registers a scroll listener and calculates trigger positions on every scroll event.",
+        "Scroll position calculation involves getBoundingClientRect() — a layout-triggering call that forces synchronous layout when called inside a scroll handler.",
+        "With 20+ triggers, each scroll event triggers 20+ layout recalculations. At 120Hz scroll wheels, this saturates the main thread.",
+        "The visual result — stutter — undermines the premium feel that scroll animation was meant to create.",
+        "GSAP recommends batching triggers: fewer triggers, each driving more elements."
+      ],
+      "so_what": "Audit ScrollTrigger count. If above 10, batch: group adjacent elements under a single trigger with a shared timeline. Use ScrollTrigger.refresh() after images load and layout settles. For content-heavy pages, prefer IntersectionObserver for simple reveals and reserve ScrollTrigger for scrub-driven storytelling where scroll position directly controls animation progress."
+    },
+    {
+      "id": "RC_TIMELINE_POSITION_PARAMETER",
+      "conclusion": "The position parameter is the most underused GSAP feature. It turns timelines from a sequence into a choreography language.",
+      "logic": [
+        "Without position parameters, timelines are linear: each tween starts after the previous one ends.",
+        "With position parameters, timelines express musical relationships: 'this tween starts 0.2s after that label,' 'these two tweens overlap by 0.1s,' 'this group starts together.'",
+        "Overlapping tweens create rhythm and organic feel. Pure sequential tweens read as mechanical.",
+        "Labels combined with position parameters create a choreography grammar that is readable by both humans and the engine."
+      ],
+      "so_what": "Use labels for every semantic beat. Use relative positioning: `'-=0.1'` for tight coupling, `'+=0.3'` for breathing room, `'label'` for sync points. Never use absolute seconds as delays — they break when the sequence length changes. Teach the team to read a timeline as a score, not a script."
+    },
+    {
+      "id": "RC_PERFORMANCE_PROFILING_BEFORE_OPTIMIZATION",
+      "conclusion": "GSAP is one of the most performant animation libraries available. When GSAP animation stutters, the cause is almost never GSAP — it's the animated properties or the DOM structure.",
+      "logic": [
+        "GSAP updates values and applies them via requestAnimationFrame. The overhead is negligible.",
+        "Performance drops come from browser rendering phases triggered by the animated properties: layout (width, height, top, left), paint (color, background, box-shadow), or composite (transform, opacity).",
+        "An agent's instinct — 'GSAP is slow, switch to CSS' — is wrong. CSS animations on the same layout-triggering properties will be equally slow.",
+        "The fix is not changing the library. The fix is changing the animated properties to compositor-only equivalents."
+      ],
+      "so_what": "Before optimizing GSAP code, profile with DevTools Performance panel. Identify whether the bottleneck is in script (unlikely), layout (likely if animating width/height/margin), paint (likely if animating color/shadow), or composite. Switch layout-triggering properties to transform equivalents. Switch paint-triggering properties to opacity or composite-friendly alternatives. Then re-profile to confirm."
+    },
+    {
+      "id": "RC_PLUGIN_JUDGMENT",
+      "conclusion": "Plugins solve specific animation problems. Using a plugin when a simpler approach works adds complexity, bundle size, and mental overhead without benefit.",
+      "logic": [
+        "GSAP plugins (ScrollTrigger, Flip, SplitText, MotionPath, etc.) are powerful but specialized.",
+        "SplitText is for character/word animation. If you're splitting only to apply a simple fade, CSS `overflow: hidden` + a single transform tween on a parent achieves the same result with zero plugin cost.",
+        "Flip is for layout state transitions. If you're animating a known from/to state that can be expressed as two tweens, Flip adds an unnecessary layout snapshot step.",
+        "The plugin decision ladder: can this be solved with a core tween? → timeline? → CSS transition? → then consider a plugin."
+      ],
+      "so_what": "For every GSAP animation task, ask: 'Can this be done with gsap.to() and transform/opacity?' If yes, do that. Plugins are for the cases where core GSAP genuinely can't express the intent — not for cases where a plugin makes the code 10% shorter."
     }
   ]
 }

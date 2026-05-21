@@ -1,17 +1,47 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "motion_canvas_master",
     "created": "2026-05-21",
-    "purpose": "Examples that show judgment structure rather than scripts.",
+    "purpose": "Examples that show judgment structure rather than scripts. Motion Canvas production failures transformed into clear, reusable scene architecture.",
     "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
   },
   "cases": [
     {
       "id": "CASE_AGENT_PIPELINE",
       "brief": "Explain an AI agent pipeline.",
-      "bad_pattern": "Icons fly in randomly while labels appear too fast.",
-      "master_pattern": "Anchor the agent, introduce tools as capabilities, animate data movement, pause on decision point, then show outcome."
+      "bad_pattern": "Icons fly in randomly while labels appear too fast. The viewer sees floating shapes with text that disappears before they can read it. The animation communicates 'something technical is happening' but not what, why, or in what order.",
+      "master_pattern": "Anchor the agent as a fixed visual center. Introduce tools as capabilities that orbit the agent one at a time at 800ms intervals, each accompanied by a clear label. Animate data movement with a visible path (line or arrow) showing flow direction. Pause on the decision point with a highlighted node and a subtle pulse. Then show the outcome as a transformation of the original input into the final output."
+    },
+    {
+      "id": "CASE_OVERLOADED_SCENE",
+      "brief": "A single Motion Canvas scene tries to explain an entire architecture — database, API, frontend, caching, and deployment in one 30-second continuous animation.",
+      "bad_pattern": "The scene contains 12 animated elements: database tables spinning, API nodes pulsing, frontend components fading, cache layers glowing, deployment pipelines flowing, text labels scrolling. Nothing is readable because everything moves. The viewer retains zero information. The code is 400 lines with interleaved signal dependencies that make editing any single element break three others.",
+      "master_pattern": "Split into 4 scenes, each proving one argument. Scene 1: 'Data flows from user to database.' Scene 2: 'The API transforms and validates data.' Scene 3: 'A cache makes repeated reads instant.' Scene 4: 'Deployment moves tested code to production.' Each scene has 3-5 beats, one primary visual subject, and a clear hold at the end. Use scene transitions (fade or wipe) to signal topic shifts."
+    },
+    {
+      "id": "CASE_UNREADABLE_CODE_STORYBOARD",
+      "brief": "A generated Motion Canvas scene mixes animation logic, layout math, and visual styling into a monolithic generator function.",
+      "bad_pattern": "The main generator function is 300 lines long. Signal definitions are scattered inline (const progress = createSignal(0) on line 12, const labelOpacity = createSignal(1) on line 187). Tween calls interleave with layout calculations (rect().position(() => ({ x: progress() * 200 + 50, y: ... }))). Variable names are single letters (p, l, t, x, y). The code is unreadable as a storyboard — you cannot look at it and understand the video's structure without mentally executing every line.",
+      "master_pattern": "Structure every scene in three layers: (1) Signals and state at the top, named semantically (progress, headingOpacity, chartTransition). (2) Layout as a separate layout() generator that positions elements using signals — no animation logic in layout. (3) Animation as a separate animate() generator that only modifies signals using tweens, sequences, and chains. Add scene-level comments: '// Beat 1: heading reveals (0-600ms)', '// Beat 2: chart grows (600-1400ms)'. The code must read top-to-bottom as a storyboard."
+    },
+    {
+      "id": "CASE_NO_VISUAL_PROOF",
+      "brief": "A technical explainer video describes a sorting algorithm with floating numbers but never shows the comparison operation.",
+      "bad_pattern": "Numbers slide around gracefully with elegant easing, but there's no visual indication of *why* they move. Two numbers being compared look identical to two numbers coincidentally adjacent. The viewer sees motion but understands nothing about the algorithm — they could watch the entire video with sound off and learn zero.",
+      "master_pattern": "For every logical operation in the algorithm, create a visible visual event: when two numbers are compared, highlight both with a distinct color pulse. When a swap occurs, show both numbers cross paths with a visible trail. When a partition is complete, draw a boundary line. When the algorithm terminates, all elements snap to a sorted state simultaneously. The rule: if an operation exists in the algorithm's pseudocode, it must have a visible visual counterpart in the animation."
+    },
+    {
+      "id": "CASE_SIGNAL_SPAGHETTI",
+      "brief": "A scene uses signals that depend on other signals that depend on tweens that modify signals, creating circular dependencies and unpredictable behavior.",
+      "bad_pattern": "Signal A drives tween T. Tween T modifies Signal B. Signal B's layout depends on Signal A. On scene re-render, the dependency chain loops, causing flicker and inconsistent values. Debugging requires tracing signal dependencies across four files.",
+      "master_pattern": "Establish a one-way signal flow: Tweens modify signals. Layout reads signals. Layout never modifies signals. Signals never depend on layout output. Use derived signals (createDerivedSignal) for computed values — they are read-only and prevent accidental modification. If a visual element needs to react to its own rendered position, use a separate 'post-layout' signal updated after the initial render, not during it."
+    },
+    {
+      "id": "CASE_MOTIF_WASTE",
+      "brief": "A five-scene explainer video reinvents the visual language in every scene — different colors, different icon styles, different transition types, different typography.",
+      "bad_pattern": "Scene 1 uses blue circles with white icons. Scene 2 switches to green rounded rectangles with black icons. Scene 3 uses orange diamonds with outlined icons. Scene 4 goes back to blue but now uses squares. The visual identity resets between every scene, forcing the viewer to re-learn the visual grammar five times. The video feels like five separate animations stitched together.",
+      "master_pattern": "Define a visual motif kit before scene 1: choose one shape family (e.g., rounded rectangles), one color palette (3-4 colors mapped to concepts: data=blue, process=green, output=orange), one icon style (filled or outlined, not both), one transition type (e.g., 300ms directional wipe). Every scene uses the same kit. When a concept repeats across scenes, the visual representation also repeats. The viewer builds visual literacy across the video — by scene 4, a green rounded rectangle instantly reads as 'process' without needing the label."
     }
   ]
 }

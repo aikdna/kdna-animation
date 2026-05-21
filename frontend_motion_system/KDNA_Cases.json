@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "frontend_motion_system",
     "created": "2026-05-21",
     "purpose": "Examples that show judgment structure rather than scripts.",
@@ -18,6 +18,24 @@
       "brief": "Motion decisions are made in Figma and handed off as annotated mockups.",
       "bad_pattern": "Designers specify 'ease out 300ms' in Figma annotations. Engineers interpret differently or copy-paste from other components. Motion becomes inconsistent within weeks.",
       "master_pattern": "Build a Storybook page with all motion primitives as interactive examples. Designers review the live primitives, not static annotations. Both roles reference the same token names during handoff."
+    },
+    {
+      "id": "CASE_TOKEN_SCALE_MISMATCH",
+      "brief": "A team defines duration tokens but the scale is wrong for the product's information density.",
+      "bad_pattern": "The token scale is: sm=150ms, md=300ms, lg=500ms. Every component uses md=300ms because it's the default. The product is a data-heavy dashboard where charts, tables, and KPIs all animate at 300ms. Result: all animation feels uniform and rushed — the KPI counter feels as trivial as a button hover because they share the same duration.",
+      "master_pattern": "Define separate token scales by interaction category, not one universal scale. Micro (button hover, focus ring): 100-150ms. Standard (card reveal, section entrance): 300-400ms. Macro (page transition, dashboard load): 500-800ms. Data (chart draw, counter increment): 600-1200ms. The token system must encode that a chart animation is a different category of motion than a hover state."
+    },
+    {
+      "id": "CASE_SEMANTIC_NAMING_EROSION",
+      "brief": "A motion primitive library starts with semantic names but degrades into visual descriptions as the team grows.",
+      "bad_pattern": "Original primitives: modal-enter, notification-dismiss, page-reveal. New team member adds: slide-from-right-300ms, fade-then-scale-400ms, bounce-in-slow. Within 3 months, half the primitives are semantically named, half are visual descriptions. Designers can't find what they need because the same visual effect has different names in different places (slide-from-right-300ms vs modal-enter — same motion, different names, no shared token).",
+      "master_pattern": "Enforce semantic naming with CI lint rules: primitive names must match the pattern `[subject]-[action]` (modal-enter, card-expand, alert-dismiss). No duration or easing in the name — those are token parameters, not identity. Add a naming guide to CONTRIBUTING.md. Review primitive additions in PR with the question: 'What is the user-facing event, not what is the visual effect?'"
+    },
+    {
+      "id": "CASE_ADOPTION_WITHOUT_ENFORCEMENT",
+      "brief": "A team builds a beautiful motion primitive library but 60% of new animations still use raw CSS values because there's no CI enforcement.",
+      "bad_pattern": "The primitive library exists and is documented. But there's no lint rule or CI check preventing inline animation values. New developers (and agents) reach for the familiar `transition: all 0.3s ease` and never discover the primitive library. Adoption plateaus. The library becomes shelfware — it exists but doesn't control production motion.",
+      "master_pattern": "Add an ESLint or Stylelint rule that flags raw animation/transition values and links to the primitive documentation. The error message should be helpful: 'Use the motion primitive `fade-enter` instead of raw opacity transition. See: /docs/motion/fade-enter.' Track adoption metrics: % of components using primitives. Set a quarterly goal (e.g., 80% by Q2, 95% by Q3). Make adoption visible — a dashboard showing primitive vs. raw usage."
     }
   ]
 }

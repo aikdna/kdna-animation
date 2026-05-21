@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "ai_animation_workflow",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -28,6 +28,40 @@
         "Small review cycles create a tighter feedback loop and better final quality."
       ],
       "so_what": "Ship the smallest version that communicates the intent. Get approval. Then expand. Repeat."
+    },
+    {
+      "id": "RC_TASTE_TRANSLATION",
+      "conclusion": "Qualitative feedback ('too busy,' 'not premium enough,' 'feels off') must be translated into specific structural diagnoses before any code changes are made.",
+      "logic": [
+        "Taste words are high-bandwidth human communication compressed into low-bandwidth labels.",
+        "'Too busy' = likely: too many simultaneous motion groups, insufficient stagger, no clear primary subject.",
+        "'Not premium enough' = likely: too many moving parts, too fast, wrong easing character, insufficient holds.",
+        "'Feels off' = likely: easing mismatch with brand tone, attention path contradicts information hierarchy, or timing uniformity.",
+        "Agents that act directly on taste words without diagnosis reliably apply the wrong fix — usually adjusting speed when the problem is density."
+      ],
+      "so_what": "When receiving qualitative feedback, pause and respond with a diagnosis before acting: 'I interpret [taste word] as a [structural problem]. The fix would be [specific change]. Does that match what you're seeing?' Only code after confirmation."
+    },
+    {
+      "id": "RC_ASSUMPTION_LOG_AS_TRUST",
+      "conclusion": "Explicit assumption logging is not busywork. It is the mechanism that prevents agents from being confidently wrong about context they were never given.",
+      "logic": [
+        "Every animation prompt is underspecified. The user says 'add animation to the dashboard' but doesn't specify device tier, brand tone, information density, user reading speed, or accessibility requirements.",
+        "Without explicit assumptions, the agent fills these gaps silently — and usually wrong. The output is technically correct for the agent's made-up context but wrong for the user's real context.",
+        "Stating assumptions makes them visible and contestable. 'I assumed mid-range mobile. Is that right?' lets the user correct the assumption before code is written.",
+        "Over multiple interactions, the assumption log builds a user profile that improves future outputs without requiring the user to restate context."
+      ],
+      "so_what": "Include an assumption log in every brief. Format: 'Assumptions: I am assuming [X]. If incorrect, [Y] will need to change.' Limit to 3-5 critical assumptions per task. Focus on assumptions that, if wrong, would require major rework."
+    },
+    {
+      "id": "RC_HUMAN_REVIEW_AS_CALIBRATION",
+      "conclusion": "Human taste is not an obstacle to automation — it is the calibration signal that makes automation consistently good. Agents that treat human review as optional produce consistently mediocre output.",
+      "logic": [
+        "Automated checks (performance, accessibility, syntax) can verify correctness. They cannot verify taste.",
+        "Taste is not magic — it is pattern recognition trained on thousands of examples. Humans have it. Agents are acquiring it.",
+        "Each review cycle where a human says 'this easing feels wrong for our brand' is a calibration signal that teaches the agent the brand's motion grammar.",
+        "After 5-10 calibration cycles on the same brand, the agent internalizes the taste patterns and human review shifts from 'direct every decision' to 'approve the direction.'"
+      ],
+      "so_what": "Design the workflow around review loops, not generation speed. The metric is not 'how fast can the agent generate animation' — it is 'how many review cycles to human approval.' Optimize for fewer cycles, not faster generation. Track this metric per brand and watch it decrease over time as calibration accumulates."
     }
   ]
 }

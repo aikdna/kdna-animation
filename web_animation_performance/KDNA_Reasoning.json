@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "domain": "web_animation_performance",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -27,6 +27,40 @@
         "Without profiling, optimization can make performance worse by adding unnecessary will-change layers."
       ],
       "so_what": "Open DevTools Performance panel. Record. Identify the longest task in the frame. Only then decide what to change."
+    },
+    {
+      "id": "RC_GPU_MEMORY_ECONOMY",
+      "conclusion": "GPU memory is a finite shared resource. Every compositor layer created costs memory that could have been used for rendering other content. Optimize layer count, not just frame time.",
+      "logic": [
+        "Each compositor layer allocates a GPU texture at the element's rasterized resolution × device pixel ratio.",
+        "A 300×200px element at 3x DPR creates a 900×600px texture ≈ 2MB GPU memory.",
+        "100 such layers = 200MB GPU memory — more than many mobile GPUs have available.",
+        "When GPU memory is exhausted, the browser evicts layers, forcing re-rasterization and creating jank that is worse than having no layers at all.",
+        "`will-change` and `transform: translateZ(0)` are the primary causes of unintended layer creation."
+      ],
+      "so_what": "Audit layer count with DevTools Layers panel. If count exceeds ~20 on mobile or ~50 on desktop, investigate. Remove `will-change` on elements that are not actively animating. Avoid `translateZ(0)` hacks. Let the browser manage compositing — it is better at layer assignment than developer intuition."
+    },
+    {
+      "id": "RC_FORCED_SYNC_LAYOUT_HORROR",
+      "conclusion": "Forced synchronous layout is the single most common cause of severe animation jank. It is also the least understood by agents and developers.",
+      "logic": [
+        "A forced synchronous layout occurs when code writes a style property, then immediately reads a layout-dependent property before the browser's natural layout phase.",
+        "Example: element.style.width = '200px'; const height = element.offsetHeight; — the second line forces the browser to pause, recalculate layout synchronously, and return the value before continuing.",
+        "In an animation loop at 60fps, a single forced layout per frame consumes 2-5ms of the 16.7ms budget. Two forced layouts guarantee frame drops.",
+        "Agents are especially prone to this because they often read bounding rects or computed styles inside animation callbacks without understanding the layout cost."
+      ],
+      "so_what": "Audit animation code for the pattern: write style → read layout property. Tools: Chrome DevTools Performance panel shows forced layouts as red triangles. ESLint rules can detect some patterns. Fix: batch all reads first, then do all writes. Use requestAnimationFrame for the write batch. Or use the FLIP technique: First, Last, Invert, Play — read layout once, apply the inverse transform, then animate to zero."
+    },
+    {
+      "id": "RC_ACCESSIBILITY_IS_NOT_NEGOTIABLE",
+      "conclusion": "Reduced-motion support is not a feature. It is a requirement. An animation without a reduced-motion fallback is a broken animation.",
+      "logic": [
+        "Approximately 3-5% of the population has a vestibular disorder that can be triggered by excessive motion.",
+        "WCAG 2.2 Success Criterion 2.3.3 (Animation from Interactions) requires that motion animation triggered by interaction can be disabled.",
+        "Beyond compliance: a user who enables `prefers-reduced-motion` is explicitly telling the browser 'motion harms me.' Ignoring this is a user-hostile design choice.",
+        "The technical cost of reduced-motion support is minimal: a single media query and a JS check."
+      ],
+      "so_what": "Implement reduced-motion at the system level, not per-component. Use a global CSS rule or a shared animation utility that checks the media query. Every new animation automatically inherits reduced-motion support. Test by enabling 'prefers-reduced-motion: reduce' in your OS accessibility settings and verifying that the product is fully usable without motion."
     }
   ]
 }

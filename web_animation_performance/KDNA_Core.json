@@ -12,25 +12,93 @@
       "id": "AX_TRANSFORM_AND_OPACITY_FIRST",
       "one_sentence": "Prefer transform and opacity for continuous animation before any layout-triggering property.",
       "full_statement": "Prefer transform and opacity for continuous animation before any layout-triggering property.",
-      "why": "Browsers can composite transform and opacity entirely on the GPU without triggering layout, paint, or style recalculation, which is the only reliable path to 60fps on low-end devices."
+      "why": "Browsers can composite transform and opacity entirely on the GPU without triggering layout, paint, or style recalculation, which is the only reliable path to 60fps on low-end devices.",
+      "applies_when": [
+        "Continuous UI animations like loading spinners or modal transitions",
+        "Micro-interactions triggered by user hover or click events",
+        "Scroll-linked visual effects on mid-to-low-end mobile devices"
+      ],
+      "does_not_apply_when": [
+        "Opening dropdown menus or accordions that require document flow changes",
+        "Complex SVG path morphing or shape extrusions that cannot be expressed with matrix transforms",
+        "Initial page load content reflow where layout shifting is intentionally used for progressive disclosure"
+      ],
+      "failure_risk": "The agent will generate GPU-composited animations that still cause severe frame drops because it blindly ignores paint-heavy properties or forces layout thrashing in synchronous callbacks.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_MEASURE_BEFORE_GUESSING",
       "one_sentence": "Always profile before optimizing. Never assume you know the bottleneck.",
       "full_statement": "Always profile before optimizing. Never assume you know the bottleneck.",
-      "why": "Common agent failure mode: guessing 'too many elements' when the real cause is forced synchronous layout, repaint storms, or scroll handler thrashing."
+      "why": "Common agent failure mode: guessing 'too many elements' when the real cause is forced synchronous layout, repaint storms, or scroll handler thrashing.",
+      "applies_when": [
+        "Debugging janky scroll performance in a data-heavy dashboard",
+        "Investigating unexplained frame drops after a recent framework upgrade",
+        "Optimizing a web application reported to lag specifically on Android Chrome"
+      ],
+      "does_not_apply_when": [
+        "Adding a standard debounce to a known scroll event listener in a disposable prototype",
+        "Applying a CSS will-change hint to a single fixed-position navigation bar",
+        "Writing initial boilerplate for a static marketing landing page with zero interactive elements"
+      ],
+      "failure_risk": "The agent will waste development cycles rewriting rendering pipelines or adding unnecessary requestAnimationFrame wrappers while missing the actual bottleneck like unthrottled event handlers or forced synchronous layout.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_RESPECT_REDUCED_MOTION",
       "one_sentence": "Honor prefers-reduced-motion and provide motion-free alternatives for every meaningful animation.",
       "full_statement": "Honor prefers-reduced-motion and provide motion-free alternatives for every meaningful animation.",
-      "why": "Excessive motion harms users with vestibular disorders. Accessibility is not optional — animation without a reduced-motion fallback is broken."
+      "why": "Excessive motion harms users with vestibular disorders. Accessibility is not optional — animation without a reduced-motion fallback is broken.",
+      "applies_when": [
+        "Implementing hero section parallax or fade-in transitions on marketing sites",
+        "Adding notification toasts, success spinners, or state change animations in web apps",
+        "Creating interactive data visualizations with animated data transitions"
+      ],
+      "does_not_apply_when": [
+        "Generating static CSS gradients or background colors that do not animate over time",
+        "Writing utility classes for layout spacing, typography, or grid alignment",
+        "Building a terminal-style CLI interface rendered in a browser canvas"
+      ],
+      "failure_risk": "The agent will ship unmitigated animations that trigger vestibular disorders or severe nausea and fail WCAG 2.2 accessibility compliance audits.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern"
+      ]
     },
     {
       "id": "AX_PERFORMANCE_BUDGET_IS_DESIGN_QUALITY",
       "one_sentence": "Define an explicit frame budget per interaction and reject animations that exceed it.",
       "full_statement": "Define an explicit frame budget per interaction and reject animations that exceed it.",
-      "why": "Smoothness is a design quality, not an optimization afterthought. A dropped frame destroys the perception of premium faster than bad color choices."
+      "why": "Smoothness is a design quality, not an optimization afterthought. A dropped frame destroys the perception of premium faster than bad color choices.",
+      "applies_when": [
+        "Designing micro-interactions for mobile browsers on mid-tier hardware",
+        "Implementing scroll-driven or continuous background animations",
+        "Establishing animation guidelines for a shared component library",
+        "Reviewing animation code that relies on layout-thrashing properties instead of transforms or opacity"
+      ],
+      "does_not_apply_when": [
+        "Prototyping early-stage concepts where rapid iteration outweighs frame-perfect precision",
+        "Implementing decorative, non-interactive background effects that do not overlap with user input regions",
+        "Targeting controlled kiosk or dedicated hardware environments with guaranteed high-end GPUs",
+        "Applying prefers-reduced-motion fallbacks that intentionally bypass or disable animation chains entirely"
+      ],
+      "failure_risk": "Enforcing strict frame budgets on decorative elements or early prototypes will waste engineering hours optimizing non-critical visuals and delay shipping without improving perceived performance.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern",
+        "research_finding"
+      ]
     }
   ],
   "ontology": [

@@ -12,25 +12,90 @@
       "id": "AX_SCENE_IS_ARGUMENT",
       "one_sentence": "A Motion Canvas scene should express one argument or one visual transformation.",
       "full_statement": "A Motion Canvas scene should express one argument or one visual transformation.",
-      "why": "Overloaded scenes become hard to read, review, and reuse."
+      "why": "Overloaded scenes become hard to read, review, and reuse.",
+      "applies_when": [
+        "Animating a single step of a sorting algorithm",
+        "Transitioning a graph from a tree to a linear chain structure",
+        "Introducing a new variable's role before combining it with others"
+      ],
+      "does_not_apply_when": [
+        "Creating a rapid stylistic montage to match upbeat background music",
+        "Simulating a live desktop environment where multiple applications run concurrently",
+        "Establishing a complex static background that intentionally layers several unrelated props"
+      ],
+      "failure_risk": "The agent will over-fragment cohesive explanations into repetitive, disjointed clips that destroy narrative pacing and viewer engagement.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_CODE_IS_STORYBOARD",
       "one_sentence": "Animation code must remain readable as a storyboard.",
       "full_statement": "Animation code must remain readable as a storyboard.",
-      "why": "If timing logic is scattered, the video cannot be directed."
+      "why": "If timing logic is scattered, the video cannot be directed.",
+      "applies_when": [
+        "Sequencing camera movements to align with specific voiceover timestamps",
+        "Structuring play sequences so scene progression matches a written script",
+        "Organizing keyframe and transition blocks in chronological order"
+      ],
+      "does_not_apply_when": [
+        "Writing a physics engine or mathematical simulation where frame-independent calculations prioritize performance",
+        "Developing a reusable utility library or custom component shared across unrelated videos",
+        "Auto-generating procedural textures or meshes where the code describes generation rules rather than narrative beats"
+      ],
+      "failure_risk": "The agent will force rigidly sequential and verbose structures onto performance-critical simulations or reusable libraries, degrading execution speed and code maintainability.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_VISUAL_PROOF",
       "one_sentence": "Technical animations should prove an idea visually, not merely decorate narration.",
       "full_statement": "Technical animations should prove an idea visually, not merely decorate narration.",
-      "why": "The viewer should understand the logic even with the sound muted."
+      "why": "The viewer should understand the logic even with the sound muted.",
+      "applies_when": [
+        "Demonstrating how a cryptographic hash maps variable inputs to fixed outputs",
+        "Tracing data packets through a network routing table step by step",
+        "Visualizing the mechanical interaction between interlocking gears"
+      ],
+      "does_not_apply_when": [
+        "Producing ambient B-roll for a philosophical monologue that relies on abstract metaphor",
+        "Creating a product launch teaser where emotional resonance and brand tone take priority",
+        "Generating decorative lower-thirds or notification badges to accompany a live presenter"
+      ],
+      "failure_risk": "The agent will over-engineer literal visual demonstrations for rhetorical or emotional segments, producing cluttered, distracting graphics that obscure the intended message.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "research_finding"
+      ]
     },
     {
       "id": "AX_REUSABLE_MOTIFS",
       "one_sentence": "Repeated visual motifs create cognitive continuity.",
       "full_statement": "Repeated visual motifs create cognitive continuity.",
-      "why": "Explainers become memorable when transformations reuse visual grammar."
+      "why": "Explainers become memorable when transformations reuse visual grammar.",
+      "applies_when": [
+        "Creating multi-part tutorial series where consistent iconography tracks recurring concepts across episodes",
+        "Building brand explainers that reuse logo geometry or color palettes during scene transitions",
+        "Designing software walkthroughs where identical hover and click animations apply to different interface modules"
+      ],
+      "does_not_apply_when": [
+        "Producing fast-paced meme compilations where rapid stylistic shifts are required to maintain comedic timing",
+        "Visualizing highly distinct categorical datasets that require unique shapes and colors to prevent pattern confusion",
+        "Crafting experimental or surrealist animations where intentional visual fragmentation supports an abstract narrative"
+      ],
+      "failure_risk": "The agent forces repetitive visual elements into disparate contexts, producing a monotonous sequence that obscures critical distinctions between new and existing concepts.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus",
+        "case_observation"
+      ]
     }
   ],
   "ontology": [

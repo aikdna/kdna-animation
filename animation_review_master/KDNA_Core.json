@@ -12,25 +12,97 @@
       "id": "AX_CRITIQUE_THE_PATH_NOT_THE_EFFECT",
       "one_sentence": "Diagnose the attention path and timing structure, not the visual style of individual effects.",
       "full_statement": "Diagnose the attention path and timing structure, not the visual style of individual effects.",
-      "why": "Most bad animation is structurally broken (wrong order, wrong pace, no hierarchy) rather than aesthetically ugly. Fixing an ugly easing curve when the attention path is wrong is rearranging deck chairs."
+      "why": "Most bad animation is structurally broken (wrong order, wrong pace, no hierarchy) rather than aesthetically ugly. Fixing an ugly easing curve when the attention path is wrong is rearranging deck chairs.",
+      "applies_when": [
+        "Reviewing a multi-step onboarding flow where elements animate in sequence",
+        "Critiquing a dashboard loading animation that reveals data panels progressively",
+        "Evaluating a landing page hero section with overlapping scroll-triggered motions",
+        "Analyzing a microinteraction chain for a complex form submission"
+      ],
+      "does_not_apply_when": [
+        "Fine-tuning the easing curve of a single, isolated icon hover state",
+        "Polishing a purely decorative background particle system with no interactive hierarchy",
+        "Reviewing an artistic motion-graphics piece where visual experimentation is the explicit goal",
+        "Auditing a static image slider that only uses simple fade transitions"
+      ],
+      "failure_risk": "The reviewer will recommend superficial aesthetic tweaks like changing colors or easing while ignoring a fundamental sequencing error that causes user confusion.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_CHEAPNESS_HAS_CAUSES",
       "one_sentence": "Every visible quality problem — cheap, noisy, AI-looking, chaotic — has a specific, diagnosable structural cause.",
       "full_statement": "Every visible quality problem — cheap, noisy, AI-looking, chaotic — has a specific, diagnosable structural cause.",
-      "why": "Taste words like 'cheap' are signals of a concrete problem: usually too many simultaneous motion groups, wrong easing character, or absent holds. Diagnose the cause, don't just label the symptom."
+      "why": "Taste words like 'cheap' are signals of a concrete problem: usually too many simultaneous motion groups, wrong easing character, or absent holds. Diagnose the cause, don't just label the symptom.",
+      "applies_when": [
+        "Diagnosing why a web component's scroll animation feels jittery or AI-generated",
+        "Auditing mobile app gesture feedback that reviewers describe as cluttered",
+        "Reviewing a marketing site's staggered text reveals that lack impact",
+        "Evaluating a prototype motion system where elements feel visually noisy"
+      ],
+      "does_not_apply_when": [
+        "Deliberately lo-fi or retro aesthetic choices meant to evoke a specific nostalgic vibe",
+        "Reviewing animations on severely underpowered embedded devices where frame drops are hardware-limited",
+        "Assessing a purely static image gallery with no motion involved",
+        "Evaluating generative art where algorithmic randomness is the intended visual output"
+      ],
+      "failure_risk": "The reviewer will waste engineering cycles tweaking individual curve values or asset sizes while missing the actual root cause like overlapping motion groups or missing hold frames.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_REVIEW_WITH_VIEWER_TASK",
       "one_sentence": "Evaluate animation against the viewer's primary task, not against animation theory in isolation.",
       "full_statement": "Evaluate animation against the viewer's primary task, not against animation theory in isolation.",
-      "why": "An animation can be technically flawless and still fail because it competes with reading, hides the CTA, or confuses the information hierarchy. The viewer's task is the benchmark."
+      "why": "An animation can be technically flawless and still fail because it competes with reading, hides the CTA, or confuses the information hierarchy. The viewer's task is the benchmark.",
+      "applies_when": [
+        "Reviewing animation for a high-conversion checkout flow",
+        "Evaluating motion in a data-dense analytics dashboard where quick scanning is required",
+        "Critiquing an animated tutorial overlay for a complex SaaS feature",
+        "Assessing an interactive map component where precise location tapping is the goal"
+      ],
+      "does_not_apply_when": [
+        "Reviewing a motion designer's personal showreel or portfolio piece",
+        "Evaluating a cinematic game cutscene where narrative immersion completely overrides utility",
+        "Assessing a decorative loading spinner with no functional user task attached",
+        "Auditing an abstract music visualizer where syncing to audio beats is the only requirement"
+      ],
+      "failure_risk": "The reviewer will approve a technically perfect animation that actively increases cognitive load and causes users to abandon the primary task.",
+      "confidence": "high",
+      "evidence_type": [
+        "case_observation",
+        "research_finding",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_FIX_BY_REMOVING_FIRST",
       "one_sentence": "When diagnosing quality issues, remove motion before adding more.",
       "full_statement": "When diagnosing quality issues, remove motion before adding more.",
-      "why": "Most broken animations are over-animated, not under-animated. Removing 30% of movement almost always improves clarity. Adding more motion to fix a noisy scene makes it worse."
+      "why": "Most broken animations are over-animated, not under-animated. Removing 30% of movement almost always improves clarity. Adding more motion to fix a noisy scene makes it worse.",
+      "applies_when": [
+        "A character idle loop has excessive secondary bounces and micro-movements that distract from the core pose",
+        "A UI transition sequence stacks overlapping scale, rotation, and opacity effects that cause visual fatigue",
+        "A cinematic shot features a camera pan fighting a character head turn, creating motion sickness and losing the focal point"
+      ],
+      "does_not_apply_when": [
+        "A walk cycle feels weightless and floaty because it lacks proper contact frame translation and squash",
+        "A micro-interaction provides zero visual feedback on tap, requiring the addition of a simple press or ripple effect",
+        "A loading indicator appears static and broken because it needs eased acceleration and a trailing blur to convey progress"
+      ],
+      "failure_risk": "Stripping motion from an under-animated sequence will produce a stiff, dead, or unresponsive visual that fails to communicate weight, intent, or system feedback.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     }
   ],
   "ontology": [

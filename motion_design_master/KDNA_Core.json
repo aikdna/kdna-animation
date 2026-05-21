@@ -12,25 +12,100 @@
       "id": "AX_ATTENTION_FIRST",
       "one_sentence": "Motion exists to control attention before it exists to decorate.",
       "full_statement": "Motion exists to control attention before it exists to decorate.",
-      "why": "If the viewer does not know where to look, the animation has failed."
+      "why": "If the viewer does not know where to look, the animation has failed.",
+      "applies_when": [
+        "Designing onboarding flows where users must notice a newly introduced feature button",
+        "Creating UI alerts, toasts, or error states that require immediate user acknowledgment",
+        "Animating dashboard data visualizations to highlight a specific KPI or trend line",
+        "Building marketing landing page scrolls where the primary call-to-action must stand out"
+      ],
+      "does_not_apply_when": [
+        "Designing abstract, looping background visuals for brand ambiance where no focal point is intended",
+        "Creating decorative loading indicators where user attention is already passively waiting",
+        "Producing experimental motion art or music visualizers prioritized for aesthetic immersion over utility",
+        "Animating gamified discovery interfaces where wandering exploration is the desired user behavior"
+      ],
+      "failure_risk": "The agent will generate cluttered, decorative animations that obscure primary UI elements and cause users to miss critical calls to action or system status changes.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_TIMING_IS_MEANING",
       "one_sentence": "Timing communicates confidence, urgency, elegance, playfulness, or friction.",
       "full_statement": "Timing communicates confidence, urgency, elegance, playfulness, or friction.",
-      "why": "The same movement with different duration and easing changes meaning."
+      "why": "The same movement with different duration and easing changes meaning.",
+      "applies_when": [
+        "Setting easing curves for button presses or toggle switches to convey responsiveness or mechanical weight",
+        "Choreographing page or modal transitions to align with a brand's personality traits",
+        "Designing microinteractions for warnings versus confirmations to signal urgency or calm assurance",
+        "Animating character or mascot movements to express specific emotional states"
+      ],
+      "does_not_apply_when": [
+        "Generating real-time scientific or engineering visualizations where frame pacing must strictly match physical phenomena",
+        "Applying custom easing to linear technical progress bars where mathematically uniform, predictable motion is required",
+        "Producing automated accessibility-compliant animations that must adhere to strict WCAG duration caps overriding expressive timing",
+        "Creating data-driven timeline scrubbers where chronological accuracy takes precedence over pacing aesthetics"
+      ],
+      "failure_risk": "The agent will apply emotionally mismatched easing and duration curves that confuse users about system status or brand tone, resulting in interactions that feel sluggish, jarring, or semantically incorrect.",
+      "confidence": "high",
+      "evidence_type": [
+        "research_finding",
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_RESTRAINT_CREATES_PREMIUM",
       "one_sentence": "Premium motion is usually precise, sparse, and intentional.",
       "full_statement": "Premium motion is usually precise, sparse, and intentional.",
-      "why": "Overanimated scenes feel cheap, anxious, and AI-generated."
+      "why": "Overanimated scenes feel cheap, anxious, and AI-generated.",
+      "applies_when": [
+        "Designing high-end e-commerce product reveal sequences where material quality must take focus",
+        "Building enterprise SaaS dashboard transitions where performance and cognitive load management are priorities",
+        "Crafting brand identity motion systems for luxury, fintech, or B2B technology companies",
+        "Animating critical workflow steps where clarity, precision, and smoothness signal reliability"
+      ],
+      "does_not_apply_when": [
+        "Creating mobile game UI or casual lifestyle app interfaces that rely on exaggerated, bouncy feedback for engagement",
+        "Designing educational or training animations for children where playful excess aids retention and enjoyment",
+        "Producing festival, concert, or youth-culture promotional videos that intentionally use high-energy, chaotic motion",
+        "Building generative art installations or creative coding experiments where algorithmic complexity and visual density are the primary goals"
+      ],
+      "failure_risk": "The agent will strip necessary feedback and engagement cues from playful or high-energy contexts, producing sterile, overly rigid animations that feel disconnected from the target audience or brand personality.",
+      "confidence": "medium",
+      "evidence_type": [
+        "industry_consensus",
+        "case_observation",
+        "practice_pattern"
+      ]
     },
     {
       "id": "AX_CHOREOGRAPHY_OVER_EFFECTS",
       "one_sentence": "The sequence of events matters more than the novelty of individual effects.",
       "full_statement": "The sequence of events matters more than the novelty of individual effects.",
-      "why": "A good animation guides thought; an effect only attracts attention."
+      "why": "A good animation guides thought; an effect only attracts attention.",
+      "applies_when": [
+        "Designing a multi-step onboarding flow where users must follow a logical progression of actions.",
+        "Creating a broadcast graphic package where the pacing of elements establishes brand tone over time.",
+        "Building an explainer video where information is revealed chronologically to support comprehension.",
+        "Structuring a product demo reel where each segment builds upon the previous one to tell a cohesive story."
+      ],
+      "does_not_apply_when": [
+        "Creating a 1-second thumbnail or still-frame promotional asset where there is no temporal sequence to structure.",
+        "Designing a short-form social media ad hook intended purely for pattern interruption in the first frame.",
+        "Building a reactive micro-interaction where immediate state feedback outweighs narrative sequencing.",
+        "Producing a technical showcase reel explicitly meant to highlight the visual capabilities of a new rendering plugin or effect library."
+      ],
+      "failure_risk": "The agent will prioritize logical pacing over immediate visual impact, producing a dull asset that fails to capture attention in contexts requiring instant pattern interruption or standalone novelty.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern"
+      ]
     }
   ],
   "ontology": [

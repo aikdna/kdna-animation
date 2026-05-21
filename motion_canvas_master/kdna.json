@@ -1,7 +1,7 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/motion_canvas_master",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "status": "experimental",
   "access": "open",
   "language": "en",
@@ -19,5 +19,6 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:642c4d2c93a818529f51dcc2c53ca2ad6c7361198674e617cc468cc2005fbc8a4b925d60d0e9fab12d6b27d2550d10449799bb8a97fa6fa82c24e8b7ad830d01"
+  "judgment_version": "2026.05",
+  "signature": "ed25519:6faf540e021af7da77cf0be85887e1d310c4d911daca7b36f497f43996bb09919e2d45330c70e6ed28463721d3567eb9dd802cc24531935a5397872106e1da0a"
 }

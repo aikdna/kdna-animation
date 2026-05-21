@@ -1,7 +1,7 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/gsap_master",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "status": "experimental",
   "access": "open",
   "language": "en",
@@ -19,5 +19,6 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:c3a9b724324b1930c5fac8a9b152a663c9cd2eb76fd1ae08c4ec92299f362c033c844d4ca12bb774d0e4491391bf1c0551eaad03becb7a53e6fd7af4eda3a104"
+  "judgment_version": "2026.05",
+  "signature": "ed25519:616cfe1378f3fd6b4104195b712a02c0f245394edc1185e7f4b70d11f5e8cccba6822754fa54b5b93da3647e1974515a29676afb2e4ab1316327cb9b47f37103"
 }

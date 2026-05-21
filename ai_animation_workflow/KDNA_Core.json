@@ -12,25 +12,97 @@
       "id": "AX_BRIEF_FIRST_CODE_SECOND",
       "one_sentence": "Always produce a structured brief (audience, attention path, timing intent, emotional goal) before writing any animation code.",
       "full_statement": "Always produce a structured brief (audience, attention path, timing intent, emotional goal) before writing any animation code.",
-      "why": "AI agents without a brief default to generic, over-animated output. A brief forces the agent to make explicit choices that can be reviewed and rejected before implementation cost is sunk."
+      "why": "AI agents without a brief default to generic, over-animated output. A brief forces the agent to make explicit choices that can be reviewed and rejected before implementation cost is sunk.",
+      "applies_when": [
+        "Starting a new UI micro-interaction sequence for a specific product feature",
+        "Prompting an AI video agent to generate a marketing explainer scene",
+        "Initiating a character idle loop or state transition animation for a game asset",
+        "Onboarding a new AI animation pipeline to handle client deliverables"
+      ],
+      "does_not_apply_when": [
+        "Debugging a broken easing curve or fixing a syntax error in existing animation code",
+        "Iterating on a quick visual test where the creative direction is already locked and approved",
+        "Generating placeholder motion for a wireframe where timing is irrelevant",
+        "Hotfixing a dropped frame issue in a production deployment"
+      ],
+      "failure_risk": "The agent will spend cycles drafting unnecessary briefs for trivial fixes or debugging sessions, causing workflow bottlenecks and context-switching fatigue.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_AGENT_MUST_STATE_ASSUMPTIONS",
       "one_sentence": "The agent must list its assumptions about audience, device, brand tone, and context before generating motion.",
       "full_statement": "The agent must list its assumptions about audience, device, brand tone, and context before generating motion.",
-      "why": "Unstated assumptions cause the most common AI animation failure: a technically correct animation that is contextually wrong. Stating assumptions makes them debatable."
+      "why": "Unstated assumptions cause the most common AI animation failure: a technically correct animation that is contextually wrong. Stating assumptions makes them debatable.",
+      "applies_when": [
+        "Generating a social media ad animation where aspect ratio and viewing environment drastically change composition",
+        "Creating onboarding motion for a B2B SaaS dashboard targeting enterprise users",
+        "Producing a brand-aligned product reveal animation for a luxury goods client",
+        "Handing off motion specs to a frontend developer who will implement it in CSS or JS"
+      ],
+      "does_not_apply_when": [
+        "Generating a purely technical reference animation such as a physics simulation test or particle stress test",
+        "Creating motion for an internal tool where brand tone and audience are standardized and immutable",
+        "Iterating on a frame-by-frame hand-off where the artist has already provided explicit visual references",
+        "Building a generic animation library component with no contextual target"
+      ],
+      "failure_risk": "The agent will halt productive work by demanding unnecessary assumption documentation for internal tests or technical references, delaying delivery without adding value.",
+      "confidence": "high",
+      "evidence_type": [
+        "case_observation",
+        "practice_pattern"
+      ]
     },
     {
       "id": "AX_REVIEW_BEFORE_EXPANSION",
       "one_sentence": "Review the minimal viable animation before adding complexity, variants, or secondary motion.",
       "full_statement": "Review the minimal viable animation before adding complexity, variants, or secondary motion.",
-      "why": "Agents tend to expand scope prematurely. A reviewed 3-beat sequence is worth more than an unreviewed 12-beat scene. Review locks the direction before effort scales."
+      "why": "Agents tend to expand scope prematurely. A reviewed 3-beat sequence is worth more than an unreviewed 12-beat scene. Review locks the direction before effort scales.",
+      "applies_when": [
+        "Building a multi-state button interaction before adding hover, focus, and disabled variants",
+        "Developing a character combat move before layering particle effects, screen shake, and camera cuts",
+        "Designing a data visualization transition before adding multiple chart types and tooltip animations",
+        "Prototyping a cinematic camera pan before blocking in secondary props and lighting passes"
+      ],
+      "does_not_apply_when": [
+        "Generating a static image sequence or slideshow where no motion or timing exists",
+        "Running a bulk export of pre-approved animation assets to multiple format targets",
+        "Implementing a simple, single-frame state swap with no easing or motion",
+        "Debugging a render pipeline bottleneck where animation content is already finalized"
+      ],
+      "failure_risk": "The agent will enforce unnecessary review checkpoints on trivial or finalized assets, stalling batch processing pipelines and wasting human review bandwidth.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_HUMAN_TASTE_IS_A_REQUIRED_SIGNAL",
       "one_sentence": "Human feedback on timing, feel, and emotion is non-negotiable quality input — it cannot be replaced by heuristics or automated checks.",
       "full_statement": "Human feedback on timing, feel, and emotion is non-negotiable quality input — it cannot be replaced by heuristics or automated checks.",
-      "why": "Motion quality is subjective at its highest level. Automated lint rules catch performance and accessibility but cannot judge whether a hold feels confident or anxious. The human in the loop is the final calibrator."
+      "why": "Motion quality is subjective at its highest level. Automated lint rules catch performance and accessibility but cannot judge whether a hold feels confident or anxious. The human in the loop is the final calibrator.",
+      "applies_when": [
+        "Reviewing a generated character walk cycle to adjust stride length and weight transfer for a specific narrative mood",
+        "Evaluating AI-generated facial micro-expressions to ensure they match a script's emotional beat",
+        "Refining easing curves on a UI prototype to deliberately convey urgency versus calmness",
+        "Polishing AI-assisted mocap cleanup to remove robotic stiffness during a dramatic character pause"
+      ],
+      "does_not_apply_when": [
+        "Batch-processing thousands of procedural background particle effects where technical consistency outweighs emotional nuance",
+        "Running automated regression tests for animation frame rates, memory allocation, and deployment readiness",
+        "Generating placeholder motion data for rapid early-stage blockout where iteration speed is the priority",
+        "Validating skeletal rig constraints and collision boundaries using programmatic validation scripts"
+      ],
+      "failure_risk": "Insisting on human emotional calibration for purely technical or high-volume procedural animations will bottleneck production and substitute subjective preference for objective performance metrics.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern"
+      ]
     }
   ],
   "ontology": [

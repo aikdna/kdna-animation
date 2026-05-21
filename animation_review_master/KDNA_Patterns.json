@@ -54,14 +54,48 @@
       "wrong": "Animation critique is subjective opinion and cannot be made systematic.",
       "correct": "While the highest level of taste is subjective, 90% of animation quality problems have objective structural causes: attention conflict, density overrun, missing holds, easing mismatch, and performance issues.",
       "key_distinction": "While the highest level of taste is subjective, 90% of animation quality problems have objective structural causes: attention conflict, density overrun, missing holds, easing mismatch, and performance issues.",
-      "why": "Holding the wrong interpretation leads to poor judgment: While the highest level of taste is subjective, 90% of animation quality problems have objective structural causes: attention conflict, density overrun, missing holds, easing mismatch, and performance issues."
+      "why": "Holding the wrong interpretation leads to poor judgment: While the highest level of taste is subjective, 90% of animation quality problems have objective structural causes: attention conflict, density overrun, missing holds, easing mismatch, and performance issues.",
+      "applies_when": [
+        "diagnosing pacing errors in a character walk cycle",
+        "evaluating why a specific gesture feels visually unconvincing in timing",
+        "reviewing a shot where foreground props distract from the main acting",
+        "analyzing bounce and weight distribution in a squash-and-stretch exercise"
+      ],
+      "does_not_apply_when": [
+        "evaluating purely stylistic choices like abstract color palettes or mood lighting",
+        "debating narrative tone or cultural resonance in experimental shorts",
+        "assessing deliberately anti-principle techniques used for avant-garde expression"
+      ],
+      "failure_risk": "The reviewer will dismiss measurable technical flaws as mere preference, leaving structural errors like easing mismatches or attention conflicts unaddressed in the final asset.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "MS-MORE_FEEDBACK_IS_BETTER",
       "wrong": "Listing every visible issue produces the best critique.",
       "correct": "Fixing the top 1-2 structural problems often cascades into fixing the rest. A focused critique with evidence is more actionable than a comprehensive list without priorities.",
       "key_distinction": "Fixing the top 1-2 structural problems often cascades into fixing the rest. A focused critique with evidence is more actionable than a comprehensive list without priorities.",
-      "why": "Holding the wrong interpretation leads to poor judgment: Fixing the top 1-2 structural problems often cascades into fixing the rest. A focused critique with evidence is more actionable than a comprehensive list without priorities."
+      "why": "Holding the wrong interpretation leads to poor judgment: Fixing the top 1-2 structural problems often cascades into fixing the rest. A focused critique with evidence is more actionable than a comprehensive list without priorities.",
+      "applies_when": [
+        "reviewing a rough blocking pass where spacing errors create multiple visual glitches",
+        "providing notes to a junior animator overwhelmed by conflicting revision requests",
+        "diagnosing a scene where a single root timing flaw causes cascading acting problems",
+        "delivering feedback under tight iteration deadlines with only one revision cycle allowed"
+      ],
+      "does_not_apply_when": [
+        "conducting a final pre-render technical QC pass requiring exhaustive asset verification",
+        "reviewing a locked scene where only micro-polish on lighting and compositing remains",
+        "documenting deviations for a studio style guide that requires complete cataloging"
+      ],
+      "failure_risk": "The reviewer will flood the animator with unprioritized micro-notes, causing decision paralysis and obscuring the root structural flaw that actually needs fixing.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     }
   ],
   "self_check": [

@@ -1,7 +1,7 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/web_animation_performance",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "status": "experimental",
   "access": "open",
   "language": "en",
@@ -19,5 +19,6 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:4b31b10f04360e73d21e7e35bbf75e08ad58f0b166b858c18376bdd222e3041cda184fe825e3f03469a8533972705e2b4931e1c310cd0be43b4e0b54b3002c01"
+  "judgment_version": "2026.05",
+  "signature": "ed25519:da75cfc29fa0ceaf311010fa92d5132d31531e3ce36348b1f33d6f3d4ed1e5561711fc8532f28bac5541d4c2b502577774d6cab693741256d9495491fff77b05"
 }

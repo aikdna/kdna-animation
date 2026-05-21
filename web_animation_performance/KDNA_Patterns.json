@@ -50,14 +50,50 @@
       "wrong": "If it runs smoothly on a developer machine, performance is fine.",
       "correct": "Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling.",
       "key_distinction": "Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling.",
-      "why": "Holding the wrong interpretation leads to poor judgment: Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling."
+      "why": "Holding the wrong interpretation leads to poor judgment: Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling.",
+      "applies_when": [
+        "Shipping a complex 3D web animation to a broad mobile audience",
+        "Benchmarking CSS animations for a public-facing marketing site",
+        "Preparing an interactive dashboard for enterprise users on older corporate laptops",
+        "Optimizing a web-based game or interactive app before public release"
+      ],
+      "does_not_apply_when": [
+        "Prototyping a quick internal tool only used by engineers on company-issued high-end Macs",
+        "Running a local-only data visualization demo on a controlled presentation machine",
+        "Debugging layout shifts or reflow bugs where GPU rendering is irrelevant to the specific issue",
+        "Testing a static content page with zero animations, transitions, or hardware acceleration"
+      ],
+      "failure_risk": "Shipping animations that drop frames or crash on target devices, causing user abandonment or app store rejection.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern"
+      ]
     },
     {
       "id": "MS-FEWER_ELEMENTS",
       "wrong": "Reducing animated elements always improves performance.",
       "correct": "One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count.",
       "key_distinction": "One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count.",
-      "why": "Holding the wrong interpretation leads to poor judgment: One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count."
+      "why": "Holding the wrong interpretation leads to poor judgment: One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count.",
+      "applies_when": [
+        "Optimizing a parallax background with multiple layered images moving on scroll",
+        "Refactoring a dashboard that animates hundreds of small status indicator dots",
+        "Debugging jank in a loading spinner made of multiple rotating SVG paths",
+        "Choosing between animating transform versus width or height for a progress bar or accordion"
+      ],
+      "does_not_apply_when": [
+        "Fixing memory leaks caused by unbounded DOM node creation in a long-running data chart",
+        "Optimizing initial render time for a static page with thousands of unanimated list items",
+        "Resolving accessibility violations from too many focusable elements in a modal or form",
+        "Debugging network payload size where DOM element count directly impacts HTML or JSON transfer size"
+      ],
+      "failure_risk": "Wasting engineering time removing visual elements while missing the actual jank source, resulting in unchanged frame rates or degraded user experience.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     }
   ],
   "self_check": [

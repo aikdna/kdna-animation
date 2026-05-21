@@ -50,14 +50,47 @@
       "wrong": "Motion tokens limit creativity and produce boring, uniform animation.",
       "correct": "Tokens define constraints, not outcomes. A limited palette of durations and easings combined with semantic naming produces more creative and coherent results than unlimited one-off values.",
       "key_distinction": "Tokens define constraints, not outcomes. A limited palette of durations and easings combined with semantic naming produces more creative and coherent results than unlimited one-off values.",
-      "why": "Holding the wrong interpretation leads to poor judgment: Tokens define constraints, not outcomes. A limited palette of durations and easings combined with semantic naming produces more creative and coherent results than unlimited one-off values."
+      "why": "Holding the wrong interpretation leads to poor judgment: Tokens define constraints, not outcomes. A limited palette of durations and easings combined with semantic naming produces more creative and coherent results than unlimited one-off values.",
+      "applies_when": [
+        "Designing a shared design system where multiple teams implement hover, focus, and loading states.",
+        "Building a multi-page application requiring rhythmic consistency across route transitions and micro-interactions.",
+        "Onboarding new developers to a motion-heavy codebase where standardized easing curves reduce cognitive load."
+      ],
+      "does_not_apply_when": [
+        "Prototyping an experimental marketing landing page where breaking motion conventions is a deliberate artistic goal.",
+        "Debugging a performance bottleneck in a legacy browser that requires a hardcoded, highly optimized duration override.",
+        "Implementing a one-off, complex physics-based animation that tightly couples to unique DOM layout quirks."
+      ],
+      "failure_risk": "The agent will enforce rigid token usage across all animations, rejecting necessary custom timing values and producing stiff, emotionally flat interactions that fail to meet specific UX or artistic requirements.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern",
+        "research_finding"
+      ]
     },
     {
       "id": "MS-COPY_PASTE_OK",
       "wrong": "Copying animation code between components is fine for consistency.",
       "correct": "Copy-pasted code diverges over time and becomes a maintenance burden. Extract the behavior into a named primitive that stays in sync.",
       "key_distinction": "Copy-pasted code diverges over time and becomes a maintenance burden. Extract the behavior into a named primitive that stays in sync.",
-      "why": "Holding the wrong interpretation leads to poor judgment: Copy-pasted code diverges over time and becomes a maintenance burden. Extract the behavior into a named primitive that stays in sync."
+      "why": "Holding the wrong interpretation leads to poor judgment: Copy-pasted code diverges over time and becomes a maintenance burden. Extract the behavior into a named primitive that stays in sync.",
+      "applies_when": [
+        "Reusing a fade-in or slide-up pattern across multiple modal, card, and list components in a growing codebase.",
+        "Updating a shared easing curve or duration value application-wide after a UX design review.",
+        "Scaling a product with dozens of interactive elements that require synchronized motion behavior across independent feature teams."
+      ],
+      "does_not_apply_when": [
+        "Writing a highly unique, component-specific animation that is tightly coupled to a complex DOM structure and will never be reused.",
+        "Quickly prototyping a throwaway demo or hackathon project where the overhead of abstraction outweighs the benefit.",
+        "Temporarily inlining animation configuration to isolate and debug a flaky state-driven transition."
+      ],
+      "failure_risk": "The agent will aggressively refactor every inline animation into abstracted primitives, introducing unnecessary indirection and over-engineered utilities that complicate debugging for truly one-off interactions.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     }
   ],
   "self_check": [

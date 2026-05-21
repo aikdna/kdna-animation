@@ -12,25 +12,91 @@
       "id": "AX_TOKENS_BEFORE_EFFECTS",
       "one_sentence": "Define motion as design tokens (duration scales, easing curves, distance scales) before coding any animation.",
       "full_statement": "Define motion as design tokens (duration scales, easing curves, distance scales) before coding any animation.",
-      "why": "Without tokens, every animation is a one-off decision. Tokens make motion repeatable, reviewable, and consistent across an entire product — the same way color and spacing tokens work."
+      "why": "Without tokens, every animation is a one-off decision. Tokens make motion repeatable, reviewable, and consistent across an entire product — the same way color and spacing tokens work.",
+      "applies_when": [
+        "Building a multi-page web application where multiple frontend teams need consistent timing and easing standards.",
+        "Onboarding new developers who require predictable motion defaults to avoid arbitrary CSS overrides.",
+        "Auditing a legacy codebase for animation inconsistency before initiating a design system migration."
+      ],
+      "does_not_apply_when": [
+        "Prototyping a quick hackathon project or proof-of-concept where iteration speed outweighs systemic consistency.",
+        "Creating a standalone marketing landing page that relies on highly bespoke, non-repeatable cinematic choreography.",
+        "Implementing real-time physics-based simulations where frame-by-frame mathematical calculations must override tokenized easing curves."
+      ],
+      "failure_risk": "The team produces a fragmented animation system where each developer invents custom timings and curves, leading to jarring visual inconsistencies and unsustainable maintenance debt.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern"
+      ]
     },
     {
       "id": "AX_PRIMITIVES_OVER_ONEOFFS",
       "one_sentence": "Build reusable motion primitives (fade-in, slide-up, scale-reveal) instead of inline animation on every component.",
       "full_statement": "Build reusable motion primitives (fade-in, slide-up, scale-reveal) instead of inline animation on every component.",
-      "why": "Primitives create a shared library of tested, accessible, performant behaviors. Components consume primitives; they don't redefine motion from scratch."
+      "why": "Primitives create a shared library of tested, accessible, performant behaviors. Components consume primitives; they don't redefine motion from scratch.",
+      "applies_when": [
+        "Developing a shared component library where dropdowns, modals, and tooltips require standardized enter/exit behaviors.",
+        "Refactoring a codebase with duplicated CSS keyframes scattered across unrelated business components.",
+        "Implementing synchronized state changes across a dashboard where multiple panels need coordinated reveal patterns."
+      ],
+      "does_not_apply_when": [
+        "Building highly interactive data visualizations where each chart type requires bespoke, data-driven animation paths.",
+        "Creating game-like UI flows or micro-interaction-heavy onboarding sequences that depend on component-specific choreography.",
+        "Adding a temporary loading skeleton to a legacy form scheduled for deprecation in the next sprint."
+      ],
+      "failure_risk": "Engineers waste time reinventing and debugging custom animations per component, resulting in performance regressions and inaccessible motion that bypasses reduced-motion preferences.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "case_observation"
+      ]
     },
     {
       "id": "AX_STATE_TRANSITIONS_NEED_SEMANTICS",
       "one_sentence": "Name motion primitives by their semantic purpose, not their visual effect.",
       "full_statement": "Name motion primitives by their semantic purpose, not their visual effect.",
-      "why": "A 'modal-enter' communicates intent across designers and engineers. A 'scale-fade-400ms-ease-out' communicates only implementation. Semantics enable the team to discuss motion without knowing CSS."
+      "why": "A 'modal-enter' communicates intent across designers and engineers. A 'scale-fade-400ms-ease-out' communicates only implementation. Semantics enable the team to discuss motion without knowing CSS.",
+      "applies_when": [
+        "Documenting a design system's motion guidelines for cross-functional collaboration between designers and engineers.",
+        "Refactoring animation classes from descriptive implementation names to intent-based names like panel-dismiss or form-submit.",
+        "Aligning product managers and UX writers with developers on feedback flow animations and user state communication."
+      ],
+      "does_not_apply_when": [
+        "Writing low-level animation engine utilities or core easing function libraries where the interface is purely mathematical.",
+        "Generating dynamically scoped CSS-in-JS classes where names are automatically hashed at build time.",
+        "Prototyping experimental motion concepts where the visual effect itself is the subject of exploration rather than the user intent."
+      ],
+      "failure_risk": "Developers and designers miscommunicate animation purposes, causing incorrect motion usage that breaks UI feedback loops and confuses users about action states.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_MOTION_DOCS_MUST_BE_EXECUTABLE",
       "one_sentence": "Motion system documentation must include copy-pasteable code snippets and live previews.",
       "full_statement": "Motion system documentation must include copy-pasteable code snippets and live previews.",
-      "why": "Designers cannot use a motion system they can't see. Engineers cannot adopt a motion system they can't copy. Static screenshots of animation are useless documentation."
+      "why": "Designers cannot use a motion system they can't see. Engineers cannot adopt a motion system they can't copy. Static screenshots of animation are useless documentation.",
+      "applies_when": [
+        "Documenting a new easing curve or animation token for a component library",
+        "Publishing transition specifications for modal open/close behaviors in a design system",
+        "Creating internal handoff specs for micro-interactions like button hover or focus states",
+        "Building a shared team reference for frontend animation duration and delay values"
+      ],
+      "does_not_apply_when": [
+        "Drafting high-level brand motion philosophy or creative direction guidelines",
+        "Creating early-stage concept mockups or mood boards where implementation is not yet scoped",
+        "Writing accessibility documentation that focuses on prefers-reduced-motion behavior rather than code",
+        "Documenting backend animation state machines or server-side rendering logic that frontend engineers will not directly implement"
+      ],
+      "failure_risk": "Forcing high-level creative direction docs to include executable snippets would generate fragmented, maintenance-heavy code examples that obscure brand intent and mislead engineers into over-implementing abstract concepts.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     }
   ],
   "ontology": [

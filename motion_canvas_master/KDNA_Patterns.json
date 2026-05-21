@@ -46,14 +46,50 @@
       "wrong": "More movement equals better animation.",
       "correct": "World-class motion often removes movement to increase clarity, weight, and trust.",
       "key_distinction": "World-class motion often removes movement to increase clarity, weight, and trust.",
-      "why": "Holding the wrong interpretation leads to poor judgment: World-class motion often removes movement to increase clarity, weight, and trust."
+      "why": "Holding the wrong interpretation leads to poor judgment: World-class motion often removes movement to increase clarity, weight, and trust.",
+      "applies_when": [
+        "designing UI transitions for data-heavy dashboards",
+        "animating text reveals in presentation software",
+        "creating loading states for enterprise applications",
+        "using motion to guide user attention to a single primary action"
+      ],
+      "does_not_apply_when": [
+        "creating high-energy gaming character intros",
+        "designing particle effects for background ambiance",
+        "animating playful brand mascots",
+        "generating procedural environmental simulations"
+      ],
+      "failure_risk": "The agent will over-animate interface elements, causing visual noise that distracts users from core content and degrades perceived reliability.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "MS-CODE_FIRST",
       "wrong": "Animation quality starts with library choice.",
       "correct": "Library choice matters after attention path, timing, intent, and information hierarchy are defined.",
       "key_distinction": "Library choice matters after attention path, timing, intent, and information hierarchy are defined.",
-      "why": "Holding the wrong interpretation leads to poor judgment: Library choice matters after attention path, timing, intent, and information hierarchy are defined."
+      "why": "Holding the wrong interpretation leads to poor judgment: Library choice matters after attention path, timing, intent, and information hierarchy are defined.",
+      "applies_when": [
+        "prototyping a new product onboarding flow",
+        "planning a multi-step form animation sequence",
+        "designing a responsive chart animation for a web dashboard",
+        "storyboarding an explainer video before selecting rendering software"
+      ],
+      "does_not_apply_when": [
+        "contributing to a legacy codebase that strictly mandates a specific animation framework",
+        "participating in a hackathon with pre-selected tooling constraints",
+        "building a simple CSS-only tooltip where architecture is already fixed",
+        "fulfilling a client request that explicitly requires a particular technology stack"
+      ],
+      "failure_risk": "The agent will waste development time optimizing framework syntax instead of solving the core interaction problem, resulting in misaligned timing and poor information hierarchy.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "research_finding"
+      ]
     }
   ],
   "self_check": [

@@ -12,25 +12,98 @@
       "id": "AX_TIMELINE_AS_SYSTEM",
       "one_sentence": "Use timelines to express choreography, not scattered one-off tweens.",
       "full_statement": "Use timelines to express choreography, not scattered one-off tweens.",
-      "why": "Timelines preserve sequence, reversibility, maintainability, and reviewability."
+      "why": "Timelines preserve sequence, reversibility, maintainability, and reviewability.",
+      "applies_when": [
+        "Building multi-step UI transitions like form validation feedback sequences",
+        "Creating synchronized marketing hero animations with staggered element reveals",
+        "Implementing interactive tutorials with ordered step-by-step highlights",
+        "Animating data visualization updates that require precise timing relationships between bars or lines"
+      ],
+      "does_not_apply_when": [
+        "Hover or focus micro-interactions that trigger instantly and reset independently",
+        "Dynamic list item animations where each item reacts to separate user clicks asynchronously",
+        "Physics-based or real-time simulation updates driven directly by requestAnimationFrame",
+        "Simple on-demand state changes like showing or hiding a tooltip"
+      ],
+      "failure_risk": "Creating an overly rigid, hard-to-modify animation structure for independent or user-driven events that should trigger and complete on their own schedule.",
+      "confidence": "high",
+      "evidence_type": [
+        "practice_pattern",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_CONTEXT_CLEANUP",
       "one_sentence": "Framework integrations must clean up animations according to component lifecycle.",
       "full_statement": "Framework integrations must clean up animations according to component lifecycle.",
-      "why": "Leaked animations cause duplicated effects and broken state after navigation."
+      "why": "Leaked animations cause duplicated effects and broken state after navigation.",
+      "applies_when": [
+        "React components unmounting during client-side route navigation",
+        "Vue components being conditionally destroyed with v-if toggles",
+        "Angular components dismantled after modal closures or tab switches",
+        "Reusable animation wrappers that mount and unmount frequently in virtualized lists"
+      ],
+      "does_not_apply_when": [
+        "Singleton page-level animations that persist across the entire application session",
+        "Server-side rendered initial load animations that fire once before hydration",
+        "Global scroll-triggered sections attached directly to the main application shell",
+        "Standalone demo files or codepens that lack framework component lifecycles"
+      ],
+      "failure_risk": "Over-cleaning persistent global animations or prematurely killing long-running background effects, causing visual glitches or lost application state.",
+      "confidence": "high",
+      "evidence_type": [
+        "case_observation",
+        "practice_pattern"
+      ]
     },
     {
       "id": "AX_SCROLL_IS_DIRECTING_ATTENTION",
       "one_sentence": "ScrollTrigger should guide reading, not hijack it.",
       "full_statement": "ScrollTrigger should guide reading, not hijack it.",
-      "why": "Scroll-driven motion can easily make content feel trapped or gimmicky."
+      "why": "Scroll-driven motion can easily make content feel trapped or gimmicky.",
+      "applies_when": [
+        "Highlighting key statistics or quotes as the user naturally scrolls past them",
+        "Revealing content sections progressively to reduce cognitive load on long articles",
+        "Adding subtle parallax backgrounds that add visual depth without distorting text layout",
+        "Displaying progress indicators that reflect the reader's current position"
+      ],
+      "does_not_apply_when": [
+        "Pinning full-screen overlays that force users to scroll multiple times just to continue reading",
+        "Triggering heavy CPU-intensive animations that cause layout shifts or frame drops during scrolling",
+        "Disabling native scroll behavior to enforce a forced vertical-to-horizontal scroll experience",
+        "Animating critical UI controls or navigation elements out of view while the user scrolls"
+      ],
+      "failure_risk": "Creating an inaccessible, frustrating reading experience that prioritizes visual flair over content delivery and user control.",
+      "confidence": "high",
+      "evidence_type": [
+        "research_finding",
+        "case_observation",
+        "industry_consensus"
+      ]
     },
     {
       "id": "AX_PERFORMANCE_IS_AESTHETIC",
       "one_sentence": "A dropped frame destroys premium perception.",
       "full_statement": "A dropped frame destroys premium perception.",
-      "why": "Smoothness is part of visual quality, not an implementation detail."
+      "why": "Smoothness is part of visual quality, not an implementation detail.",
+      "applies_when": [
+        "Marketing landing pages for luxury or tech brands where micro-interactions define brand identity",
+        "Frequently used UI component transitions (e.g., navigation menus, modal open/close) that shape perceived responsiveness",
+        "Hero section scroll-triggered animations that immediately establish first impressions on high-traffic pages"
+      ],
+      "does_not_apply_when": [
+        "Background decorative elements or off-screen parallax layers where frame drops are imperceptible to the user",
+        "Accessibility contexts where reduced-motion preferences are active, prioritizing static clarity over fluid tweening",
+        "Legacy device or low-bandwidth fallback states where aggressive GSAP timelines should be disabled rather than forced to 60fps",
+        "Internal operational dashboards where rapid data load times and functional density outweigh animation polish"
+      ],
+      "failure_risk": "The agent will ship choppy transitions in high-visibility UI paths, causing users to perceive the product as cheap or untrustworthy despite correct functional implementation.",
+      "confidence": "high",
+      "evidence_type": [
+        "industry_consensus",
+        "practice_pattern",
+        "research_finding"
+      ]
     }
   ],
   "ontology": [

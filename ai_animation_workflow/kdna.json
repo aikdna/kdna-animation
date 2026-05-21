@@ -1,7 +1,7 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/ai_animation_workflow",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "status": "experimental",
   "access": "open",
   "language": "en",
@@ -19,5 +19,6 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:758c98a08101554e4a50f73f9860575f84a8718df90b65a0c97f11278123b23225b4a8c08a59d4c9eb8db996c082f7518b5a828da5f55dc6d27bf8c3e636940a"
+  "judgment_version": "2026.05",
+  "signature": "ed25519:a6ccd6a2fe9477c6c4baa796bbe63e82ad9587712936bc788c4cb7ddad02bcde2e4d8425d3d000c67a482951ae47162e02cd2799e8ae41517356aae95a851a0e"
 }

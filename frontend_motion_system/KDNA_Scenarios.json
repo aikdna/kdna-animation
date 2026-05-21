@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "frontend_motion_system",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_TOKEN_BUILD",
+      "trigger": "Team wants to standardize motion across the product.",
+      "orientation": "Start with an audit of existing animations, extract common patterns, define 3-5 values per token scale, build one primitive as proof of concept, then expand."
+    },
+    {
+      "id": "SCN_PRIMITIVE_GAP",
+      "trigger": "Developer writes a one-off animation when a primitive exists.",
+      "orientation": "Check if the existing primitive can cover the use case or needs a variant. If a new pattern is genuinely needed, add it to the system — don't allow bypass."
+    },
+    {
+      "id": "SCN_DESIGNER_ENGINEER_GAP",
+      "trigger": "Designer specifies animation that cannot be built as a token.",
+      "orientation": "Translate the designer's intent into the token system: identify the semantic purpose, map to existing duration and easing scales, and prototype together."
+    },
+    {
+      "id": "SCN_ADOPTION_AUDIT",
+      "trigger": "Need to measure motion system adoption.",
+      "orientation": "Run lint rules to count raw animation values vs. token references. Track per-component adoption rate. Focus migration effort on the 20% of components driving 80% of animation code."
+    }
+  ]
+}

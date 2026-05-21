@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "gsap_master",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_REACT_PAGE_TRANSITION",
+      "trigger": "React app needs animated page or component transition.",
+      "orientation": "Use lifecycle-safe GSAP patterns, isolate selectors, and provide cleanup/revert behavior."
+    },
+    {
+      "id": "SCN_SCROLL_STORY",
+      "trigger": "Long page needs scroll-driven reveal.",
+      "orientation": "Segment the story into sections, use pinned areas sparingly, and preserve reading control."
+    },
+    {
+      "id": "SCN_PERFORMANCE_DROP",
+      "trigger": "Animation stutters or heats device.",
+      "orientation": "Reduce layout-triggering properties, limit simultaneous targets, and profile before adding complexity."
+    }
+  ]
+}

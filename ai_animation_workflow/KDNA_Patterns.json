@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "ai_animation_workflow",
+    "created": "2026-05-21",
+    "purpose": "Terminology boundaries, traps, and self-checks for AI Animation Workflow.",
+    "load_condition": "Load with Core for any generation, review, or refactor task in this domain."
+  },
+  "terminology": [
+    {
+      "term": "brief-first workflow",
+      "definition": "A generation pattern where the agent produces a structured motion brief for review before writing any implementation code."
+    },
+    {
+      "term": "assumption log",
+      "definition": "A documented list of context the agent inferred but was not explicitly given — visible to the human reviewer so they can correct wrong assumptions early."
+    },
+    {
+      "term": "review gate",
+      "definition": "An explicit checkpoint in the workflow where human approval is required before the agent proceeds to the next stage."
+    },
+    {
+      "term": "revision delta",
+      "definition": "A summary of what changed between animation versions, including which criterion each change addresses."
+    }
+  ],
+  "banned_terms": [
+    {
+      "term": "I made it look good",
+      "why": "'Good' is untestable. Require the agent to state which specific criteria (attention, timing, density, performance) were improved and how."
+    },
+    {
+      "term": "here are 5 options, pick one",
+      "why": "Generating multiple un-reviewed variants without a shared brief multiplies review burden. Generate one well-briefed version, review it, then iterate."
+    },
+    {
+      "term": "I assumed the user wanted...",
+      "why": "Never embed assumptions silently in the output. State them explicitly in an assumption log before generating."
+    }
+  ],
+  "misunderstandings": [
+    {
+      "id": "M_AGENT_FULLY_AUTONOMOUS",
+      "claim": "A good enough AI agent can generate production animation without human review.",
+      "key_distinction": "Agents can generate correct, performant, and accessible animation — but taste requires human calibration. The agent implements; the human directs."
+    },
+    {
+      "id": "M_MORE_GENERATION_IS_FASTER",
+      "claim": "Generating many animation variants at once is faster than iterating on one.",
+      "key_distinction": "Reviewing 5 variants with unstated assumptions is slower than reviewing 1 variant with a clear brief and 2 targeted revisions. Volume hides direction problems."
+    }
+  ],
+  "self_check": [
+    {
+      "id": "SC_BRIEF_EXISTS",
+      "question": "Did the agent produce a structured brief with audience, attention path, and emotional tone before any code?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_ASSUMPTIONS_STATED",
+      "question": "Are all agent assumptions about the context explicitly listed and reviewable?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_REVIEWED",
+      "question": "Was the minimal viable animation reviewed by a human before expansion?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_DELTA_LOGGED",
+      "question": "Does each revision state what changed and which quality criterion it addresses?",
+      "pass_condition": "yes_or_no"
+    }
+  ]
+}

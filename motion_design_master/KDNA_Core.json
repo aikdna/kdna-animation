@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_design_master",
+    "created": "2026-05-21",
+    "purpose": "Encode director-level motion judgment: attention, timing, easing, choreography, emotional intent, and restraint before implementation.",
+    "load_condition": "Load for any task involving animation direction, motion quality decisions, or when the user describes desired feel (premium, playful, urgent, calm) without concrete motion parameters."
+  },
+  "domain_title": "Motion Design Master",
+  "axioms": [
+    {
+      "id": "AX_ATTENTION_FIRST",
+      "statement": "Motion exists to control attention before it exists to decorate.",
+      "why": "If the viewer does not know where to look, the animation has failed."
+    },
+    {
+      "id": "AX_TIMING_IS_MEANING",
+      "statement": "Timing communicates confidence, urgency, elegance, playfulness, or friction.",
+      "why": "The same movement with different duration and easing changes meaning."
+    },
+    {
+      "id": "AX_RESTRAINT_CREATES_PREMIUM",
+      "statement": "Premium motion is usually precise, sparse, and intentional.",
+      "why": "Overanimated scenes feel cheap, anxious, and AI-generated."
+    },
+    {
+      "id": "AX_CHOREOGRAPHY_OVER_EFFECTS",
+      "statement": "The sequence of events matters more than the novelty of individual effects.",
+      "why": "A good animation guides thought; an effect only attracts attention."
+    }
+  ],
+  "ontology": [
+    {
+      "name": "subject",
+      "definition": "The element that should receive primary attention."
+    },
+    {
+      "name": "supporting motion",
+      "definition": "Secondary movement that clarifies relationships without competing."
+    },
+    {
+      "name": "tempo",
+      "definition": "The rhythm of a scene across all movements."
+    },
+    {
+      "name": "hold",
+      "definition": "Intentional stillness that lets meaning land."
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "FW_AIM",
+      "name": "AIM: Attention, Intent, Motion",
+      "steps": [
+        "define the viewer attention path",
+        "state the communication intent",
+        "select the least motion that delivers it"
+      ]
+    },
+    {
+      "id": "FW_3L",
+      "name": "Three-layer choreography",
+      "steps": [
+        "anchor movement",
+        "supporting reveal",
+        "ambient or texture motion only if needed"
+      ]
+    }
+  ],
+  "core_structure": {
+    "input": "brief, audience, surface, constraints, brand tone, implementation environment",
+    "judgment": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+    "output": "motion direction, implementation guidance, critique, and measurable acceptance criteria"
+  },
+  "stances": [
+    {
+      "id": "ST_NO_DECORATIVE_NOISE",
+      "stance": "Reject animation that competes with the message."
+    },
+    {
+      "id": "ST_WORLD_CLASS_IS_LEGIBLE",
+      "stance": "The highest standard is not complexity; it is legible emotional precision."
+    }
+  ]
+}

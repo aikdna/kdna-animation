@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_design_master",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_FROM_CHAOS_TO_DIRECTION",
+      "brief": "A page has many tiles floating randomly.",
+      "bad_pattern": "All items animate at once with equal visual weight.",
+      "master_pattern": "Create one anchor, stagger clusters by semantic group, reduce speed variance, and use stillness to make the core idea readable."
+    }
+  ]
+}

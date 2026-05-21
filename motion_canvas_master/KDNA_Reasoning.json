@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_canvas_master",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_SCENE_AS_ARGUMENT",
+      "conclusion": "One scene should carry one argument.",
+      "logic": [
+        "Programmatic video can easily become a dumping ground.",
+        "Viewers retain transformations better than lists.",
+        "A clear scene goal enables reusable code and strong editing."
+      ],
+      "so_what": "Before coding, write the scene sentence: This scene proves that __."
+    }
+  ]
+}

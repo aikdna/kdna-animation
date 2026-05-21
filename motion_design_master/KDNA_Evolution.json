@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_design_master",
+    "created": "2026-05-21",
+    "purpose": "Capability stages, practice loops, and measurable indicators.",
+    "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
+  },
+  "capability_layers": [
+    {
+      "level": "L1",
+      "name": "Motion hygiene",
+      "indicators": [
+        "no random movement",
+        "consistent durations",
+        "clear primary subject"
+      ]
+    },
+    {
+      "level": "L2",
+      "name": "Directed choreography",
+      "indicators": [
+        "stagger serves meaning",
+        "holds are intentional",
+        "motion groups are limited"
+      ]
+    },
+    {
+      "level": "L3",
+      "name": "Cinematic product motion",
+      "indicators": [
+        "emotion and usability align",
+        "motion language is reusable",
+        "team can critique with shared vocabulary"
+      ]
+    }
+  ],
+  "practice_loop": [
+    "observe real references",
+    "extract timing and attention path",
+    "rebuild minimally",
+    "review against self-checks",
+    "ship with performance guardrails",
+    "collect viewer or user feedback"
+  ],
+  "measurable_indicators": [
+    "time_to_main_subject",
+    "number_of_simultaneous_motion_groups",
+    "average_transition_duration_ms",
+    "frame_stability",
+    "viewer comprehension",
+    "implementation maintainability"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "frontend_motion_system",
+    "created": "2026-05-21",
+    "purpose": "Terminology boundaries, traps, and self-checks for Frontend Motion System.",
+    "load_condition": "Load with Core for any generation, review, or refactor task in this domain."
+  },
+  "terminology": [
+    {
+      "term": "design token",
+      "definition": "A named, version-controlled value that represents a design decision — applied to motion as duration, easing, and distance scales."
+    },
+    {
+      "term": "motion primitive",
+      "definition": "A reusable animation function or component that consumes tokens and produces consistent enter, exit, or attention behavior."
+    },
+    {
+      "term": "motion scale",
+      "definition": "A defined range of values for a motion property: e.g., duration-sm (75ms), duration-md (150ms), duration-lg (300ms), duration-xl (500ms)."
+    },
+    {
+      "term": "semantic naming",
+      "definition": "Naming primitives by user-facing intent (fade-enter, slide-exit, pulse-attention) rather than implementation (opacity-400ms, translateY-20px)."
+    }
+  ],
+  "banned_terms": [
+    {
+      "term": "just add a transition",
+      "why": "Unspecified CSS transitions create inconsistent timing across components. Every transition should reference a motion token or primitive."
+    },
+    {
+      "term": "match the mockup",
+      "why": "Mockups cannot convey timing, easing, or interaction feedback. Motion decisions must be made in code with live previews, not in static design tools."
+    },
+    {
+      "term": "it looks fine at 400ms",
+      "why": "Without a duration scale, 'fine' becomes 200ms in one component and 600ms in another. Define the scale first and pick from it."
+    }
+  ],
+  "misunderstandings": [
+    {
+      "id": "M_TOKENS_STIFLE",
+      "claim": "Motion tokens limit creativity and produce boring, uniform animation.",
+      "key_distinction": "Tokens define constraints, not outcomes. A limited palette of durations and easings combined with semantic naming produces more creative and coherent results than unlimited one-off values."
+    },
+    {
+      "id": "M_COPY_PASTE_OK",
+      "claim": "Copying animation code between components is fine for consistency.",
+      "key_distinction": "Copy-pasted code diverges over time and becomes a maintenance burden. Extract the behavior into a named primitive that stays in sync."
+    }
+  ],
+  "self_check": [
+    {
+      "id": "SC_TOKENS_DEFINED",
+      "question": "Are duration, easing, and distance tokens defined and version-controlled?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_PRIMITIVES_EXIST",
+      "question": "Do shared motion primitives cover the most common animation patterns in the product?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_LIVE_PREVIEW",
+      "question": "Can designers preview every motion primitive without running the full application?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_CI_ENFORCED",
+      "question": "Does CI enforce that new animations use primitives or tokens rather than raw values?",
+      "pass_condition": "yes_or_no"
+    }
+  ]
+}

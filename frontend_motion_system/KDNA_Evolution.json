@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "frontend_motion_system",
+    "created": "2026-05-21",
+    "purpose": "Capability stages, practice loops, and measurable indicators.",
+    "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
+  },
+  "capability_layers": [
+    {
+      "level": "L1",
+      "name": "Consistent motion",
+      "indicators": [
+        "duration and easing values are consistent across components",
+        "no copy-pasted animation blocks",
+        "basic reduced-motion support"
+      ]
+    },
+    {
+      "level": "L2",
+      "name": "Tokenized motion system",
+      "indicators": [
+        "full token scale defined (duration, easing, distance)",
+        "shared motion primitives cover 80% of animation patterns",
+        "designers can preview primitives in isolation",
+        "CI enforces primitive usage over raw values"
+      ]
+    },
+    {
+      "level": "L3",
+      "name": "Motion-as-infrastructure",
+      "indicators": [
+        "new components automatically inherit motion behavior from context",
+        "animation telemetry tracks real-user rendering performance",
+        "brand motion rebranding requires changing only tokens, not code",
+        "team runs design-review rituals using shared motion vocabulary"
+      ]
+    }
+  ],
+  "practice_loop": [
+    "audit one product surface for inline animation values",
+    "extract the most common patterns into tokens",
+    "build one primitive as a proof of concept",
+    "migrate 5 components to use the primitive",
+    "get designer feedback on live previews, not mockups",
+    "repeat for remaining animation patterns"
+  ],
+  "measurable_indicators": [
+    "percentage_of_components_using_primitives",
+    "duration_variance_across_components",
+    "easing_consistency_score",
+    "token_coverage_of_animation_patterns",
+    "time_to_migrate_one_component",
+    "designer_accessible_primitive_count"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "gsap_master",
+    "created": "2026-05-21",
+    "purpose": "Encode expert judgment for using GSAP as a production animation engine, including timelines, ScrollTrigger, React integration, plugin choice, and performance tradeoffs.",
+    "load_condition": "Load when the task involves GSAP implementation, timeline architecture, ScrollTrigger, or when the user is working within a React/Vue/Svelte context using GSAP."
+  },
+  "domain_title": "GSAP Master",
+  "axioms": [
+    {
+      "id": "AX_TIMELINE_AS_SYSTEM",
+      "statement": "Use timelines to express choreography, not scattered one-off tweens.",
+      "why": "Timelines preserve sequence, reversibility, maintainability, and reviewability."
+    },
+    {
+      "id": "AX_CONTEXT_CLEANUP",
+      "statement": "Framework integrations must clean up animations according to component lifecycle.",
+      "why": "Leaked animations cause duplicated effects and broken state after navigation."
+    },
+    {
+      "id": "AX_SCROLL_IS_DIRECTING_ATTENTION",
+      "statement": "ScrollTrigger should guide reading, not hijack it.",
+      "why": "Scroll-driven motion can easily make content feel trapped or gimmicky."
+    },
+    {
+      "id": "AX_PERFORMANCE_IS_AESTHETIC",
+      "statement": "A dropped frame destroys premium perception.",
+      "why": "Smoothness is part of visual quality, not an implementation detail."
+    }
+  ],
+  "ontology": [
+    {
+      "name": "timeline",
+      "definition": "A structured animation sequence with coordinated tweens and labels."
+    },
+    {
+      "name": "ScrollTrigger",
+      "definition": "A scroll-linked trigger system for controlling animation progress or timing."
+    },
+    {
+      "name": "stagger",
+      "definition": "A controlled offset across similar elements to create rhythm and hierarchy."
+    },
+    {
+      "name": "cleanup",
+      "definition": "Removing or reverting animation side effects when a component unmounts or re-renders."
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "FW_GSAP_CHOICE",
+      "name": "GSAP decision ladder",
+      "steps": [
+        "can CSS solve it simply?",
+        "is sequence/timeline control required?",
+        "is scroll or SVG/plugin behavior required?",
+        "is lifecycle cleanup addressed?",
+        "is reduced-motion handled?"
+      ]
+    },
+    {
+      "id": "FW_TIMELINE_REVIEW",
+      "name": "Timeline review",
+      "steps": [
+        "name beats",
+        "define labels",
+        "check overlap",
+        "test reverse or re-entry",
+        "profile smoothness"
+      ]
+    }
+  ],
+  "core_structure": {
+    "input": "brief, audience, surface, constraints, brand tone, implementation environment",
+    "judgment": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+    "output": "motion direction, implementation guidance, critique, and measurable acceptance criteria"
+  },
+  "stances": [
+    {
+      "id": "ST_TIMELINES_OVER_SCATTER",
+      "stance": "Prefer timeline-based architecture for anything beyond simple hover states."
+    },
+    {
+      "id": "ST_SCROLL_RESTRAINT",
+      "stance": "Do not use scroll animation when it reduces reading comfort."
+    }
+  ]
+}

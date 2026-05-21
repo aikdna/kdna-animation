@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_canvas_master",
+    "created": "2026-05-21",
+    "purpose": "Encode world-class judgment for programmatic video animation with Motion Canvas: scenes, signals, layout, camera rhythm, explainers, and code maintainability.",
+    "load_condition": "Load when the task involves Motion Canvas, programmatic video generation, technical explainer videos, or converting code architecture into visual animations."
+  },
+  "domain_title": "Motion Canvas Master",
+  "axioms": [
+    {
+      "id": "AX_SCENE_IS_ARGUMENT",
+      "statement": "A Motion Canvas scene should express one argument or one visual transformation.",
+      "why": "Overloaded scenes become hard to read, review, and reuse."
+    },
+    {
+      "id": "AX_CODE_IS_STORYBOARD",
+      "statement": "Animation code must remain readable as a storyboard.",
+      "why": "If timing logic is scattered, the video cannot be directed."
+    },
+    {
+      "id": "AX_VISUAL_PROOF",
+      "statement": "Technical animations should prove an idea visually, not merely decorate narration.",
+      "why": "The viewer should understand the logic even with the sound muted."
+    },
+    {
+      "id": "AX_REUSABLE_MOTIFS",
+      "statement": "Repeated visual motifs create cognitive continuity.",
+      "why": "Explainers become memorable when transformations reuse visual grammar."
+    }
+  ],
+  "ontology": [
+    {
+      "name": "scene",
+      "definition": "A self-contained motion unit with one communication purpose."
+    },
+    {
+      "name": "signal",
+      "definition": "A reactive value that drives animation state over time."
+    },
+    {
+      "name": "layout",
+      "definition": "A composition structure that determines spatial hierarchy."
+    },
+    {
+      "name": "beat",
+      "definition": "A time segment where one idea changes visually."
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "FW_SCENE_BEAT",
+      "name": "Scene-beat structure",
+      "steps": [
+        "one scene goal",
+        "3-5 visual beats",
+        "clear state transition",
+        "short hold after insight"
+      ]
+    },
+    {
+      "id": "FW_EXPLAINER_LADDER",
+      "name": "Explainer ladder",
+      "steps": [
+        "concrete object",
+        "relationship",
+        "transformation",
+        "consequence",
+        "recap"
+      ]
+    }
+  ],
+  "core_structure": {
+    "input": "brief, audience, surface, constraints, brand tone, implementation environment",
+    "judgment": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+    "output": "motion direction, implementation guidance, critique, and measurable acceptance criteria"
+  },
+  "stances": [
+    {
+      "id": "ST_READABLE_CODE",
+      "stance": "Prefer composable scene components and named animation beats over clever but opaque code."
+    },
+    {
+      "id": "ST_SHOW_CAUSALITY",
+      "stance": "Use motion to reveal cause and effect, not just make diagrams move."
+    }
+  ]
+}

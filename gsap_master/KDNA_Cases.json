@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "gsap_master",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_BAD_STAGGER",
+      "brief": "A grid enters with every card flying from a different direction.",
+      "bad_pattern": "Random directions make the interface feel unstable.",
+      "master_pattern": "Use consistent direction, subtle stagger, and opacity/transform only; stop once hierarchy is established."
+    }
+  ]
+}

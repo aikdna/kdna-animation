@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "animation_review_master",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_CHEAP_DIAGNOSIS",
+      "trigger": "Animation feels cheap, tacky, or low-quality.",
+      "orientation": "Count simultaneous motion groups (expect 3+ with competing attention). Check easing character (linear or mixed bounces = cheap). Verify holds exist after key beats. Reduce density and unify easing."
+    },
+    {
+      "id": "SCN_AI_LOOKING",
+      "trigger": "Animation looks AI-generated, generic, or soulless.",
+      "orientation": "Check for missing holds (continuous motion without pauses = AI signature). Check uniform durations (all beats same length = no rhythm). Add one distinct timing accent and intentional stillness."
+    },
+    {
+      "id": "SCN_NOISY_SCENE",
+      "trigger": "Too much is moving and the viewer doesn't know where to look.",
+      "orientation": "Identify 3+ simultaneous motion groups. Pause all but the primary. Stagger remaining groups. Add holds between groups. Background motion should be below conscious attention threshold."
+    },
+    {
+      "id": "SCN_JANK_DIAGNOSIS",
+      "trigger": "Animation is visually stuttering or uneven.",
+      "orientation": "Profile frame rate. Check for layout-triggering animated properties. Check for forced synchronous layouts. Switch to compositor-only properties. Test on throttled hardware."
+    }
+  ]
+}

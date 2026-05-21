@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "ai_animation_workflow",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_BRIEF_PREVENTS_WASTE",
+      "conclusion": "A structured brief before code prevents the most expensive form of iteration: rewriting a complete animation.",
+      "logic": [
+        "Writing animation code is fast for an agent; reviewing and directing it is slow for a human.",
+        "Without a brief, the human must review the entire implementation to discover the direction was wrong.",
+        "A brief costs 30 seconds of reading and can prevent 10 minutes of wasted code review.",
+        "Assumptions stated in the brief are cheap to correct; assumptions discovered in the output are expensive."
+      ],
+      "so_what": "Every animation generation must start with: 'Here is my brief: [audience, attention path, tone, assumptions, success criteria]. Confirm or adjust, then I'll generate.'"
+    },
+    {
+      "id": "RC_SMALL_BEFORE_BIG",
+      "conclusion": "Reviewing a 3-beat minimal animation is more efficient than reviewing a 12-beat complete scene.",
+      "logic": [
+        "Humans have limited review attention per cycle. After 3-4 beats, review quality degrades.",
+        "A 12-beat un-reviewed scene accumulates 12 potential judgment errors that compound.",
+        "Fixing direction on beat 3 is fast. Fixing direction after building 12 interdependent beats is a near-rewrite.",
+        "Small review cycles create a tighter feedback loop and better final quality."
+      ],
+      "so_what": "Ship the smallest version that communicates the intent. Get approval. Then expand. Repeat."
+    }
+  ]
+}

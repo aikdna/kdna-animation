@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_canvas_master",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_TECH_DEMO",
+      "trigger": "Need animated video explaining a technical concept.",
+      "orientation": "Turn abstract terms into visible objects, animate relationships, then show the consequence."
+    },
+    {
+      "id": "SCN_CODE_TO_VIDEO",
+      "trigger": "Need to convert code architecture into an animation.",
+      "orientation": "Build reusable visual components for modules, data flow, state, and failure points."
+    },
+    {
+      "id": "SCN_AI_GENERATED_SCRIPT",
+      "trigger": "Agent generated a Motion Canvas script that looks messy.",
+      "orientation": "Refactor into named beats, reusable components, and explicit pauses."
+    }
+  ]
+}

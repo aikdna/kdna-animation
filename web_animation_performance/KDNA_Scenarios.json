@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "web_animation_performance",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_JANK_DIAGNOSIS",
+      "trigger": "Animation stutters, drops frames, or feels sluggish.",
+      "orientation": "Open DevTools Performance panel, record during animation, identify the bottleneck phase (layout/paint/composite), check for forced synchronous layouts, reduce layout-triggering properties."
+    },
+    {
+      "id": "SCN_SCROLL_SMOOTHNESS",
+      "trigger": "Scroll-linked animation lags or jitters during scroll.",
+      "orientation": "Ensure scroll handlers are debounced or use passive listeners, animated properties are compositor-only, and ScrollTrigger refresh is called after layout changes."
+    },
+    {
+      "id": "SCN_MOBILE_BATTERY",
+      "trigger": "Animation drains battery or heats the device.",
+      "orientation": "Reduce continuous animations, use CSS animations where possible (browser can optimize), limit simultaneous animated targets, pause off-screen animations."
+    },
+    {
+      "id": "SCN_ACCESSIBILITY_CHECK",
+      "trigger": "Animation needs accessibility review.",
+      "orientation": "Check prefers-reduced-motion media query, provide static alternatives, ensure animation does not convey essential information alone, limit flashing to under 3 per second."
+    }
+  ]
+}

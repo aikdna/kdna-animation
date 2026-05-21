@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if adding package.json later)
+node_modules/
+*.log
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini

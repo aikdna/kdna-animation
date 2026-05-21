@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "animation_review_master",
+    "created": "2026-05-21",
+    "purpose": "Terminology boundaries, traps, and self-checks for Animation Review Master.",
+    "load_condition": "Load with Core for any generation, review, or refactor task in this domain."
+  },
+  "terminology": [
+    {
+      "term": "attention path",
+      "definition": "The sequence and timing of visual focus points that guide the viewer through the scene. A broken attention path is the most common animation failure."
+    },
+    {
+      "term": "motion density",
+      "definition": "The number of distinct motion groups active at any given moment. Density above 3 almost always degrades perceived quality."
+    },
+    {
+      "term": "hold",
+      "definition": "A deliberate pause in animation that lets the viewer comprehend information before the next motion beat. Missing holds are a signature of AI-generated animation."
+    },
+    {
+      "term": "easing character",
+      "definition": "The emotional quality conveyed by the easing curve: power-out = confident, elastic = playful, linear = mechanical/cheap."
+    },
+    {
+      "term": "structural critique",
+      "definition": "Feedback that identifies the root cause of a quality problem (attention, timing, density, easing, performance) rather than describing the symptom ('it looks bad')."
+    }
+  ],
+  "banned_terms": [
+    {
+      "term": "it feels off",
+      "why": "Vague quality judgments without structural diagnosis are useless for improvement. Translate 'feels off' into: 'three simultaneous motion groups compete for attention at 0.3s.'"
+    },
+    {
+      "term": "make it pop",
+      "why": "Usually means 'add bounce or scale' without understanding the underlying structural problem. Diagnose what is actually wrong before prescribing an effect."
+    },
+    {
+      "term": "this looks AI-generated",
+      "why": "The structural causes of AI-looking animation are missing holds, uniform easing, excessive motion groups, and absent attention hierarchy. Critique those, not the origin."
+    }
+  ],
+  "misunderstandings": [
+    {
+      "id": "M_CRITIQUE_IS_OPINION",
+      "claim": "Animation critique is subjective opinion and cannot be made systematic.",
+      "key_distinction": "While the highest level of taste is subjective, 90% of animation quality problems have objective structural causes: attention conflict, density overrun, missing holds, easing mismatch, and performance issues."
+    },
+    {
+      "id": "M_MORE_FEEDBACK_IS_BETTER",
+      "claim": "Listing every visible issue produces the best critique.",
+      "key_distinction": "Fixing the top 1-2 structural problems often cascades into fixing the rest. A focused critique with evidence is more actionable than a comprehensive list without priorities."
+    }
+  ],
+  "self_check": [
+    {
+      "id": "SC_VIEWER_TASK",
+      "question": "Was the critique framed against the viewer's primary task, not abstract animation principles?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_STRUCTURAL",
+      "question": "Does every quality claim in the critique trace back to a specific structural cause (attention, timing, density, easing, or performance)?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_PRIORITIZED",
+      "question": "Are fixes prioritized by severity, starting with the top 1-2 issues?",
+      "pass_condition": "yes_or_no"
+    },
+    {
+      "id": "SC_REMOVE_FIRST",
+      "question": "Did the first recommended fix attempt to remove or reduce motion rather than add more?",
+      "pass_condition": "yes_or_no"
+    }
+  ]
+}

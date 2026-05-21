@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "animation_review_master",
+    "created": "2026-05-21",
+    "purpose": "Capability stages, practice loops, and measurable indicators.",
+    "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
+  },
+  "capability_layers": [
+    {
+      "level": "L1",
+      "name": "Symptom spotting",
+      "indicators": [
+        "can identify obvious jank, missing reduced-motion, and clearly broken animations",
+        "uses taste words to describe problems",
+        "reviews one animation at a time"
+      ]
+    },
+    {
+      "level": "L2",
+      "name": "Structural diagnosis",
+      "indicators": [
+        "every critique traces to a specific structural cause",
+        "can diagnose density, attention conflict, easing mismatch, and missing holds",
+        "prioritizes fixes by severity",
+        "removes motion before adding"
+      ]
+    },
+    {
+      "level": "L3",
+      "name": "Review rubric mastery",
+      "indicators": [
+        "team uses shared review vocabulary and diagnostic checklists",
+        "critiques are consistent across reviewers",
+        "quality metrics tracked over time (time-to-approval, revision cycles)",
+        "review process integrated into design and engineering workflows"
+      ]
+    }
+  ],
+  "practice_loop": [
+    "watch the animation at full speed once without pausing",
+    "identify the primary viewer task",
+    "state the attention path as it currently exists",
+    "count motion groups and identify density problems",
+    "check holds, easing character, and timing rhythm",
+    "diagnose the top 1-2 structural issues with evidence",
+    "propose removal or reduction as the first fix"
+  ],
+  "measurable_indicators": [
+    "simultaneous_motion_groups_at_peak",
+    "hold_duration_after_primary_beats_ms",
+    "easing_character_consistency_score",
+    "review_cycles_to_approval",
+    "critique_structure_score",
+    "diagnostic_coverage_of_quality_labels"
+  ]
+}

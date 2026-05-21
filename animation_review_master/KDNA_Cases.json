@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "animation_review_master",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_OVERANIMATED_HERO",
+      "brief": "A SaaS hero section has 7 elements animating simultaneously with mixed easings.",
+      "bad_pattern": "Title fades in from left, subtitle scales from center, CTA bounces from bottom, background image zooms, floating icons orbit, gradient shifts, and a counter ticks up — all at once. Result: viewer cannot identify the primary message.",
+      "master_pattern": "Diagnose: 7 motion groups active simultaneously, 3 different easing characters, no holds. Fix: title enters first (hold 500ms), subtitle reveals (hold 400ms), CTA appears (hold), background and decorative elements remain still. Result: clear attention path, 3 groups max at any moment."
+    },
+    {
+      "id": "CASE_AI_LOOKING_VIDEO",
+      "brief": "An AI-generated explainer video feels robotic and emotionally flat.",
+      "bad_pattern": "All scene transitions are uniform 400ms with power2.inOut. Every hold is exactly 200ms. Objects appear and disappear at regular intervals. No timing accent, no surprise, no rhythm.",
+      "master_pattern": "Diagnose: uniform timing across all beats, uniform easing, no variation in hold length. Fix: make one transition snappier (200ms with power3.in), one slower (700ms with power4.out), one hold longer (800ms before the key insight). Add one rhythmic surprise where something appears slightly early."
+    }
+  ]
+}

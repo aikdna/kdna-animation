@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "web_animation_performance",
+    "created": "2026-05-21",
+    "purpose": "Encode performance judgment for smooth, battery-aware, accessible web animation.",
+    "load_condition": "Load when the task involves web animation that may jank, stutter, drain battery, lag on scroll, or need performance profiling."
+  },
+  "domain_title": "Web Animation Performance",
+  "axioms": [
+    {
+      "id": "AX_TRANSFORM_AND_OPACITY_FIRST",
+      "statement": "Prefer transform and opacity for continuous animation before any layout-triggering property.",
+      "why": "Browsers can composite transform and opacity entirely on the GPU without triggering layout, paint, or style recalculation, which is the only reliable path to 60fps on low-end devices."
+    },
+    {
+      "id": "AX_MEASURE_BEFORE_GUESSING",
+      "statement": "Always profile before optimizing. Never assume you know the bottleneck.",
+      "why": "Common agent failure mode: guessing 'too many elements' when the real cause is forced synchronous layout, repaint storms, or scroll handler thrashing."
+    },
+    {
+      "id": "AX_RESPECT_REDUCED_MOTION",
+      "statement": "Honor prefers-reduced-motion and provide motion-free alternatives for every meaningful animation.",
+      "why": "Excessive motion harms users with vestibular disorders. Accessibility is not optional — animation without a reduced-motion fallback is broken."
+    },
+    {
+      "id": "AX_PERFORMANCE_BUDGET_IS_DESIGN_QUALITY",
+      "statement": "Define an explicit frame budget per interaction and reject animations that exceed it.",
+      "why": "Smoothness is a design quality, not an optimization afterthought. A dropped frame destroys the perception of premium faster than bad color choices."
+    }
+  ],
+  "ontology": [
+    {
+      "name": "compositor-only property",
+      "definition": "A CSS property (transform, opacity, filter where hardware-accelerated) that the browser can animate on the compositor thread without triggering layout or paint."
+    },
+    {
+      "name": "layout thrashing",
+      "definition": "The pattern of writing a style, reading a layout property, and writing again in the same frame, forcing the browser to recalculate layout multiple times per frame."
+    },
+    {
+      "name": "frame budget",
+      "definition": "The total time available per frame: ~16.7ms at 60fps, shared between script execution, style recalculation, layout, paint, and compositing."
+    },
+    {
+      "name": "forced synchronous layout",
+      "definition": "Reading a layout-dependent property immediately after writing a style, forcing the browser to calculate layout synchronously before the next natural frame."
+    },
+    {
+      "name": "will-change",
+      "definition": "A CSS property that hints to the browser which properties will animate, allowing it to pre-create compositor layers and GPU textures."
+    },
+    {
+      "name": "repaint storm",
+      "definition": "Multiple paint-only changes triggering repeated rasterization within a single frame cycle, exceeding the frame budget."
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "FW_DIAGNOSE_PERF",
+      "name": "Performance diagnosis ladder",
+      "steps": [
+        "check if reduced-motion is handled",
+        "identify whether animation uses compositor-only properties",
+        "profile with DevTools Performance panel to find the bottleneck",
+        "check for forced synchronous layouts in the animation path",
+        "reduce simultaneous animated targets before adding more optimization"
+      ]
+    },
+    {
+      "id": "FW_BUDGET_LADDER",
+      "name": "Performance budget ladder",
+      "steps": [
+        "define the frame budget (e.g., 8ms for animation out of 16.7ms)",
+        "profile current animation cost",
+        "if over budget, reduce animated properties, not elements",
+        "cache layout reads and batch writes",
+        "re-profile and enforce the budget in CI if possible"
+      ]
+    }
+  ],
+  "core_structure": {
+    "input": "animation spec, target device tiers, scroll behavior, layout constraints",
+    "judgment": "compositor vs layout-triggering property analysis, frame budget fit, accessibility compliance, profiler evidence",
+    "output": "performance diagnosis, optimization strategy, reduced-motion fallback, frame budget report, implementation constraints"
+  },
+  "stances": [
+    {
+      "id": "ST_COMPOSITOR_FIRST",
+      "stance": "If an animation can be expressed with transform and opacity, it should be."
+    },
+    {
+      "id": "ST_PROFILE_OVER_GUESS",
+      "stance": "Performance opinions without profiler data are speculation; demand evidence before acting."
+    }
+  ]
+}

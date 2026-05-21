@@ -1,0 +1,63 @@
+{
+  "name": "animation_kdna_cluster",
+  "version": "0.1.0",
+  "created": "2026-05-21",
+  "license": "MIT",
+  "purpose": "Open-source KDNA cluster for animation, motion design, GSAP, Motion Canvas, frontend motion systems, AI animation workflows, and review judgment.",
+  "domains": [
+    "motion_design_master",
+    "gsap_master",
+    "motion_canvas_master",
+    "web_animation_performance",
+    "frontend_motion_system",
+    "ai_animation_workflow",
+    "animation_review_master"
+  ],
+  "composition_rules": [
+    {
+      "task": "web_interaction_motion",
+      "load": [
+        "motion_design_master",
+        "gsap_master",
+        "web_animation_performance",
+        "frontend_motion_system"
+      ]
+    },
+    {
+      "task": "programmatic_video_explainer",
+      "load": [
+        "motion_design_master",
+        "motion_canvas_master",
+        "animation_review_master"
+      ]
+    },
+    {
+      "task": "agent_generated_animation",
+      "load": [
+        "ai_animation_workflow",
+        "motion_design_master",
+        "animation_review_master"
+      ]
+    },
+    {
+      "task": "quality_review",
+      "load": [
+        "animation_review_master",
+        "motion_design_master",
+        "web_animation_performance"
+      ]
+    }
+  ],
+  "conflict_resolution": [
+    "accessibility and performance override decorative ambition",
+    "attention path overrides effect novelty",
+    "domain-specific implementation guidance overrides generic motion taste",
+    "when uncertain, reduce simultaneous motion and increase clarity"
+  ],
+  "validation_expectations": [
+    "Each domain folder uses lowercase snake_case.",
+    "Each complete domain contains exactly the six standard KDNA files.",
+    "Each file includes meta.version, meta.domain, meta.created, meta.purpose, and meta.load_condition.",
+    "IDs should be unique inside each file and cross-file references should remain meaningful."
+  ]
+}

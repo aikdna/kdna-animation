@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_design_master",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_ATTENTION_BEFORE_EFFECT",
+      "conclusion": "Choose attention path before choosing animation effects.",
+      "logic": [
+        "Effects are tools, not strategy.",
+        "Viewers process hierarchy before appreciating detail.",
+        "Complex motion without hierarchy creates cognitive load."
+      ],
+      "so_what": "Ask what the viewer should notice first, second, and never."
+    }
+  ]
+}

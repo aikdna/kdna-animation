@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "animation_review_master",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_REMOVE_FIRST",
+      "conclusion": "When animation quality is poor, the first fix should be removing motion, not adding more.",
+      "logic": [
+        "Almost all low-quality animation is over-animated, not under-animated.",
+        "Removing a motion group reduces cognitive load on the viewer and technical load on the engine.",
+        "Adding effects to fix quality gives the agent more moving parts to tune, which usually makes the problem worse.",
+        "After removal, what remains is the essential communication — which can then be timed and eased intentionally."
+      ],
+      "so_what": "Before adjusting any easing curve or duration, delete one motion group and see if the scene is clearer. Repeat until only essential motion remains. Then polish."
+    },
+    {
+      "id": "RC_STRUCTURAL_DIAGNOSIS",
+      "conclusion": "Every quality problem can be traced to a structural cause: attention, timing, density, easing, or performance.",
+      "logic": [
+        "'Cheap' usually means high density + linear or mismatched easing + no holds.",
+        "'AI-looking' usually means uniform timing + uniform easing + continuous motion without pauses.",
+        "'Chaotic' usually means unsequenced motion groups + competing attention + no primary subject.",
+        "Each label has a diagnostic checklist. Run the checklist before offering a remedy."
+      ],
+      "so_what": "Replace every taste label with a structural diagnosis before acting. 'This feels cheap' becomes '5 simultaneous motion groups use mixed easings with no holds.' Then fix that."
+    }
+  ]
+}

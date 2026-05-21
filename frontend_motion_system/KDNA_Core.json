@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "frontend_motion_system",
+    "created": "2026-05-21",
+    "purpose": "Encode how teams turn motion into reusable product design systems with tokens, primitives, and shared language.",
+    "load_condition": "Load when building a motion design system, tokenizing animation values, creating shared motion primitives, or scaling motion across a product team."
+  },
+  "domain_title": "Frontend Motion System",
+  "axioms": [
+    {
+      "id": "AX_TOKENS_BEFORE_EFFECTS",
+      "statement": "Define motion as design tokens (duration scales, easing curves, distance scales) before coding any animation.",
+      "why": "Without tokens, every animation is a one-off decision. Tokens make motion repeatable, reviewable, and consistent across an entire product — the same way color and spacing tokens work."
+    },
+    {
+      "id": "AX_PRIMITIVES_OVER_ONEOFFS",
+      "statement": "Build reusable motion primitives (fade-in, slide-up, scale-reveal) instead of inline animation on every component.",
+      "why": "Primitives create a shared library of tested, accessible, performant behaviors. Components consume primitives; they don't redefine motion from scratch."
+    },
+    {
+      "id": "AX_STATE_TRANSITIONS_NEED_SEMANTICS",
+      "statement": "Name motion primitives by their semantic purpose, not their visual effect.",
+      "why": "A 'modal-enter' communicates intent across designers and engineers. A 'scale-fade-400ms-ease-out' communicates only implementation. Semantics enable the team to discuss motion without knowing CSS."
+    },
+    {
+      "id": "AX_MOTION_DOCS_MUST_BE_EXECUTABLE",
+      "statement": "Motion system documentation must include copy-pasteable code snippets and live previews.",
+      "why": "Designers cannot use a motion system they can't see. Engineers cannot adopt a motion system they can't copy. Static screenshots of animation are useless documentation."
+    }
+  ],
+  "ontology": [
+    {
+      "name": "motion token",
+      "definition": "A design token specifically for animation: duration scales (75ms, 150ms, 300ms), easing curves (entrance, exit, attention), and distance scales (near, medium, far)."
+    },
+    {
+      "name": "motion primitive",
+      "definition": "A reusable, named, and documented animation behavior with defined enter/exit states, timing, easing, and reduced-motion fallback."
+    },
+    {
+      "name": "semantic transition",
+      "definition": "A named motion primitive tied to a UI state change (e.g., 'modal-enter', 'notification-dismiss', 'page-reveal') rather than a visual description."
+    },
+    {
+      "name": "motion grammar",
+      "definition": "The full set of rules connecting tokens, primitives, and semantic transitions into a coherent brand motion language."
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "FW_TOKENIZE",
+      "name": "Motion token ladder",
+      "steps": [
+        "audit existing animations across the product",
+        "group by semantic purpose (entrance, exit, attention, state-change)",
+        "extract common duration, easing, and distance patterns",
+        "define token scales (3-5 values per token type)",
+        "migrate one-offs to token references"
+      ]
+    },
+    {
+      "id": "FW_ADOPT",
+      "name": "Adoption framework",
+      "steps": [
+        "build primitives with live previews (Storybook or similar)",
+        "document each primitive with copy-pasteable code",
+        "add motion lint rules for CI (ban inline animation outside primitives)",
+        "track adoption: % of components using primitives vs. one-offs"
+      ]
+    }
+  ],
+  "core_structure": {
+    "input": "existing animations, brand guidelines, accessibility requirements, framework constraints",
+    "judgment": "tokenization fit, semantic clarity, reusability, accessibility compliance, adoption feasibility",
+    "output": "motion token definitions, primitive library, migration plan, documentation, CI enforcement rules"
+  },
+  "stances": [
+    {
+      "id": "ST_TOKEN_OR_DELETE",
+      "stance": "If an animation cannot be expressed as a token, question whether it should exist at all."
+    },
+    {
+      "id": "ST_SEMANTIC_NAMING",
+      "stance": "Never name a motion primitive after its visual effect. Always name it after what it communicates."
+    }
+  ]
+}

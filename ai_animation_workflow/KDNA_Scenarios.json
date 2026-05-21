@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "ai_animation_workflow",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_VAGUE_PROMPT",
+      "trigger": "User gives a vague animation request like 'animate this landing page' or 'make it feel premium.'",
+      "orientation": "Stop and generate a brief. Ask clarifying questions about audience, attention path, and emotional tone. Do not write code until the brief is approved."
+    },
+    {
+      "id": "SCN_AGENT_OVERANIMATES",
+      "trigger": "Agent-generated animation looks busy, cheap, or AI-like.",
+      "orientation": "Check if the agent skipped the brief step. Reduce moving groups, add holds, slow easing, and remove decorative effects. Re-review against motion_design_master criteria."
+    },
+    {
+      "id": "SCN_REVIEW_LOOP",
+      "trigger": "User wants to iterate on agent-generated animation.",
+      "orientation": "Show the current animation. Ask the human to mark each beat: keep / adjust / replace. Apply changes and show a revision delta listing what changed and why."
+    },
+    {
+      "id": "SCN_AGENT_PIPELINE_SETUP",
+      "trigger": "Team wants to establish an AI-assisted animation pipeline.",
+      "orientation": "Define the brief template, assumption log format, review gate checkpoints, and quality criteria. Document the workflow. Run a pilot with one animation before scaling."
+    }
+  ]
+}

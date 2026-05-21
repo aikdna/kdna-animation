@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "frontend_motion_system",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_TOKENS_SCALE",
+      "conclusion": "A motion design system must define token scales before building any primitives.",
+      "logic": [
+        "Without tokens, every primitive decision is arbitrary and unreviewable.",
+        "Tokens create a shared language between designers and engineers.",
+        "When brand feel changes, only tokens need updating — not every component.",
+        "Tokens enable automated lint rules that prevent one-off animation drift."
+      ],
+      "so_what": "Before writing any animation code in a team context, define: duration-sm, duration-md, duration-lg; ease-enter, ease-exit, ease-attention; and distance-near, distance-mid, distance-far."
+    },
+    {
+      "id": "RC_PRIMITIVES_MAINTAINABLE",
+      "conclusion": "Motion primitives reduce long-term maintenance cost by 10x or more.",
+      "logic": [
+        "Inline animation values in 40+ components create 40+ points of failure and inconsistency.",
+        "Changing the brand's motion feel requires touching every component individually.",
+        "A well-named primitive lets any team member add animations without deep motion knowledge.",
+        "Accessibility fixes (reduced-motion, vestibular safety) apply once in the primitive and propagate everywhere."
+      ],
+      "so_what": "Any animation used in 3+ components must be extracted into a shared primitive. Treat inline animation values as technical debt."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "ai_animation_workflow",
+    "created": "2026-05-21",
+    "purpose": "Capability stages, practice loops, and measurable indicators.",
+    "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
+  },
+  "capability_layers": [
+    {
+      "level": "L1",
+      "name": "Prompt-to-output",
+      "indicators": [
+        "agent generates working animation from a prompt",
+        "basic performance and accessibility compliance",
+        "single-generation, no review loop"
+      ]
+    },
+    {
+      "level": "L2",
+      "name": "Brief-and-review pipeline",
+      "indicators": [
+        "agent always produces a brief before code",
+        "assumptions are explicitly stated and reviewed",
+        "human review gates are enforced before expansion",
+        "revision deltas are logged and traceable"
+      ]
+    },
+    {
+      "level": "L3",
+      "name": "Taste-calibrated automation",
+      "indicators": [
+        "agent internalizes brand motion grammar after 3-5 review cycles",
+        "brief template is brand-specific and reuseable",
+        "quality signals are captured per revision and improve agent output over time",
+        "human review shifts from direction to approval only"
+      ]
+    }
+  ],
+  "practice_loop": [
+    "write a structured brief before generating",
+    "state every assumption explicitly",
+    "generate a minimal viable animation",
+    "get human feedback on each beat (keep / adjust / replace)",
+    "log the revision delta",
+    "repeat until approved, then expand"
+  ],
+  "measurable_indicators": [
+    "brief_approval_rate",
+    "assumptions_per_generation",
+    "review_cycles_to_approval",
+    "revision_delta_clarity_score",
+    "human_review_time_per_animation",
+    "agent_quality_drift_over_sessions"
+  ]
+}

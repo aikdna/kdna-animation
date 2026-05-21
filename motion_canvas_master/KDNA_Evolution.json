@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_canvas_master",
+    "created": "2026-05-21",
+    "purpose": "Capability stages, practice loops, and measurable indicators.",
+    "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
+  },
+  "capability_layers": [
+    {
+      "level": "L1",
+      "name": "Working Motion Canvas scenes",
+      "indicators": [
+        "valid project structure",
+        "basic timing",
+        "legible layout"
+      ]
+    },
+    {
+      "level": "L2",
+      "name": "Directed technical explainers",
+      "indicators": [
+        "scene goals",
+        "component reuse",
+        "visible cause-effect"
+      ]
+    },
+    {
+      "level": "L3",
+      "name": "Studio-grade generative video system",
+      "indicators": [
+        "template library",
+        "review rubric",
+        "automated rendering workflow"
+      ]
+    }
+  ],
+  "practice_loop": [
+    "observe real references",
+    "extract timing and attention path",
+    "rebuild minimally",
+    "review against self-checks",
+    "ship with performance guardrails",
+    "collect viewer or user feedback"
+  ],
+  "measurable_indicators": [
+    "time_to_main_subject",
+    "number_of_simultaneous_motion_groups",
+    "average_transition_duration_ms",
+    "frame_stability",
+    "viewer comprehension",
+    "implementation maintainability"
+  ]
+}

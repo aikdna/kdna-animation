@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "ai_animation_workflow",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_NO_BRIEF_OVERANIMATION",
+      "brief": "User says 'add animation to the hero section.'",
+      "bad_pattern": "Agent immediately generates a 12-element staggered entrance with bounce easing, floating background particles, and a rotating CTA. Result: chaotic, cheap-feeling, impossible to review beat by beat.",
+      "master_pattern": "Agent responds with a brief: 'Primary subject: headline. Attention path: headline → subtitle → CTA, in sequence. Emotional tone: confident and calm. Duration: ~800ms total. Assumptions: desktop-first, brand prefers restraint, primary CTA is the conversion goal.' Human approves. Agent generates 3-beat sequence. Human reviews. Agent refines."
+    },
+    {
+      "id": "CASE_HIDDEN_ASSUMPTIONS",
+      "brief": "Agent generates a mobile animation with 6 simultaneous motion groups.",
+      "bad_pattern": "Agent silently assumed desktop performance. The animation runs at 18fps on mid-range phones. The assumption was never stated so it was never challenged.",
+      "master_pattern": "Agent states assumption: 'Assuming M1+ desktop hardware with dedicated GPU. If target device is mid-range mobile, I will reduce simultaneous motion groups from 6 to 2.' Human clarifies: target is iPhone 12 and above. Agent adjusts the brief and regenerates."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "gsap_master",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_TIMELINE_FOR_MAINTAINABILITY",
+      "conclusion": "Use a timeline when motion has multiple dependent beats.",
+      "logic": [
+        "Independent tweens hide sequence logic.",
+        "Timelines make timing reviewable.",
+        "Labels let designers and engineers discuss beats precisely."
+      ],
+      "so_what": "Create named beats such as intro, reveal, settle, exit."
+    }
+  ]
+}

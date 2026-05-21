@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "frontend_motion_system",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_ONEOFF_TO_PRIMITIVE",
+      "brief": "A product has 40 components each with inline animation values.",
+      "bad_pattern": "Each component defines its own duration, easing, and keyframes. When the brand changes the feel, all 40 components must be updated manually.",
+      "master_pattern": "Extract duration and easing into CSS custom properties or JS tokens. Build 5-8 motion primitives (fade-in, slide-up, scale-reveal, pulse, shake). Migrate components to reference primitives. Updating the brand feel now requires changing only the token definitions."
+    },
+    {
+      "id": "CASE_DESIGNER_IN_THE_LOOP",
+      "brief": "Motion decisions are made in Figma and handed off as annotated mockups.",
+      "bad_pattern": "Designers specify 'ease out 300ms' in Figma annotations. Engineers interpret differently or copy-paste from other components. Motion becomes inconsistent within weeks.",
+      "master_pattern": "Build a Storybook page with all motion primitives as interactive examples. Designers review the live primitives, not static annotations. Both roles reference the same token names during handoff."
+    }
+  ]
+}

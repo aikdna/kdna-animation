@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "web_animation_performance",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_WIDTH_JANK",
+      "brief": "A card expand animation animates width instead of transform: scaleX.",
+      "bad_pattern": "Animating width triggers layout recalculation on every frame, affecting sibling elements, causing visible jank at 15-20fps.",
+      "master_pattern": "Use transform: scaleX for the visual scaling, set the final width via CSS class after the animation completes, and apply overflow: hidden to the container."
+    },
+    {
+      "id": "CASE_SCROLL_THRASH",
+      "brief": "Scroll-linked animation reads offsetTop inside a scroll handler.",
+      "bad_pattern": "Reading offsetTop forces synchronous layout on every scroll event, blocking the main thread and creating visible scroll lag.",
+      "master_pattern": "Cache layout values on resize and scroll with requestAnimationFrame batching. Use IntersectionObserver for visibility triggers instead of manual offset calculations."
+    }
+  ]
+}

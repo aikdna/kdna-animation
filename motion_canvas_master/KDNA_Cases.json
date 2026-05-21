@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_canvas_master",
+    "created": "2026-05-21",
+    "purpose": "Examples that show judgment structure rather than scripts.",
+    "load_condition": "Load when examples, transformation patterns, or before/after critique are needed."
+  },
+  "cases": [
+    {
+      "id": "CASE_AGENT_PIPELINE",
+      "brief": "Explain an AI agent pipeline.",
+      "bad_pattern": "Icons fly in randomly while labels appear too fast.",
+      "master_pattern": "Anchor the agent, introduce tools as capabilities, animate data movement, pause on decision point, then show outcome."
+    }
+  ]
+}

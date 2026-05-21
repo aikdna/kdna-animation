@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "motion_design_master",
+    "created": "2026-05-21",
+    "purpose": "Scenario signals and action orientation.",
+    "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
+  },
+  "scenarios": [
+    {
+      "id": "SCN_LANDING_HERO",
+      "trigger": "User asks for a website hero animation.",
+      "orientation": "Start with a single visual anchor, reveal copy after visual stability, keep background motion below attention threshold."
+    },
+    {
+      "id": "SCN_SHORT_VIDEO_OPENING",
+      "trigger": "User asks for a 3-second hook animation.",
+      "orientation": "Create immediate contrast, one primary motion beat, and a hold before secondary information."
+    },
+    {
+      "id": "SCN_BRAND_PREMIUM",
+      "trigger": "User asks for high-end, luxury, professional, or premium feel.",
+      "orientation": "Use fewer moving parts, slower acceleration, stronger spacing, and longer holds."
+    }
+  ]
+}

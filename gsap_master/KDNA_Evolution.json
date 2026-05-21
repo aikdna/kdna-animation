@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "gsap_master",
+    "created": "2026-05-21",
+    "purpose": "Capability stages, practice loops, and measurable indicators.",
+    "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
+  },
+  "capability_layers": [
+    {
+      "level": "L1",
+      "name": "Correct API usage",
+      "indicators": [
+        "no lifecycle leaks",
+        "no layout animation abuse",
+        "simple timelines"
+      ]
+    },
+    {
+      "level": "L2",
+      "name": "Production choreography",
+      "indicators": [
+        "labels used",
+        "ScrollTrigger restrained",
+        "responsive motion tested"
+      ]
+    },
+    {
+      "level": "L3",
+      "name": "Motion engineering leadership",
+      "indicators": [
+        "shared motion primitives",
+        "performance budgets",
+        "design-code review loop"
+      ]
+    }
+  ],
+  "practice_loop": [
+    "observe real references",
+    "extract timing and attention path",
+    "rebuild minimally",
+    "review against self-checks",
+    "ship with performance guardrails",
+    "collect viewer or user feedback"
+  ],
+  "measurable_indicators": [
+    "time_to_main_subject",
+    "number_of_simultaneous_motion_groups",
+    "average_transition_duration_ms",
+    "frame_stability",
+    "viewer comprehension",
+    "implementation maintainability"
+  ]
+}

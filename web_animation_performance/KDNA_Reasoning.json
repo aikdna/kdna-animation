@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "web_animation_performance",
+    "created": "2026-05-21",
+    "purpose": "Reasoning chains for why a motion decision is right or wrong.",
+    "load_condition": "Load when the user asks why, tradeoffs, diagnosis, quality review, or strategic choice."
+  },
+  "reasoning_chains": [
+    {
+      "id": "RC_COMPOSITOR_FIRST",
+      "conclusion": "Use compositor-only properties for all continuous animations.",
+      "logic": [
+        "Browsers divide rendering into phases: script, style, layout, paint, composite.",
+        "Layout and paint phases are the most expensive and involve the main thread.",
+        "Transform and opacity changes go directly to the compositor thread, bypassing layout and paint.",
+        "Many agents incorrectly animate left/top/width/height because they appear simpler in code."
+      ],
+      "so_what": "Before writing any animation, ask: 'Does this property trigger layout or paint?' If yes, find the transform-based equivalent."
+    },
+    {
+      "id": "RC_PROFILE_FIRST",
+      "conclusion": "Performance optimization must start with profiler data, not intuition.",
+      "logic": [
+        "Common agent guesses (too many elements, too much JavaScript) are often wrong.",
+        "The real bottleneck is frequently forced synchronous layout, repaint storms, or GPU texture upload.",
+        "Without profiling, optimization can make performance worse by adding unnecessary will-change layers."
+      ],
+      "so_what": "Open DevTools Performance panel. Record. Identify the longest task in the frame. Only then decide what to change."
+    }
+  ]
+}

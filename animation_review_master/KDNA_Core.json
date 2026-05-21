@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "domain": "animation_review_master",
+    "created": "2026-05-21",
+    "purpose": "Encode critique standards for diagnosing cheap, noisy, slow, AI-looking, or incoherent animation.",
+    "load_condition": "Load when reviewing animation quality, diagnosing why animation feels wrong, conducting motion QA, or providing constructive critique."
+  },
+  "domain_title": "Animation Review Master",
+  "axioms": [
+    {
+      "id": "AX_CRITIQUE_THE_PATH_NOT_THE_EFFECT",
+      "statement": "Diagnose the attention path and timing structure, not the visual style of individual effects.",
+      "why": "Most bad animation is structurally broken (wrong order, wrong pace, no hierarchy) rather than aesthetically ugly. Fixing an ugly easing curve when the attention path is wrong is rearranging deck chairs."
+    },
+    {
+      "id": "AX_CHEAPNESS_HAS_CAUSES",
+      "statement": "Every visible quality problem — cheap, noisy, AI-looking, chaotic — has a specific, diagnosable structural cause.",
+      "why": "Taste words like 'cheap' are signals of a concrete problem: usually too many simultaneous motion groups, wrong easing character, or absent holds. Diagnose the cause, don't just label the symptom."
+    },
+    {
+      "id": "AX_REVIEW_WITH_VIEWER_TASK",
+      "statement": "Evaluate animation against the viewer's primary task, not against animation theory in isolation.",
+      "why": "An animation can be technically flawless and still fail because it competes with reading, hides the CTA, or confuses the information hierarchy. The viewer's task is the benchmark."
+    },
+    {
+      "id": "AX_FIX_BY_REMOVING_FIRST",
+      "statement": "When diagnosing quality issues, remove motion before adding more.",
+      "why": "Most broken animations are over-animated, not under-animated. Removing 30% of movement almost always improves clarity. Adding more motion to fix a noisy scene makes it worse."
+    }
+  ],
+  "ontology": [
+    {
+      "name": "attention conflict",
+      "definition": "Two or more elements competing for viewer attention at the same moment, creating confusion about where to look."
+    },
+    {
+      "name": "density threshold",
+      "definition": "The maximum number of simultaneous motion groups a viewer can track without cognitive overload — typically 1-3 depending on complexity."
+    },
+    {
+      "name": "easing mismatch",
+      "definition": "When the easing character (bounce, elastic, linear) contradicts the emotional tone or brand intent — e.g., playful bounce on a serious product announcement."
+    },
+    {
+      "name": "missing hold",
+      "definition": "The absence of intentional stillness after a key visual beat, which prevents the viewer from processing the information before the next movement begins."
+    },
+    {
+      "name": "motion grammar violation",
+      "definition": "An animation that breaks the established motion rules of the product or brand, creating incoherence across the experience."
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "FW_DIAGNOSE_CHEAP",
+      "name": "Cheapness diagnosis ladder",
+      "steps": [
+        "count simultaneous motion groups (target: 1-3)",
+        "check easing character consistency (avoid mixed bounces and elastics)",
+        "verify hold duration after each primary beat (minimum 300ms)",
+        "assess if motion competes with reading or primary CTA",
+        "confirm transform/opacity usage for smoothness"
+      ]
+    },
+    {
+      "id": "FW_CRITIQUE_FORMAT",
+      "name": "Structured critique format",
+      "steps": [
+        "state the viewer's task in one sentence",
+        "describe the current attention path (what happens when)",
+        "identify the top 1-2 structural problems with evidence",
+        "propose a concrete change, not a vague direction",
+        "measure improvement against the original"
+      ]
+    }
+  ],
+  "core_structure": {
+    "input": "animation to review, viewer task, brand context, target platform",
+    "judgment": "attention path clarity, timing structure, density analysis, easing coherence, performance diagnosis, hold adequacy",
+    "output": "structured critique with evidence, severity ranking, concrete fix recommendations, before-and-after comparison criteria"
+  },
+  "stances": [
+    {
+      "id": "ST_REMOVE_BEFORE_ADD",
+      "stance": "The first fix attempt should always be removal, not addition. Most bad animation is over-animated."
+    },
+    {
+      "id": "ST_EVIDENCE_REQUIRED",
+      "stance": "Every quality claim in a critique must be tied to a specific, observable structural issue — never 'it feels off.'"
+    },
+    {
+      "id": "ST_VIEWER_BENCHMARK",
+      "stance": "The only valid benchmark for animation quality is whether it helps or hinders the viewer's primary task."
+    }
+  ]
+}

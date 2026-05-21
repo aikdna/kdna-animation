@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "web_animation_performance",
     "created": "2026-05-21",
     "purpose": "Examples that show judgment structure rather than scripts. Performance diagnosis and transformation patterns.",
@@ -9,33 +10,43 @@
   "cases": [
     {
       "id": "CASE_WIDTH_JANK",
-      "brief": "A card expand animation animates width instead of transform: scaleX.",
-      "bad_pattern": "Animating width triggers layout recalculation on every frame, affecting sibling elements, causing visible jank at 15-20fps.",
-      "master_pattern": "Use transform: scaleX for the visual scaling, set the final width via CSS class after the animation completes, and apply overflow: hidden to the container."
+      "title": "A card expand animation animates width instead of transform: scaleX.",
+      "context": "A card expand animation animates width instead of transform: scaleX.",
+      "what_happened": "Animating width triggers layout recalculation on every frame, affecting sibling elements, causing visible jank at 15-20fps.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Use transform: scaleX for the visual scaling, set the final width via CSS class after the animation completes, and apply overflow: hidden to the container."
     },
     {
       "id": "CASE_SCROLL_THRASH",
-      "brief": "Scroll-linked animation reads offsetTop inside a scroll handler.",
-      "bad_pattern": "Reading offsetTop forces synchronous layout on every scroll event, blocking the main thread and creating visible scroll lag.",
-      "master_pattern": "Cache layout values on resize and scroll with requestAnimationFrame batching. Use IntersectionObserver for visibility triggers instead of manual offset calculations."
+      "title": "Scroll-linked animation reads offsetTop inside a scroll handler.",
+      "context": "Scroll-linked animation reads offsetTop inside a scroll handler.",
+      "what_happened": "Reading offsetTop forces synchronous layout on every scroll event, blocking the main thread and creating visible scroll lag.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Cache layout values on resize and scroll with requestAnimationFrame batching. Use IntersectionObserver for visibility triggers instead of manual offset calculations."
     },
     {
       "id": "CASE_WILL_CHANGE_OVERUSE",
-      "brief": "A developer adds `will-change: transform` to 200 elements to 'optimize' a list animation.",
-      "bad_pattern": "Each `will-change: transform` creates a new compositor layer with its own GPU texture. 200 elements × ~2MB per texture = 400MB GPU memory. On mobile devices, this triggers GPU memory pressure, texture thrashing, and ultimately a browser crash or forced layer eviction that makes performance worse than no optimization at all.",
-      "master_pattern": "Apply `will-change` only to elements that will animate within the next 200ms. Add it dynamically before the animation starts via JS (`element.style.willChange = 'transform'`) and remove it after the animation ends (`element.style.willChange = 'auto'`). Never set `will-change` in a static stylesheet. Treat it as a temporary GPU memory allocation, not a permanent optimization."
+      "title": "A developer adds `will-change: transform` to 200 elements to 'optimize' a list animation.",
+      "context": "A developer adds `will-change: transform` to 200 elements to 'optimize' a list animation.",
+      "what_happened": "Each `will-change: transform` creates a new compositor layer with its own GPU texture. 200 elements × ~2MB per texture = 400MB GPU memory. On mobile devices, this triggers GPU memory pressure, texture thrashing, and ultimately a browser crash or forced layer eviction that makes performance worse than no optimization at all.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Apply `will-change` only to elements that will animate within the next 200ms. Add it dynamically before the animation starts via JS (`element.style.willChange = 'transform'`) and remove it after the animation ends (`element.style.willChange = 'auto'`). Never set `will-change` in a static stylesheet. Treat it as a temporary GPU memory allocation, not a permanent optimization."
     },
     {
       "id": "CASE_REDUCED_MOTION_OVERSIGHT",
-      "brief": "A product's onboarding flow uses animated diagrams and step transitions without any reduced-motion fallback.",
-      "bad_pattern": "The entire onboarding — animated illustrations, sliding step transitions, bouncing progress dots, rotating confirmation checkmarks — runs at full motion with no `prefers-reduced-motion` media query. Users with vestibular disorders experience dizziness or nausea. Accessibility audit fails. The product is legally non-compliant in jurisdictions requiring WCAG 2.2 Level AA.",
-      "master_pattern": "Wrap all animations in a media query check: `@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }`. For JS-driven animations, check `window.matchMedia('(prefers-reduced-motion: reduce)').matches` and skip animations, replacing with instant state changes. Ensure that no essential information is conveyed exclusively through animation — all content must be accessible in static form."
+      "title": "A product's onboarding flow uses animated diagrams and step transitions without any reduced-motion fallback.",
+      "context": "A product's onboarding flow uses animated diagrams and step transitions without any reduced-motion fallback.",
+      "what_happened": "The entire onboarding — animated illustrations, sliding step transitions, bouncing progress dots, rotating confirmation checkmarks — runs at full motion with no `prefers-reduced-motion` media query. Users with vestibular disorders experience dizziness or nausea. Accessibility audit fails. The product is legally non-compliant in jurisdictions requiring WCAG 2.2 Level AA.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Wrap all animations in a media query check: `@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }`. For JS-driven animations, check `window.matchMedia('(prefers-reduced-motion: reduce)').matches` and skip animations, replacing with instant state changes. Ensure that no essential information is conveyed exclusively through animation — all content must be accessible in static form."
     },
     {
       "id": "CASE_FRAME_BUDGET_IGNORANCE",
-      "brief": "A hero section animation runs at 60fps on a MacBook Pro but at 22fps on a mid-range Android phone — and nobody tested the latter.",
-      "bad_pattern": "Development and review happen exclusively on high-end developer machines (M1/M3 MacBooks with dedicated GPU). The animation includes 8 simultaneous elements with box-shadow transitions, gradient shifts, and blur-based parallax. These are GPU-intensive on all devices but the M-series chips absorb the cost. On a $300 Android phone, the same animation drops to 22fps with 300ms input delay. The team only discovers this after shipping, via user complaints.",
-      "master_pattern": "Define a device tier matrix during design: Tier 1 (flagship), Tier 2 (mid-range), Tier 3 (entry-level). Define an animation complexity budget per tier: Tier 1 allows 6 motion groups and box-shadow/blur; Tier 2 allows 3 motion groups, no blur; Tier 3 allows 2 motion groups, transform/opacity only. Test during development with Chrome DevTools CPU throttling (4-6x slowdown) to simulate Tier 3. If the animation exceeds 16.7ms frame time at 6x slowdown, reduce complexity for all tiers."
+      "title": "A hero section animation runs at 60fps on a MacBook Pro but at 22fps on a mid-range Android phone — and nobody tested the latter.",
+      "context": "A hero section animation runs at 60fps on a MacBook Pro but at 22fps on a mid-range Android phone — and nobody tested the latter.",
+      "what_happened": "Development and review happen exclusively on high-end developer machines (M1/M3 MacBooks with dedicated GPU). The animation includes 8 simultaneous elements with box-shadow transitions, gradient shifts, and blur-based parallax. These are GPU-intensive on all devices but the M-series chips absorb the cost. On a $300 Android phone, the same animation drops to 22fps with 300ms input delay. The team only discovers this after shipping, via user complaints.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Define a device tier matrix during design: Tier 1 (flagship), Tier 2 (mid-range), Tier 3 (entry-level). Define an animation complexity budget per tier: Tier 1 allows 6 motion groups and box-shadow/blur; Tier 2 allows 3 motion groups, no blur; Tier 3 allows 2 motion groups, transform/opacity only. Test during development with Chrome DevTools CPU throttling (4-6x slowdown) to simulate Tier 3. If the animation exceeds 16.7ms frame time at 6x slowdown, reduce complexity for all tiers."
     }
   ]
 }

@@ -1,15 +1,17 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "ai_animation_workflow",
     "created": "2026-05-21",
     "purpose": "Capability stages, practice loops, and measurable indicators.",
     "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
   },
-  "capability_layers": [
+  "stages": [
     {
-      "level": "L1",
+      "id": "STG-L1",
       "name": "Prompt-to-output",
+      "description": "Stage L1: Prompt-to-output",
       "indicators": [
         "agent generates working animation from a prompt",
         "basic performance and accessibility compliance",
@@ -17,8 +19,9 @@
       ]
     },
     {
-      "level": "L2",
+      "id": "STG-L2",
       "name": "Brief-and-review pipeline",
+      "description": "Stage L2: Brief-and-review pipeline",
       "indicators": [
         "agent always produces a brief before code",
         "assumptions are explicitly stated and reviewed",
@@ -27,8 +30,9 @@
       ]
     },
     {
-      "level": "L3",
+      "id": "STG-L3",
       "name": "Taste-calibrated automation",
+      "description": "Stage L3: Taste-calibrated automation",
       "indicators": [
         "agent internalizes brand motion grammar after 3-5 review cycles",
         "brief template is brand-specific and reuseable",
@@ -37,20 +41,58 @@
       ]
     }
   ],
-  "practice_loop": [
-    "write a structured brief before generating",
-    "state every assumption explicitly",
-    "generate a minimal viable animation",
-    "get human feedback on each beat (keep / adjust / replace)",
-    "log the revision delta",
-    "repeat until approved, then expand"
+  "evolution_layers": [
+    {
+      "id": "EVL-001",
+      "name": "Prompt-to-output → Brief-and-review pipeline",
+      "capability": "Progress from Prompt-to-output to Brief-and-review pipeline",
+      "from_stage": "STG-L1",
+      "to_stage": "STG-L2"
+    },
+    {
+      "id": "EVL-002",
+      "name": "Brief-and-review pipeline → Taste-calibrated automation",
+      "capability": "Progress from Brief-and-review pipeline to Taste-calibrated automation",
+      "from_stage": "STG-L2",
+      "to_stage": "STG-L3"
+    }
   ],
-  "measurable_indicators": [
-    "brief_approval_rate",
-    "assumptions_per_generation",
-    "review_cycles_to_approval",
-    "revision_delta_clarity_score",
-    "human_review_time_per_animation",
-    "agent_quality_drift_over_sessions"
+  "measurement": [
+    {
+      "id": "MSR-brief_approval_rate",
+      "what": "brief_approval_rate",
+      "how": "Track brief_approval_rate over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-assumptions_per_gene",
+      "what": "assumptions_per_generation",
+      "how": "Track assumptions_per_generation over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-review_cycles_to_app",
+      "what": "review_cycles_to_approval",
+      "how": "Track review_cycles_to_approval over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-revision_delta_clari",
+      "what": "revision_delta_clarity_score",
+      "how": "Track revision_delta_clarity_score over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-human_review_time_pe",
+      "what": "human_review_time_per_animation",
+      "how": "Track human_review_time_per_animation over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-agent_quality_drift_",
+      "what": "agent_quality_drift_over_sessions",
+      "how": "Track agent_quality_drift_over_sessions over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    }
   ]
 }

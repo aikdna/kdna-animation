@@ -1,31 +1,96 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "web_animation_performance",
     "created": "2026-05-21",
     "purpose": "Scenario signals and action orientation.",
     "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
   },
-  "scenarios": [
+  "scenes": [
     {
       "id": "SCN_JANK_DIAGNOSIS",
-      "trigger": "Animation stutters, drops frames, or feels sluggish.",
-      "orientation": "Open DevTools Performance panel, record during animation, identify the bottleneck phase (layout/paint/composite), check for forced synchronous layouts, reduce layout-triggering properties."
+      "name": "Animation stutters, drops frames, or feels sluggish.",
+      "trigger_signal": "Animation stutters, drops frames, or feels sluggish.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-001",
+          "trap_belief": "Animation stutters, drops frames, or feels sluggish.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Open DevTools Performance panel, record during animation, identify the bottleneck phase (layout/paint/composite), check for forced synchronous layouts, reduce layout-triggering properties."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_SCROLL_SMOOTHNESS",
-      "trigger": "Scroll-linked animation lags or jitters during scroll.",
-      "orientation": "Ensure scroll handlers are debounced or use passive listeners, animated properties are compositor-only, and ScrollTrigger refresh is called after layout changes."
+      "name": "Scroll-linked animation lags or jitters during scroll.",
+      "trigger_signal": "Scroll-linked animation lags or jitters during scroll.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-002",
+          "trap_belief": "Scroll-linked animation lags or jitters during scroll.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Ensure scroll handlers are debounced or use passive listeners, animated properties are compositor-only, and ScrollTrigger refresh is called after layout changes."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_MOBILE_BATTERY",
-      "trigger": "Animation drains battery or heats the device.",
-      "orientation": "Reduce continuous animations, use CSS animations where possible (browser can optimize), limit simultaneous animated targets, pause off-screen animations."
+      "name": "Animation drains battery or heats the device.",
+      "trigger_signal": "Animation drains battery or heats the device.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-003",
+          "trap_belief": "Animation drains battery or heats the device.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Reduce continuous animations, use CSS animations where possible (browser can optimize), limit simultaneous animated targets, pause off-screen animations."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_ACCESSIBILITY_CHECK",
-      "trigger": "Animation needs accessibility review.",
-      "orientation": "Check prefers-reduced-motion media query, provide static alternatives, ensure animation does not convey essential information alone, limit flashing to under 3 per second."
+      "name": "Animation needs accessibility review.",
+      "trigger_signal": "Animation needs accessibility review.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-004",
+          "trap_belief": "Animation needs accessibility review.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Check prefers-reduced-motion media query, provide static alternatives, ensure animation does not convey essential information alone, limit flashing to under 3 per second."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     }
   ]
 }

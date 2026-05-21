@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "animation_review_master",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -9,7 +10,7 @@
   "reasoning_chains": [
     {
       "id": "RC_REMOVE_FIRST",
-      "conclusion": "When animation quality is poor, the first fix should be removing motion, not adding more.",
+      "one_sentence": "When animation quality is poor, the first fix should be removing motion, not adding more.",
       "logic": [
         "Almost all low-quality animation is over-animated, not under-animated.",
         "Removing a motion group reduces cognitive load on the viewer and technical load on the engine.",
@@ -20,7 +21,7 @@
     },
     {
       "id": "RC_STRUCTURAL_DIAGNOSIS",
-      "conclusion": "Every quality problem can be traced to a structural cause: attention, timing, density, easing, or performance.",
+      "one_sentence": "Every quality problem can be traced to a structural cause: attention, timing, density, easing, or performance.",
       "logic": [
         "'Cheap' usually means high density + linear or mismatched easing + no holds.",
         "'AI-looking' usually means uniform timing + uniform easing + continuous motion without pauses.",
@@ -31,7 +32,7 @@
     },
     {
       "id": "RC_VIEWER_TASK_BENCHMARK",
-      "conclusion": "The only valid benchmark for animation quality is whether the motion helps or hinders the viewer's primary task. Animation that is beautiful but competes with reading has failed.",
+      "one_sentence": "The only valid benchmark for animation quality is whether the motion helps or hinders the viewer's primary task. Animation that is beautiful but competes with reading has failed.",
       "logic": [
         "A viewer comes to a page or video with a task: read, learn, decide, compare, navigate, enjoy.",
         "Motion that supports the task (guides attention, clarifies hierarchy, provides feedback) is good motion.",
@@ -42,7 +43,7 @@
     },
     {
       "id": "RC_EASING_AS_BRAND_SIGNAL",
-      "conclusion": "Easing character is the most underdiagnosed cause of animation feeling wrong. It is not a technical setting — it is the emotional tone of movement.",
+      "one_sentence": "Easing character is the most underdiagnosed cause of animation feeling wrong. It is not a technical setting — it is the emotional tone of movement.",
       "logic": [
         "Bounce easing on a cybersecurity product = the brand reads as unreliable. The motion says 'fun toy' while the brand says 'trusted security.'",
         "Linear easing on a luxury brand = the motion reads as mechanical and cheap. Luxury needs acceleration curves that suggest handcrafted quality.",
@@ -53,7 +54,7 @@
     },
     {
       "id": "RC_DENSITY_DIAGNOSIS_LADDER",
-      "conclusion": "Density is the fastest diagnostic. Count simultaneous motion groups. If above 3, the review can stop there — there is a density problem, and no amount of timing polish will fix it.",
+      "one_sentence": "Density is the fastest diagnostic. Count simultaneous motion groups. If above 3, the review can stop there — there is a density problem, and no amount of timing polish will fix it.",
       "logic": [
         "Motion density (simultaneous animated groups) is the single strongest predictor of perceived quality.",
         "Below 3 groups: the viewer can track everything. Quality differences come from timing and easing.",

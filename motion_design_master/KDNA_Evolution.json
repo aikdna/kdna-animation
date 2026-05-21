@@ -1,15 +1,17 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_design_master",
     "created": "2026-05-21",
     "purpose": "Capability stages, practice loops, and measurable indicators.",
     "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
   },
-  "capability_layers": [
+  "stages": [
     {
-      "level": "L1",
+      "id": "STG-L1",
       "name": "Motion hygiene",
+      "description": "Stage L1: Motion hygiene",
       "indicators": [
         "no random movement",
         "consistent durations",
@@ -17,8 +19,9 @@
       ]
     },
     {
-      "level": "L2",
+      "id": "STG-L2",
       "name": "Directed choreography",
+      "description": "Stage L2: Directed choreography",
       "indicators": [
         "stagger serves meaning",
         "holds are intentional",
@@ -26,8 +29,9 @@
       ]
     },
     {
-      "level": "L3",
+      "id": "STG-L3",
       "name": "Cinematic product motion",
+      "description": "Stage L3: Cinematic product motion",
       "indicators": [
         "emotion and usability align",
         "motion language is reusable",
@@ -35,20 +39,58 @@
       ]
     }
   ],
-  "practice_loop": [
-    "observe real references",
-    "extract timing and attention path",
-    "rebuild minimally",
-    "review against self-checks",
-    "ship with performance guardrails",
-    "collect viewer or user feedback"
+  "evolution_layers": [
+    {
+      "id": "EVL-001",
+      "name": "Motion hygiene → Directed choreography",
+      "capability": "Progress from Motion hygiene to Directed choreography",
+      "from_stage": "STG-L1",
+      "to_stage": "STG-L2"
+    },
+    {
+      "id": "EVL-002",
+      "name": "Directed choreography → Cinematic product motion",
+      "capability": "Progress from Directed choreography to Cinematic product motion",
+      "from_stage": "STG-L2",
+      "to_stage": "STG-L3"
+    }
   ],
-  "measurable_indicators": [
-    "time_to_main_subject",
-    "number_of_simultaneous_motion_groups",
-    "average_transition_duration_ms",
-    "frame_stability",
-    "viewer comprehension",
-    "implementation maintainability"
+  "measurement": [
+    {
+      "id": "MSR-time_to_main_subject",
+      "what": "time_to_main_subject",
+      "how": "Track time_to_main_subject over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-number_of_simultaneo",
+      "what": "number_of_simultaneous_motion_groups",
+      "how": "Track number_of_simultaneous_motion_groups over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-average_transition_d",
+      "what": "average_transition_duration_ms",
+      "how": "Track average_transition_duration_ms over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-frame_stability",
+      "what": "frame_stability",
+      "how": "Track frame_stability over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-viewer_comprehension",
+      "what": "viewer comprehension",
+      "how": "Track viewer comprehension over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-implementation_maint",
+      "what": "implementation maintainability",
+      "how": "Track implementation maintainability over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    }
   ]
 }

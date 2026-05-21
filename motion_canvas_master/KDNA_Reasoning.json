@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_canvas_master",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a Motion Canvas scene architecture decision is right or wrong.",
@@ -9,7 +10,7 @@
   "reasoning_chains": [
     {
       "id": "RC_SCENE_AS_ARGUMENT",
-      "conclusion": "One scene should carry one argument.",
+      "one_sentence": "One scene should carry one argument.",
       "logic": [
         "Programmatic video can easily become a dumping ground.",
         "Viewers retain transformations better than lists.",
@@ -19,7 +20,7 @@
     },
     {
       "id": "RC_CODE_AS_STORYBOARD",
-      "conclusion": "Motion Canvas code must be skimmable as a storyboard by someone who knows the domain but not the codebase.",
+      "one_sentence": "Motion Canvas code must be skimmable as a storyboard by someone who knows the domain but not the codebase.",
       "logic": [
         "Programmatic animation is unique: the code is the source of truth for timing, layout, and visuals simultaneously.",
         "If timing logic is embedded inside layout calculations, neither can be reviewed independently.",
@@ -30,7 +31,7 @@
     },
     {
       "id": "RC_VISUAL_PROOF_REQUIREMENT",
-      "conclusion": "A technical explainer must communicate its core logic with sound muted. If the animation requires narration to make sense, the visual design has failed.",
+      "one_sentence": "A technical explainer must communicate its core logic with sound muted. If the animation requires narration to make sense, the visual design has failed.",
       "logic": [
         "Narration explains. Animation proves. When animation merely illustrates narration, it's redundant — a static diagram with voiceover would be equally effective.",
         "The unique value of animation is showing transformation, cause-and-effect, and state change over time.",
@@ -41,7 +42,7 @@
     },
     {
       "id": "RC_REUSABLE_COMPONENT_DISCIPLINE",
-      "conclusion": "Motion Canvas components should be as disciplined as React components: one responsibility, clean props interface, no hidden signal dependencies.",
+      "one_sentence": "Motion Canvas components should be as disciplined as React components: one responsibility, clean props interface, no hidden signal dependencies.",
       "logic": [
         "Without component discipline, Motion Canvas projects become monolithic — the project you made for one explainer cannot be adapted for the next.",
         "Reusable components (Node, Arrow, Label, Chart) compound in value: the second explainer takes half the time, the fifth takes 20% of the time.",
@@ -52,7 +53,7 @@
     },
     {
       "id": "RC_SCENE_RHYTHM_AND_HOLD",
-      "conclusion": "Every scene needs a rhythm — a deliberate alternation of motion and stillness. Scenes without holds feel rushed; scenes without motion feel static.",
+      "one_sentence": "Every scene needs a rhythm — a deliberate alternation of motion and stillness. Scenes without holds feel rushed; scenes without motion feel static.",
       "logic": [
         "Motion Canvas makes continuous motion easy — tweens chain naturally, signals update smoothly.",
         "But continuous motion without stillness is exhausting to watch. The viewer's attention system needs recovery periods.",
@@ -63,7 +64,7 @@
     },
     {
       "id": "RC_BEAT_NAMED_AND_NUMBERED",
-      "conclusion": "Every visual beat in a scene must be explicitly named, numbered, and time-budgeted before coding begins.",
+      "one_sentence": "Every visual beat in a scene must be explicitly named, numbered, and time-budgeted before coding begins.",
       "logic": [
         "Without beat planning, scenes grow organically: 'let me just add one more thing.' The scene drifts from 3 beats to 7, and the argument gets diluted.",
         "Named beats serve as a contract: the scene will communicate exactly these ideas in this order. If a new idea is important, it becomes a new scene — not a squeezed-in beat.",

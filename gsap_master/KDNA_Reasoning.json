@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "gsap_master",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a GSAP architecture decision is right or wrong. Production-grade logic scaffolds.",
@@ -9,7 +10,7 @@
   "reasoning_chains": [
     {
       "id": "RC_TIMELINE_FOR_MAINTAINABILITY",
-      "conclusion": "Use a timeline when motion has multiple dependent beats.",
+      "one_sentence": "Use a timeline when motion has multiple dependent beats.",
       "logic": [
         "Independent tweens hide sequence logic.",
         "Timelines make timing reviewable.",
@@ -19,7 +20,7 @@
     },
     {
       "id": "RC_CLEANUP_IS_NOT_OPTIONAL",
-      "conclusion": "Every GSAP animation in a framework component must have a documented cleanup strategy. Without cleanup, the animation is broken in production.",
+      "one_sentence": "Every GSAP animation in a framework component must have a documented cleanup strategy. Without cleanup, the animation is broken in production.",
       "logic": [
         "Modern SPAs navigate without full page reloads. Components mount and unmount frequently.",
         "A GSAP tween holds a reference to a DOM node. When the node unmounts but the tween persists, the tween continues to calculate values on garbage-collected targets.",
@@ -31,7 +32,7 @@
     },
     {
       "id": "RC_SCROLLTRIGGER_RESTRAINT",
-      "conclusion": "ScrollTrigger density above ~10 instances per page reliably degrades scroll performance, not animation quality.",
+      "one_sentence": "ScrollTrigger density above ~10 instances per page reliably degrades scroll performance, not animation quality.",
       "logic": [
         "Each ScrollTrigger registers a scroll listener and calculates trigger positions on every scroll event.",
         "Scroll position calculation involves getBoundingClientRect() — a layout-triggering call that forces synchronous layout when called inside a scroll handler.",
@@ -43,7 +44,7 @@
     },
     {
       "id": "RC_TIMELINE_POSITION_PARAMETER",
-      "conclusion": "The position parameter is the most underused GSAP feature. It turns timelines from a sequence into a choreography language.",
+      "one_sentence": "The position parameter is the most underused GSAP feature. It turns timelines from a sequence into a choreography language.",
       "logic": [
         "Without position parameters, timelines are linear: each tween starts after the previous one ends.",
         "With position parameters, timelines express musical relationships: 'this tween starts 0.2s after that label,' 'these two tweens overlap by 0.1s,' 'this group starts together.'",
@@ -54,7 +55,7 @@
     },
     {
       "id": "RC_PERFORMANCE_PROFILING_BEFORE_OPTIMIZATION",
-      "conclusion": "GSAP is one of the most performant animation libraries available. When GSAP animation stutters, the cause is almost never GSAP — it's the animated properties or the DOM structure.",
+      "one_sentence": "GSAP is one of the most performant animation libraries available. When GSAP animation stutters, the cause is almost never GSAP — it's the animated properties or the DOM structure.",
       "logic": [
         "GSAP updates values and applies them via requestAnimationFrame. The overhead is negligible.",
         "Performance drops come from browser rendering phases triggered by the animated properties: layout (width, height, top, left), paint (color, background, box-shadow), or composite (transform, opacity).",
@@ -65,7 +66,7 @@
     },
     {
       "id": "RC_PLUGIN_JUDGMENT",
-      "conclusion": "Plugins solve specific animation problems. Using a plugin when a simpler approach works adds complexity, bundle size, and mental overhead without benefit.",
+      "one_sentence": "Plugins solve specific animation problems. Using a plugin when a simpler approach works adds complexity, bundle size, and mental overhead without benefit.",
       "logic": [
         "GSAP plugins (ScrollTrigger, Flip, SplitText, MotionPath, etc.) are powerful but specialized.",
         "SplitText is for character/word animation. If you're splitting only to apply a simple fade, CSS `overflow: hidden` + a single transform tween on a parent achieves the same result with zero plugin cost.",

@@ -1,31 +1,96 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "animation_review_master",
     "created": "2026-05-21",
     "purpose": "Scenario signals and action orientation.",
     "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
   },
-  "scenarios": [
+  "scenes": [
     {
       "id": "SCN_CHEAP_DIAGNOSIS",
-      "trigger": "Animation feels cheap, tacky, or low-quality.",
-      "orientation": "Count simultaneous motion groups (expect 3+ with competing attention). Check easing character (linear or mixed bounces = cheap). Verify holds exist after key beats. Reduce density and unify easing."
+      "name": "Animation feels cheap, tacky, or low-quality.",
+      "trigger_signal": "Animation feels cheap, tacky, or low-quality.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-001",
+          "trap_belief": "Animation feels cheap, tacky, or low-quality.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Count simultaneous motion groups (expect 3+ with competing attention). Check easing character (linear or mixed bounces = cheap). Verify holds exist after key beats. Reduce density and unify easing."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_AI_LOOKING",
-      "trigger": "Animation looks AI-generated, generic, or soulless.",
-      "orientation": "Check for missing holds (continuous motion without pauses = AI signature). Check uniform durations (all beats same length = no rhythm). Add one distinct timing accent and intentional stillness."
+      "name": "Animation looks AI-generated, generic, or soulless.",
+      "trigger_signal": "Animation looks AI-generated, generic, or soulless.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-002",
+          "trap_belief": "Animation looks AI-generated, generic, or soulless.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Check for missing holds (continuous motion without pauses = AI signature). Check uniform durations (all beats same length = no rhythm). Add one distinct timing accent and intentional stillness."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_NOISY_SCENE",
-      "trigger": "Too much is moving and the viewer doesn't know where to look.",
-      "orientation": "Identify 3+ simultaneous motion groups. Pause all but the primary. Stagger remaining groups. Add holds between groups. Background motion should be below conscious attention threshold."
+      "name": "Too much is moving and the viewer doesn't know where to look.",
+      "trigger_signal": "Too much is moving and the viewer doesn't know where to look.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-003",
+          "trap_belief": "Too much is moving and the viewer doesn't know where to look.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Identify 3+ simultaneous motion groups. Pause all but the primary. Stagger remaining groups. Add holds between groups. Background motion should be below conscious attention threshold."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_JANK_DIAGNOSIS",
-      "trigger": "Animation is visually stuttering or uneven.",
-      "orientation": "Profile frame rate. Check for layout-triggering animated properties. Check for forced synchronous layouts. Switch to compositor-only properties. Test on throttled hardware."
+      "name": "Animation is visually stuttering or uneven.",
+      "trigger_signal": "Animation is visually stuttering or uneven.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-004",
+          "trap_belief": "Animation is visually stuttering or uneven.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Profile frame rate. Check for layout-triggering animated properties. Check for forced synchronous layouts. Switch to compositor-only properties. Test on throttled hardware."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     }
   ]
 }

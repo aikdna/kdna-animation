@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "ai_animation_workflow",
     "created": "2026-05-21",
     "purpose": "Examples that show judgment structure rather than scripts.",
@@ -9,33 +10,43 @@
   "cases": [
     {
       "id": "CASE_NO_BRIEF_OVERANIMATION",
-      "brief": "User says 'add animation to the hero section.'",
-      "bad_pattern": "Agent immediately generates a 12-element staggered entrance with bounce easing, floating background particles, and a rotating CTA. Result: chaotic, cheap-feeling, impossible to review beat by beat.",
-      "master_pattern": "Agent responds with a brief: 'Primary subject: headline. Attention path: headline → subtitle → CTA, in sequence. Emotional tone: confident and calm. Duration: ~800ms total. Assumptions: desktop-first, brand prefers restraint, primary CTA is the conversion goal.' Human approves. Agent generates 3-beat sequence. Human reviews. Agent refines."
+      "title": "User says 'add animation to the hero section.'",
+      "context": "User says 'add animation to the hero section.'",
+      "what_happened": "Agent immediately generates a 12-element staggered entrance with bounce easing, floating background particles, and a rotating CTA. Result: chaotic, cheap-feeling, impossible to review beat by beat.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Agent responds with a brief: 'Primary subject: headline. Attention path: headline → subtitle → CTA, in sequence. Emotional tone: confident and calm. Duration: ~800ms total. Assumptions: desktop-first, brand prefers restraint, primary CTA is the conversion goal.' Human approves. Agent generates 3-beat sequence. Human reviews. Agent refines."
     },
     {
       "id": "CASE_HIDDEN_ASSUMPTIONS",
-      "brief": "Agent generates a mobile animation with 6 simultaneous motion groups.",
-      "bad_pattern": "Agent silently assumed desktop performance. The animation runs at 18fps on mid-range phones. The assumption was never stated so it was never challenged.",
-      "master_pattern": "Agent states assumption: 'Assuming M1+ desktop hardware with dedicated GPU. If target device is mid-range mobile, I will reduce simultaneous motion groups from 6 to 2.' Human clarifies: target is iPhone 12 and above. Agent adjusts the brief and regenerates."
+      "title": "Agent generates a mobile animation with 6 simultaneous motion groups.",
+      "context": "Agent generates a mobile animation with 6 simultaneous motion groups.",
+      "what_happened": "Agent silently assumed desktop performance. The animation runs at 18fps on mid-range phones. The assumption was never stated so it was never challenged.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Agent states assumption: 'Assuming M1+ desktop hardware with dedicated GPU. If target device is mid-range mobile, I will reduce simultaneous motion groups from 6 to 2.' Human clarifies: target is iPhone 12 and above. Agent adjusts the brief and regenerates."
     },
     {
       "id": "CASE_TASTE_WORD_MISINTERPRETATION",
-      "brief": "User says 'make it playful.' Agent applies bounce easing to every element.",
-      "bad_pattern": "Agent interprets 'playful' as 'apply elastic and bounce easing to all elements.' The hero headline bounces in, the subtitle wiggles, CTA does a spring settle. Result: reads as a children's app, not a playful-but-professional brand. The brief was not structured, so the agent filled 'playful' with its most literal interpretation.",
-      "master_pattern": "Agent responds: 'Playful can mean several things in motion. Options: (A) one light bounce on the CTA only, everything else restrained — playful accent. (B) staggered entrance with varied but gentle easing — rhythmic playfulness. (C) one element with a character animation — mascot playfulness. Which direction fits the brand?' The structured brief prevents over-interpretation by constraining the taste word to a specific technique."
+      "title": "User says 'make it playful.' Agent applies bounce easing to every element.",
+      "context": "User says 'make it playful.' Agent applies bounce easing to every element.",
+      "what_happened": "Agent interprets 'playful' as 'apply elastic and bounce easing to all elements.' The hero headline bounces in, the subtitle wiggles, CTA does a spring settle. Result: reads as a children's app, not a playful-but-professional brand. The brief was not structured, so the agent filled 'playful' with its most literal interpretation.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Agent responds: 'Playful can mean several things in motion. Options: (A) one light bounce on the CTA only, everything else restrained — playful accent. (B) staggered entrance with varied but gentle easing — rhythmic playfulness. (C) one element with a character animation — mascot playfulness. Which direction fits the brand?' The structured brief prevents over-interpretation by constraining the taste word to a specific technique."
     },
     {
       "id": "CASE_EXPANSION_BEFORE_REVIEW",
-      "brief": "Agent generates a complex 15-beat product demo animation directly from a one-sentence prompt.",
-      "bad_pattern": "Agent skips the brief, skips the minimal viable animation, and generates 15 beats with nested timelines, ScrollTrigger, responsive variants, and dark mode support. The output is 400 lines of code. Human reviewer: 'This doesn't match our brand at all.' 400 lines of work discarded. Agent's time was wasted because the direction was never validated.",
-      "master_pattern": "Agent generates a minimal proof: 3 beats showing the core transformation. No variants. No responsive handling. No dark mode. 40 lines of code. Human reviews in 30 seconds: 'Yes, this direction works. Slow down beat 2.' Agent adjusts beat 2 (5 lines changed), then expands with confidence. The 400-line final version is built on a validated foundation. Total human time: under 2 minutes. Total agent time: not wasted."
+      "title": "Agent generates a complex 15-beat product demo animation directly from a one-sentence prompt.",
+      "context": "Agent generates a complex 15-beat product demo animation directly from a one-sentence prompt.",
+      "what_happened": "Agent skips the brief, skips the minimal viable animation, and generates 15 beats with nested timelines, ScrollTrigger, responsive variants, and dark mode support. The output is 400 lines of code. Human reviewer: 'This doesn't match our brand at all.' 400 lines of work discarded. Agent's time was wasted because the direction was never validated.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Agent generates a minimal proof: 3 beats showing the core transformation. No variants. No responsive handling. No dark mode. 40 lines of code. Human reviews in 30 seconds: 'Yes, this direction works. Slow down beat 2.' Agent adjusts beat 2 (5 lines changed), then expands with confidence. The 400-line final version is built on a validated foundation. Total human time: under 2 minutes. Total agent time: not wasted."
     },
     {
       "id": "CASE_FEEDBACK_LOOP_COLLAPSE",
-      "brief": "Human gives feedback 'too much motion everywhere' and agent responds by reducing all durations by 20%.",
-      "bad_pattern": "The human's feedback ('too much motion everywhere') is a density problem, not a speed problem. The agent misdiagnoses 'too much' as 'too long,' reduces durations from 400ms to 320ms, and now the scene is still chaotic but faster. The human is frustrated because the feedback wasn't applied. Trust in the agent erodes.",
-      "master_pattern": "When receiving qualitative feedback, the agent must translate it into structural diagnosis before acting. Agent responds: 'I hear two possible causes: (A) too many elements moving simultaneously (density), or (B) individual animations are too long (duration). Which matches what you're seeing?' Human: 'Definitely A — there's just too much happening at once.' Agent removes 3 motion groups and staggers the remaining 3. The fix addresses the actual problem."
+      "title": "Human gives feedback 'too much motion everywhere' and agent responds by reducing all durations by 20%.",
+      "context": "Human gives feedback 'too much motion everywhere' and agent responds by reducing all durations by 20%.",
+      "what_happened": "The human's feedback ('too much motion everywhere') is a density problem, not a speed problem. The agent misdiagnoses 'too much' as 'too long,' reduces durations from 400ms to 320ms, and now the scene is still chaotic but faster. The human is frustrated because the feedback wasn't applied. Trust in the agent erodes.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "When receiving qualitative feedback, the agent must translate it into structural diagnosis before acting. Agent responds: 'I hear two possible causes: (A) too many elements moving simultaneously (density), or (B) individual animations are too long (duration). Which matches what you're seeing?' Human: 'Definitely A — there's just too much happening at once.' Agent removes 3 motion groups and staggers the remaining 3. The fix addresses the actual problem."
     }
   ]
 }

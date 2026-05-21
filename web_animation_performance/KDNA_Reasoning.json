@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "web_animation_performance",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -9,7 +10,7 @@
   "reasoning_chains": [
     {
       "id": "RC_COMPOSITOR_FIRST",
-      "conclusion": "Use compositor-only properties for all continuous animations.",
+      "one_sentence": "Use compositor-only properties for all continuous animations.",
       "logic": [
         "Browsers divide rendering into phases: script, style, layout, paint, composite.",
         "Layout and paint phases are the most expensive and involve the main thread.",
@@ -20,7 +21,7 @@
     },
     {
       "id": "RC_PROFILE_FIRST",
-      "conclusion": "Performance optimization must start with profiler data, not intuition.",
+      "one_sentence": "Performance optimization must start with profiler data, not intuition.",
       "logic": [
         "Common agent guesses (too many elements, too much JavaScript) are often wrong.",
         "The real bottleneck is frequently forced synchronous layout, repaint storms, or GPU texture upload.",
@@ -30,7 +31,7 @@
     },
     {
       "id": "RC_GPU_MEMORY_ECONOMY",
-      "conclusion": "GPU memory is a finite shared resource. Every compositor layer created costs memory that could have been used for rendering other content. Optimize layer count, not just frame time.",
+      "one_sentence": "GPU memory is a finite shared resource. Every compositor layer created costs memory that could have been used for rendering other content. Optimize layer count, not just frame time.",
       "logic": [
         "Each compositor layer allocates a GPU texture at the element's rasterized resolution × device pixel ratio.",
         "A 300×200px element at 3x DPR creates a 900×600px texture ≈ 2MB GPU memory.",
@@ -42,7 +43,7 @@
     },
     {
       "id": "RC_FORCED_SYNC_LAYOUT_HORROR",
-      "conclusion": "Forced synchronous layout is the single most common cause of severe animation jank. It is also the least understood by agents and developers.",
+      "one_sentence": "Forced synchronous layout is the single most common cause of severe animation jank. It is also the least understood by agents and developers.",
       "logic": [
         "A forced synchronous layout occurs when code writes a style property, then immediately reads a layout-dependent property before the browser's natural layout phase.",
         "Example: element.style.width = '200px'; const height = element.offsetHeight; — the second line forces the browser to pause, recalculate layout synchronously, and return the value before continuing.",
@@ -53,7 +54,7 @@
     },
     {
       "id": "RC_ACCESSIBILITY_IS_NOT_NEGOTIABLE",
-      "conclusion": "Reduced-motion support is not a feature. It is a requirement. An animation without a reduced-motion fallback is a broken animation.",
+      "one_sentence": "Reduced-motion support is not a feature. It is a requirement. An animation without a reduced-motion fallback is a broken animation.",
       "logic": [
         "Approximately 3-5% of the population has a vestibular disorder that can be triggered by excessive motion.",
         "WCAG 2.2 Success Criterion 2.3.3 (Animation from Interactions) requires that motion animation triggered by interaction can be disabled.",

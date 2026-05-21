@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_design_master",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong. These are the logical scaffolds agents use to justify choices under uncertainty.",
@@ -9,7 +10,7 @@
   "reasoning_chains": [
     {
       "id": "RC_ATTENTION_BEFORE_EFFECT",
-      "conclusion": "Choose attention path before choosing animation effects.",
+      "one_sentence": "Choose attention path before choosing animation effects.",
       "logic": [
         "Effects are tools, not strategy.",
         "Viewers process hierarchy before appreciating detail.",
@@ -19,7 +20,7 @@
     },
     {
       "id": "RC_RESTRAINT_AS_PREMIUM_SIGNAL",
-      "conclusion": "Perceived quality increases as visible motion decreases — up to a point of lifelessness, which is far harder to reach than most assume.",
+      "one_sentence": "Perceived quality increases as visible motion decreases — up to a point of lifelessness, which is far harder to reach than most assume.",
       "logic": [
         "Over-animated interfaces read as cheap because cheap products overcompensate with decoration.",
         "Premium brands (Apple, Stripe, Linear) use sparse, precise motion — few elements move, but each movement has clear intent.",
@@ -30,7 +31,7 @@
     },
     {
       "id": "RC_EASING_AS_EMOTION",
-      "conclusion": "Easing choice is an emotional decision, not a technical default. The wrong easing undermines the entire communication.",
+      "one_sentence": "Easing choice is an emotional decision, not a technical default. The wrong easing undermines the entire communication.",
       "logic": [
         "Easing conveys weight, confidence, playfulness, urgency, or calm — it is the emotional grammar of motion.",
         "Bounce and elastic easing on enterprise products reads as unprofessional because bounces signal 'fun toy,' not 'reliable tool.'",
@@ -42,7 +43,7 @@
     },
     {
       "id": "RC_CHOREOGRAPHY_OVER_DECORATION",
-      "conclusion": "The sequence of motion events matters more than the visual novelty of any single effect.",
+      "one_sentence": "The sequence of motion events matters more than the visual novelty of any single effect.",
       "logic": [
         "A well-sequenced scene with simple fades and slides will outperform a poorly-sequenced scene with elaborate effects.",
         "Choreography = the story the motion tells. Effects = the visual vocabulary it uses.",
@@ -53,7 +54,7 @@
     },
     {
       "id": "RC_MOTION_DENSITY_THRESHOLD",
-      "conclusion": "The human visual system can track approximately 1-3 distinct motion groups at once. Exceeding this threshold degrades perceived quality regardless of technical execution.",
+      "one_sentence": "The human visual system can track approximately 1-3 distinct motion groups at once. Exceeding this threshold degrades perceived quality regardless of technical execution.",
       "logic": [
         "Cognitive psychology research on multiple object tracking (MOT) shows humans max out at 3-4 tracked objects in controlled lab conditions.",
         "In a real browsing context — where the viewer is also reading, deciding, and navigating — the effective motion tracking limit is closer to 1-2.",
@@ -64,7 +65,7 @@
     },
     {
       "id": "RC_HOLD_AS_READING_WINDOW",
-      "conclusion": "Intentional stillness after a key visual beat is not 'wasted time.' It is the reading window — the period during which information transfers from the screen to the viewer.",
+      "one_sentence": "Intentional stillness after a key visual beat is not 'wasted time.' It is the reading window — the period during which information transfers from the screen to the viewer.",
       "logic": [
         "Motion attracts attention; stillness allows comprehension. Both are necessary.",
         "When animation flows continuously without holds, the viewer is always in 'tracking' mode, never in 'understanding' mode.",

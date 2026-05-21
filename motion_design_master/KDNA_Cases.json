@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_design_master",
     "created": "2026-05-21",
     "purpose": "Examples that show judgment structure rather than scripts. Each case captures a specific production failure and its transformation into world-class motion.",
@@ -9,39 +10,51 @@
   "cases": [
     {
       "id": "CASE_FROM_CHAOS_TO_DIRECTION",
-      "brief": "A page has many tiles flying randomly.",
-      "bad_pattern": "All items animate at once with equal visual weight. Each tile enters from a different direction at the same moment with bounce easing. The viewer sees a field of simultaneous motion with zero hierarchy.",
-      "master_pattern": "Create one anchor element that enters first. Stagger remaining clusters by semantic group (e.g., primary tools at +100ms, secondary at +200ms). Use a single reveal direction (e.g., all from bottom). Reduce speed variance — keep all within 20% of the anchor duration. Use stillness to make the core idea readable."
+      "title": "A page has many tiles flying randomly.",
+      "context": "A page has many tiles flying randomly.",
+      "what_happened": "All items animate at once with equal visual weight. Each tile enters from a different direction at the same moment with bounce easing. The viewer sees a field of simultaneous motion with zero hierarchy.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Create one anchor element that enters first. Stagger remaining clusters by semantic group (e.g., primary tools at +100ms, secondary at +200ms). Use a single reveal direction (e.g., all from bottom). Reduce speed variance — keep all within 20% of the anchor duration. Use stillness to make the core idea readable."
     },
     {
       "id": "CASE_PREMIUM_BOUNCE_TRAP",
-      "brief": "An enterprise SaaS dashboard hero uses bounce easing on the primary headline.",
-      "bad_pattern": "The main value proposition text bounces in with elastic easing. The motion reads as playful and casual — directly contradicting the brand's serious enterprise positioning. Users subconsciously perceive the product as less reliable because the motion grammar doesn't match the tone.",
-      "master_pattern": "Use power3.inOut or power4.inOut easing for the headline — no overshoot. Set duration between 400-600ms. Add a 300ms hold after the headline settles before revealing the subhead. The motion should feel confident and measured — the text arrives deliberately and stays. For premium enterprise products, motion must communicate stability, not excitement."
+      "title": "An enterprise SaaS dashboard hero uses bounce easing on the primary headline.",
+      "context": "An enterprise SaaS dashboard hero uses bounce easing on the primary headline.",
+      "what_happened": "The main value proposition text bounces in with elastic easing. The motion reads as playful and casual — directly contradicting the brand's serious enterprise positioning. Users subconsciously perceive the product as less reliable because the motion grammar doesn't match the tone.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Use power3.inOut or power4.inOut easing for the headline — no overshoot. Set duration between 400-600ms. Add a 300ms hold after the headline settles before revealing the subhead. The motion should feel confident and measured — the text arrives deliberately and stays. For premium enterprise products, motion must communicate stability, not excitement."
     },
     {
       "id": "CASE_BACKGROUND_COMPETITION",
-      "brief": "A landing page hero has a subtle background animation that undermines the primary message.",
-      "bad_pattern": "A slow gradient shift or floating particle system runs continuously in the hero background while the headline and CTA animate in. The viewer's peripheral vision tracks the background movement, unconsciously dividing attention between the decorative motion and the critical message. Conversion rate drops because the CTA is visually deprioritized by ambient motion.",
-      "master_pattern": "Disable or freeze background motion for the first 1.5 seconds — the duration of the primary content sequence. If background motion is essential for brand atmosphere, reduce its amplitude below the conscious attention threshold (e.g., opacity shift under 5% over 3+ seconds, or scale pulse under 2%). The rule: background motion must never compete with foreground communication. Test by asking: 'With the background moving, can I read the headline without my eyes drifting?'"
+      "title": "A landing page hero has a subtle background animation that undermines the primary message.",
+      "context": "A landing page hero has a subtle background animation that undermines the primary message.",
+      "what_happened": "A slow gradient shift or floating particle system runs continuously in the hero background while the headline and CTA animate in. The viewer's peripheral vision tracks the background movement, unconsciously dividing attention between the decorative motion and the critical message. Conversion rate drops because the CTA is visually deprioritized by ambient motion.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Disable or freeze background motion for the first 1.5 seconds — the duration of the primary content sequence. If background motion is essential for brand atmosphere, reduce its amplitude below the conscious attention threshold (e.g., opacity shift under 5% over 3+ seconds, or scale pulse under 2%). The rule: background motion must never compete with foreground communication. Test by asking: 'With the background moving, can I read the headline without my eyes drifting?'"
     },
     {
       "id": "CASE_STAGGER_WITHOUT_MEANING",
-      "brief": "A feature grid staggers cards mechanically without semantic grouping.",
-      "bad_pattern": "Six feature cards enter in a strict left-to-right, top-to-bottom stagger at uniform 80ms intervals. The stagger is purely positional — the first card (a minor feature) enters before the most important card (position 3). The timing order contradicts the information hierarchy. Users perceive the first card as most important regardless of content.",
-      "master_pattern": "Group cards by importance, not position. The most important card (the hero feature) enters first regardless of grid position. Supporting features follow as a group at +120ms. Minor features enter last. Stagger within groups, but keep inter-group timing distinct (e.g., 80ms within group, 200ms between groups). The timing sequence must mirror the information hierarchy — what moves first is what the user reads as most important."
+      "title": "A feature grid staggers cards mechanically without semantic grouping.",
+      "context": "A feature grid staggers cards mechanically without semantic grouping.",
+      "what_happened": "Six feature cards enter in a strict left-to-right, top-to-bottom stagger at uniform 80ms intervals. The stagger is purely positional — the first card (a minor feature) enters before the most important card (position 3). The timing order contradicts the information hierarchy. Users perceive the first card as most important regardless of content.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Group cards by importance, not position. The most important card (the hero feature) enters first regardless of grid position. Supporting features follow as a group at +120ms. Minor features enter last. Stagger within groups, but keep inter-group timing distinct (e.g., 80ms within group, 200ms between groups). The timing sequence must mirror the information hierarchy — what moves first is what the user reads as most important."
     },
     {
       "id": "CASE_HOLD_NEGLECT",
-      "brief": "A product tour animation flows continuously from step to step without pauses.",
-      "bad_pattern": "Step 1 fades out as Step 2 fades in immediately. Steps 2→3, 3→4 follow the same pattern. The viewer never has a moment to process what they just saw. The animation is technically smooth but functionally unreadable — the communication drops to near zero because information lands and immediately departs.",
-      "master_pattern": "After each step's visual settles, hold for 800-1200ms before transitioning to the next step. The hold is not dead time — it's the reading window. Use a subtle 'settled' state indicator (e.g., a progress dot fills, or the completed step's border solidifies) during the hold. The transition to the next step should feel like turning a page — deliberate and respectful of the reader's processing time."
+      "title": "A product tour animation flows continuously from step to step without pauses.",
+      "context": "A product tour animation flows continuously from step to step without pauses.",
+      "what_happened": "Step 1 fades out as Step 2 fades in immediately. Steps 2→3, 3→4 follow the same pattern. The viewer never has a moment to process what they just saw. The animation is technically smooth but functionally unreadable — the communication drops to near zero because information lands and immediately departs.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "After each step's visual settles, hold for 800-1200ms before transitioning to the next step. The hold is not dead time — it's the reading window. Use a subtle 'settled' state indicator (e.g., a progress dot fills, or the completed step's border solidifies) during the hold. The transition to the next step should feel like turning a page — deliberate and respectful of the reader's processing time."
     },
     {
       "id": "CASE_SPEED_AS_TONE",
-      "brief": "A financial dashboard uses uniformly fast, snappy motion throughout.",
-      "bad_pattern": "All elements animate at 150-200ms with power2.in easing. Numbers update with a rapid count-up. Charts snap into place. The overall feel is rushed, anxious, and trivializing — exactly the wrong emotional tone for financial data that users need to trust. Fast motion on serious data makes the data feel unimportant.",
-      "master_pattern": "Apply a motion tone ladder by content type: data-heavy elements (charts, tables, numbers) use 400-600ms with power3.out easing (slow acceleration, confident arrival). Navigation and controls use 200-300ms (snappy but not rushed). Alerts and urgent signals use 150-200ms with attention-getting but not alarming easing. The speed of motion communicates the weight of the information. Financial data deserves deliberate motion."
+      "title": "A financial dashboard uses uniformly fast, snappy motion throughout.",
+      "context": "A financial dashboard uses uniformly fast, snappy motion throughout.",
+      "what_happened": "All elements animate at 150-200ms with power2.in easing. Numbers update with a rapid count-up. Charts snap into place. The overall feel is rushed, anxious, and trivializing — exactly the wrong emotional tone for financial data that users need to trust. Fast motion on serious data makes the data feel unimportant.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Apply a motion tone ladder by content type: data-heavy elements (charts, tables, numbers) use 400-600ms with power3.out easing (slow acceleration, confident arrival). Navigation and controls use 200-300ms (snappy but not rushed). Alerts and urgent signals use 150-200ms with attention-getting but not alarming easing. The speed of motion communicates the weight of the information. Financial data deserves deliberate motion."
     }
   ]
 }

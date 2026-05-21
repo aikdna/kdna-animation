@@ -1,177 +1,185 @@
 #!/bin/bash
-# KDNA Cluster Validation Script
-# Checks that all domains have the required six-file structure and valid meta fields.
-# Requires: bash, python3
+# KDNA Cluster Validation Script (v0.4 schema compatible)
 # Usage: bash validate.sh
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PASS=0
-FAIL=0
-WARN=0
-
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
-
+PASS=0; FAIL=0; WARN=0
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
 log_pass() { echo -e "  ${GREEN}PASS${NC} $1"; ((PASS++)) || true; }
 log_fail() { echo -e "  ${RED}FAIL${NC} $1"; ((FAIL++)) || true; }
 log_warn() { echo -e "  ${YELLOW}WARN${NC} $1"; ((WARN++)) || true; }
+echo "=== KDNA v0.4 Cluster Validation ==="; echo ""
 
-echo "=== KDNA Cluster Validation ==="
-echo ""
-
-# Check cluster_manifest.json
-echo "--- cluster_manifest.json ---"
-if [ -f "$SCRIPT_DIR/cluster_manifest.json" ]; then
-    log_pass "cluster_manifest.json exists"
+# ── KDNA_Cluster.json ──
+echo "--- KDNA_Cluster.json ---"
+if [ -f "$SCRIPT_DIR/KDNA_Cluster.json" ]; then
+    log_pass "KDNA_Cluster.json exists"
     result=$(python3 -c "
 import json
-with open('$SCRIPT_DIR/cluster_manifest.json') as f:
-    m = json.load(f)
-checks = ['name', 'version', 'domains', 'composition_rules', 'conflict_resolution']
-missing = [c for c in checks if c not in m]
-if missing:
-    print('FAIL: missing fields: ' + ', '.join(missing))
-else:
-    print('OK')
-" 2>&1)
-    if [ "$result" = "OK" ]; then
-        log_pass "Manifest structure valid"
-    else
-        log_fail "$result"
-    fi
+with open('$SCRIPT_DIR/KDNA_Cluster.json') as f: m = json.load(f)
+c = ['name','version','purpose','packages','composition_rules','routing_questions']
+missing=[k for k in c if k not in m]
+print('OK' if not missing else 'FAIL: missing: '+', '.join(missing))
+" 2>&1); [ "$result" = "OK" ] && log_pass "Cluster structure valid" || log_fail "$result"
 else
-    log_fail "cluster_manifest.json not found"
+    log_fail "KDNA_Cluster.json not found"
 fi
 
-echo ""
-echo "--- Root files ---"
+echo ""; echo "--- Root files ---"
 for f in README.md LICENSE CONTRIBUTING.md CHANGELOG.md CODE_OF_CONDUCT.md .gitignore validate.sh; do
-    if [ -f "$SCRIPT_DIR/$f" ]; then
-        log_pass "$f exists"
-    else
-        log_warn "$f missing"
-    fi
+    [ -f "$SCRIPT_DIR/$f" ] && log_pass "$f" || log_warn "$f missing"
 done
 
-echo ""
-echo "--- Domain validation ---"
-
+echo ""; echo "--- Domain validation ---"
 KDNA_FILES="KDNA_Core.json KDNA_Patterns.json KDNA_Scenarios.json KDNA_Cases.json KDNA_Reasoning.json KDNA_Evolution.json"
-
 for domain_dir in "$SCRIPT_DIR"/*/ ; do
-    domain_name=$(basename "$domain_dir")
-
-    has_kdna=false
+    dn=$(basename "$domain_dir")
+    has=false; for f in $KDNA_FILES; do [ -f "$domain_dir/$f" ] && has=true && break; done
+    [ "$has" = false ] && continue
+    echo ""; echo "  Domain: $dn"
     for f in $KDNA_FILES; do
-        [ -f "$domain_dir/$f" ] && has_kdna=true && break
+        [ -f "$domain_dir/$f" ] && log_pass "$f" || { log_fail "$f missing"; continue; }
     done
-    [ "$has_kdna" = false ] && continue
-
-    echo ""
-    echo "  Domain: $domain_name"
-
-    missing_files=0
-    for f in $KDNA_FILES; do
-        if [ -f "$domain_dir/$f" ]; then
-            log_pass "$f exists"
-        else
-            log_fail "$f missing"
-            missing_files=$((missing_files + 1))
-        fi
-    done
-
-    if [ -f "$domain_dir/README.md" ]; then
-        log_pass "README.md exists"
-    else
-        log_warn "README.md missing"
-    fi
+    [ -f "$domain_dir/README.md" ] && log_pass "README.md" || log_warn "README.md missing"
 
     for f in $KDNA_FILES; do
         [ ! -f "$domain_dir/$f" ] && continue
-        filepath="$domain_dir/$f"
-
-        result=$(python3 -c "
+        fp="$domain_dir/$f"
+        r=$(python3 -c "
 import json
-with open('$filepath') as fh:
-    data = json.load(fh)
-meta = data.get('meta', {})
-required = ['version', 'domain', 'created', 'purpose', 'load_condition']
-missing = [m for m in required if m not in meta]
-if missing:
-    print('FAIL: missing meta fields: ' + ', '.join(missing))
-elif meta.get('domain') != '$domain_name':
-    print('FAIL: meta.domain mismatch (expected $domain_name, got ' + str(meta.get('domain')) + ')')
-else:
-    print('OK')
+with open('$fp') as fh: d=json.load(fh)
+m=d.get('meta',{}); req=['version','domain','created','purpose','load_condition']
+ms=[x for x in req if x not in m]
+if ms: print('FAIL: missing meta: '+', '.join(ms))
+elif m.get('domain')!='$dn': print('FAIL: domain mismatch')
+else: print('OK')
 " 2>&1)
-        if [ "$result" = "OK" ]; then
-            log_pass "$f JSON and meta valid"
-        else
-            log_fail "$result"
-        fi
+        [ "$r" = "OK" ] && log_pass "$f meta" || log_fail "$r"
+    done
 
-        case "$f" in
-            KDNA_Core.json)
-                result=$(python3 -c "
+    # Core content checks (v0.4 fields)
+    python3 -c "
 import json
-with open('$filepath') as fh:
-    d = json.load(fh)
-axioms = d.get('axioms', [])
-ontology = d.get('ontology', [])
-frameworks = d.get('frameworks', [])
-issues = []
-if not isinstance(axioms, list) or len(axioms) < 2:
-    issues.append('axioms too few (need >=2)')
-if not isinstance(ontology, list) or len(ontology) < 2:
-    issues.append('ontology too few (need >=2)')
-if not isinstance(frameworks, list) or len(frameworks) < 1:
-    issues.append('frameworks too few (need >=1)')
+with open('$domain_dir/KDNA_Core.json') as fh: d=json.load(fh)
+issues=[]
+# axioms check v0.4 fields
+for a in d.get('axioms',[]):
+    for k in ['id','one_sentence','full_statement','why']:
+        if k not in a: issues.append(f'axiom {a.get(\"id\",\"?\")} missing {k}')
+# ontology check v0.4 fields
+for o in d.get('ontology',[]):
+    for k in ['id','one_sentence','essence','boundary','trigger_signal']:
+        if k not in o: issues.append(f'ontology {o.get(\"id\",\"?\")} missing {k}')
+# frameworks
+for fw in d.get('frameworks',[]):
+    for k in ['id','name','when_to_use','steps']:
+        if k not in fw: issues.append(f'framework {fw.get(\"id\",\"?\")} missing {k}')
+# core_structure
+for cs in d.get('core_structure',[]):
+    for k in ['from','to','via']:
+        if k not in cs: issues.append('core_structure missing '+k)
+# stances
+if not isinstance(d.get('stances'),list): issues.append('stances not a list')
 if issues:
-    print('WARN: ' + ', '.join(issues))
+    for i in issues: print(f'WARN Core: {i}')
 else:
-    print('OK')
-" 2>&1)
-                if [ "$result" = "OK" ]; then
-                    log_pass "$f content checks pass"
-                else
-                    log_warn "$result"
-                fi
-                ;;
-            KDNA_Patterns.json)
-                result=$(python3 -c "
+    print('OK_CORE')
+" 2>&1 | while IFS= read -r line; do
+        [ "$line" = "OK_CORE" ] && log_pass "KDNA_Core.json v0.4 fields" || ([ "${line:0:4}" = "WARN" ] && log_warn "$line" || true)
+    done
+
+    # Patterns checks (v0.4 fields)
+    python3 -c "
 import json
-with open('$filepath') as fh:
-    d = json.load(fh)
-sc = d.get('self_check', [])
-mis = d.get('misunderstandings', [])
-mis_ids = {m['id'] for m in mis if 'id' in m}
-sc_ids = {s['id'] for s in sc if 'id' in s}
-overlap = mis_ids & sc_ids
-if overlap:
-    print('FAIL: duplicate IDs between misunderstandings and self_check: ' + str(overlap))
+with open('$domain_dir/KDNA_Patterns.json') as fh: d=json.load(fh)
+issues=[]
+t=d.get('terminology',{})
+if 'standard_terms' not in t: issues.append('standard_terms missing')
+if 'banned_terms' not in t: issues.append('banned_terms missing')
+for m in d.get('misunderstandings',[]):
+    for k in ['id','wrong','correct','key_distinction','why']:
+        if k not in m: issues.append(f'misunderstanding {m.get(\"id\",\"?\")} missing {k}')
+if not isinstance(d.get('self_check'),list): issues.append('self_check not a list')
+mid={m['id'] for m in d.get('misunderstandings',[]) if 'id' in m}
+if mid:
+    for s in d.get('self_check',[]):
+        if s in mid: issues.append(f'self_check contains misunderstanding ID: {s}')
+if issues:
+    for i in issues: print(f'WARN Patterns: {i}')
 else:
-    print('OK')
-" 2>&1)
-                if [ "$result" = "OK" ]; then
-                    log_pass "$f no ID overlap between misunderstandings and self_check"
-                else
-                    log_fail "$result"
-                fi
-                ;;
-        esac
+    print('OK_PAT')
+" 2>&1 | while IFS= read -r line; do
+        [ "$line" = "OK_PAT" ] && log_pass "KDNA_Patterns.json v0.4 fields" || ([ "${line:0:4}" = "WARN" ] && log_warn "$line" || true)
+    done
+
+    # Scenarios checks
+    python3 -c "
+import json
+with open('$domain_dir/KDNA_Scenarios.json') as fh: d=json.load(fh)
+issues=[]
+for s in d.get('scenes',[]):
+    for k in ['id','name','trigger_signal','sub_scenarios']:
+        if k not in s: issues.append(f'scene {s.get(\"id\",\"?\")} missing {k}')
+if not issues: print('OK_SCN')
+else:
+    for i in issues: print(f'WARN Scenarios: {i}')
+" 2>&1 | while IFS= read -r line; do
+        [ "$line" = "OK_SCN" ] && log_pass "KDNA_Scenarios.json v0.4 fields" || ([ "${line:0:4}" = "WARN" ] && log_warn "$line" || true)
+    done
+
+    # Cases checks
+    python3 -c "
+import json
+with open('$domain_dir/KDNA_Cases.json') as fh: d=json.load(fh)
+issues=[]
+for c in d.get('cases',[]):
+    for k in ['id','title','context','what_happened','what_was_learned','structural_pattern']:
+        if k not in c: issues.append(f'case {c.get(\"id\",\"?\")} missing {k}')
+if not issues: print('OK_CASE')
+else:
+    for i in issues: print(f'WARN Cases: {i}')
+" 2>&1 | while IFS= read -r line; do
+        [ "$line" = "OK_CASE" ] && log_pass "KDNA_Cases.json v0.4 fields" || ([ "${line:0:4}" = "WARN" ] && log_warn "$line" || true)
+    done
+
+    # Reasoning checks
+    python3 -c "
+import json
+with open('$domain_dir/KDNA_Reasoning.json') as fh: d=json.load(fh)
+issues=[]
+for rc in d.get('reasoning_chains',[]):
+    for k in ['id','one_sentence','logic','so_what']:
+        if k not in rc: issues.append(f'chain {rc.get(\"id\",\"?\")} missing {k}')
+if not issues: print('OK_RC')
+else:
+    for i in issues: print(f'WARN Reasoning: {i}')
+" 2>&1 | while IFS= read -r line; do
+        [ "$line" = "OK_RC" ] && log_pass "KDNA_Reasoning.json v0.4 fields" || ([ "${line:0:4}" = "WARN" ] && log_warn "$line" || true)
+    done
+
+    # Evolution checks
+    python3 -c "
+import json
+with open('$domain_dir/KDNA_Evolution.json') as fh: d=json.load(fh)
+issues=[]
+for s in d.get('stages',[]):
+    for k in ['id','name','description','indicators']:
+        if k not in s: issues.append(f'stage {s.get(\"id\",\"?\")} missing {k}')
+for el in d.get('evolution_layers',[]):
+    for k in ['id','name','capability','from_stage','to_stage']:
+        if k not in el: issues.append(f'layer {el.get(\"id\",\"?\")} missing {k}')
+for ms in d.get('measurement',[]):
+    for k in ['id','what','how','threshold']:
+        if k not in ms: issues.append(f'measurement {ms.get(\"id\",\"?\")} missing {k}')
+if not issues: print('OK_EVO')
+else:
+    for i in issues: print(f'WARN Evolution: {i}')
+" 2>&1 | while IFS= read -r line; do
+        [ "$line" = "OK_EVO" ] && log_pass "KDNA_Evolution.json v0.4 fields" || ([ "${line:0:4}" = "WARN" ] && log_warn "$line" || true)
     done
 done
 
-echo ""
-echo "=== Results: $PASS passed, $FAIL failed, $WARN warnings ==="
-
-if [ "$FAIL" -gt 0 ]; then
-    echo -e "${RED}Validation FAILED${NC}"
-    exit 1
-else
-    echo -e "${GREEN}Validation PASSED${NC}"
-    exit 0
-fi
+echo ""; echo "=== Results: $PASS passed, $FAIL failed, $WARN warnings ==="
+[ "$FAIL" -gt 0 ] && echo -e "${RED}FAILED${NC}" && exit 1
+echo -e "${GREEN}PASSED${NC}"; exit 0

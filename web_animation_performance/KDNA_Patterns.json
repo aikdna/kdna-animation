@@ -1,75 +1,69 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "web_animation_performance",
     "created": "2026-05-21",
     "purpose": "Terminology boundaries, traps, and self-checks for Web Animation Performance.",
     "load_condition": "Load with Core for any generation, review, or refactor task in this domain."
   },
-  "terminology": [
-    {
-      "term": "jank",
-      "definition": "A visible frame drop caused by animation work exceeding the frame budget, resulting in stutter or uneven motion."
-    },
-    {
-      "term": "compositor-only animation",
-      "definition": "Animation that uses exclusively transform, opacity, and hardware-accelerated filter properties, avoiding layout and paint triggers."
-    },
-    {
-      "term": "repaint storm",
-      "definition": "A cascade of paint-only style changes within a single frame that exceed the raster budget."
-    },
-    {
-      "term": "frame budget",
-      "definition": "The strict time ceiling per rendered frame (~16.7ms at 60fps), shared by script, layout, paint, and composite phases."
-    }
-  ],
-  "banned_terms": [
-    {
-      "term": "just add will-change to everything",
-      "why": "will-change consumes GPU memory per element. Overuse degrades performance globally by exhausting compositor memory and triggering layer explosion."
-    },
-    {
-      "term": "it lags, add requestAnimationFrame",
-      "why": "requestAnimationFrame is the default animation loop — adding it does not fix rendering. Diagnose the actual bottleneck first."
-    },
-    {
-      "term": "hardware accelerate it",
-      "why": "Vague term that often leads to translateZ(0) hacks without understanding compositor layer cost. Use measurable criteria instead."
-    }
-  ],
+  "terminology": {
+    "standard_terms": [
+      {
+        "term": "jank",
+        "definition": "A visible frame drop caused by animation work exceeding the frame budget, resulting in stutter or uneven motion."
+      },
+      {
+        "term": "compositor-only animation",
+        "definition": "Animation that uses exclusively transform, opacity, and hardware-accelerated filter properties, avoiding layout and paint triggers."
+      },
+      {
+        "term": "repaint storm",
+        "definition": "A cascade of paint-only style changes within a single frame that exceed the raster budget."
+      },
+      {
+        "term": "frame budget",
+        "definition": "The strict time ceiling per rendered frame (~16.7ms at 60fps), shared by script, layout, paint, and composite phases."
+      }
+    ],
+    "banned_terms": [
+      {
+        "term": "just add will-change to everything",
+        "why": "will-change consumes GPU memory per element. Overuse degrades performance globally by exhausting compositor memory and triggering layer explosion.",
+        "replace_with": "Replace with specific criteria from the domain ontology."
+      },
+      {
+        "term": "it lags, add requestAnimationFrame",
+        "why": "requestAnimationFrame is the default animation loop — adding it does not fix rendering. Diagnose the actual bottleneck first.",
+        "replace_with": "Replace with specific criteria from the domain ontology."
+      },
+      {
+        "term": "hardware accelerate it",
+        "why": "Vague term that often leads to translateZ(0) hacks without understanding compositor layer cost. Use measurable criteria instead.",
+        "replace_with": "Replace with specific criteria from the domain ontology."
+      }
+    ]
+  },
   "misunderstandings": [
     {
-      "id": "M_DEVICE_PERF",
-      "claim": "If it runs smoothly on a developer machine, performance is fine.",
-      "key_distinction": "Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling."
+      "id": "MS-DEVICE_PERF",
+      "wrong": "If it runs smoothly on a developer machine, performance is fine.",
+      "correct": "Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling.",
+      "key_distinction": "Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling.",
+      "why": "Holding the wrong interpretation leads to poor judgment: Developer machines often have 4-8x the GPU power of mid-range mobile devices. Test on the target device tier or use CPU/GPU throttling."
     },
     {
-      "id": "M_FEWER_ELEMENTS",
-      "claim": "Reducing animated elements always improves performance.",
-      "key_distinction": "One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count."
+      "id": "MS-FEWER_ELEMENTS",
+      "wrong": "Reducing animated elements always improves performance.",
+      "correct": "One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count.",
+      "key_distinction": "One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count.",
+      "why": "Holding the wrong interpretation leads to poor judgment: One element animating width can cost more than 50 elements animating transform. The animated property matters more than the element count."
     }
   ],
   "self_check": [
-    {
-      "id": "SC_COMPOSITOR",
-      "question": "Do all animations that run continuously use only compositor-only properties (transform, opacity)?",
-      "pass_condition": "yes_or_no"
-    },
-    {
-      "id": "SC_REDUCED_MOTION",
-      "question": "Does every animation respect prefers-reduced-motion with a functional alternative?",
-      "pass_condition": "yes_or_no"
-    },
-    {
-      "id": "SC_PROFILED",
-      "question": "Was this animation profiled on a throttled CPU/GPU or representative low-end device?",
-      "pass_condition": "yes_or_no"
-    },
-    {
-      "id": "SC_BUDGET",
-      "question": "Does the animation fit within the defined frame budget when profiled?",
-      "pass_condition": "yes_or_no"
-    }
+    "Do all animations that run continuously use only compositor-only properties (transform, opacity)?",
+    "Does every animation respect prefers-reduced-motion with a functional alternative?",
+    "Was this animation profiled on a throttled CPU/GPU or representative low-end device?",
+    "Does the animation fit within the defined frame budget when profiled?"
   ]
 }

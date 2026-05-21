@@ -18,6 +18,9 @@ Icon
 node_modules/
 *.log
 
+# Backups
+.backup_v0.3/
+
 # OS
 Thumbs.db
 ehthumbs.db

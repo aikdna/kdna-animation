@@ -1,17 +1,57 @@
 {
   "name": "animation_kdna_cluster",
   "version": "0.2.0",
-  "created": "2026-05-21",
-  "license": "MIT",
   "purpose": "Open-source KDNA cluster for animation, motion design, GSAP, Motion Canvas, frontend motion systems, AI animation workflows, and review judgment.",
-  "domains": [
-    "motion_design_master",
-    "gsap_master",
-    "motion_canvas_master",
-    "web_animation_performance",
-    "frontend_motion_system",
-    "ai_animation_workflow",
-    "animation_review_master"
+  "packages": [
+    {
+      "id": "motion_design_master",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    },
+    {
+      "id": "gsap_master",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    },
+    {
+      "id": "motion_canvas_master",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    },
+    {
+      "id": "web_animation_performance",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    },
+    {
+      "id": "frontend_motion_system",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    },
+    {
+      "id": "ai_animation_workflow",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    },
+    {
+      "id": "animation_review_master",
+      "role": "primary",
+      "use_when": [
+        "Task matches domain scope"
+      ]
+    }
   ],
   "composition_rules": [
     {
@@ -48,16 +88,10 @@
       ]
     }
   ],
-  "conflict_resolution": [
+  "routing_questions": [
     "accessibility and performance override decorative ambition",
     "attention path overrides effect novelty",
     "domain-specific implementation guidance overrides generic motion taste",
     "when uncertain, reduce simultaneous motion and increase clarity"
-  ],
-  "validation_expectations": [
-    "Each domain folder uses lowercase snake_case.",
-    "Each complete domain contains exactly the six standard KDNA files.",
-    "Each file includes meta.version, meta.domain, meta.created, meta.purpose, and meta.load_condition.",
-    "IDs should be unique inside each file and cross-file references should remain meaningful."
   ]
 }

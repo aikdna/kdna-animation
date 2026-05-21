@@ -1,60 +1,80 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "ai_animation_workflow",
     "created": "2026-05-21",
     "purpose": "Encode agent workflows for briefing, generating, reviewing, refactoring, and shipping animation with AI assistance.",
     "load_condition": "Load when the user is an AI agent generating animation, an engineer briefing an agent for motion tasks, or when establishing an AI-assisted animation pipeline."
   },
-  "domain_title": "AI Animation Workflow",
   "axioms": [
     {
       "id": "AX_BRIEF_FIRST_CODE_SECOND",
-      "statement": "Always produce a structured brief (audience, attention path, timing intent, emotional goal) before writing any animation code.",
+      "one_sentence": "Always produce a structured brief (audience, attention path, timing intent, emotional goal) before writing any animation code.",
+      "full_statement": "Always produce a structured brief (audience, attention path, timing intent, emotional goal) before writing any animation code.",
       "why": "AI agents without a brief default to generic, over-animated output. A brief forces the agent to make explicit choices that can be reviewed and rejected before implementation cost is sunk."
     },
     {
       "id": "AX_AGENT_MUST_STATE_ASSUMPTIONS",
-      "statement": "The agent must list its assumptions about audience, device, brand tone, and context before generating motion.",
+      "one_sentence": "The agent must list its assumptions about audience, device, brand tone, and context before generating motion.",
+      "full_statement": "The agent must list its assumptions about audience, device, brand tone, and context before generating motion.",
       "why": "Unstated assumptions cause the most common AI animation failure: a technically correct animation that is contextually wrong. Stating assumptions makes them debatable."
     },
     {
       "id": "AX_REVIEW_BEFORE_EXPANSION",
-      "statement": "Review the minimal viable animation before adding complexity, variants, or secondary motion.",
+      "one_sentence": "Review the minimal viable animation before adding complexity, variants, or secondary motion.",
+      "full_statement": "Review the minimal viable animation before adding complexity, variants, or secondary motion.",
       "why": "Agents tend to expand scope prematurely. A reviewed 3-beat sequence is worth more than an unreviewed 12-beat scene. Review locks the direction before effort scales."
     },
     {
       "id": "AX_HUMAN_TASTE_IS_A_REQUIRED_SIGNAL",
-      "statement": "Human feedback on timing, feel, and emotion is non-negotiable quality input — it cannot be replaced by heuristics or automated checks.",
+      "one_sentence": "Human feedback on timing, feel, and emotion is non-negotiable quality input — it cannot be replaced by heuristics or automated checks.",
+      "full_statement": "Human feedback on timing, feel, and emotion is non-negotiable quality input — it cannot be replaced by heuristics or automated checks.",
       "why": "Motion quality is subjective at its highest level. Automated lint rules catch performance and accessibility but cannot judge whether a hold feels confident or anxious. The human in the loop is the final calibrator."
     }
   ],
   "ontology": [
     {
-      "name": "brief",
-      "definition": "A structured pre-generation document specifying audience, attention path, timing intent, emotional goal, surface constraints, and success criteria."
+      "id": "brief",
+      "one_sentence": "A structured pre-generation document specifying audience, attention path, timing intent, emotional goal, surface constraints, and success criteria.",
+      "essence": "A structured pre-generation document specifying audience, attention path, timing intent, emotional goal, surface constraints, and success criteria.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'brief' or describes this scenario."
     },
     {
-      "name": "assumption",
-      "definition": "An explicit statement by the agent about an unknown constraint (e.g., brand tone, device tier, user reading speed) that influences the animation but was not provided in the prompt."
+      "id": "assumption",
+      "one_sentence": "An explicit statement by the agent about an unknown constraint (e.g., brand tone, device tier, user reading speed) that influences the animation but was not provided in the prompt.",
+      "essence": "An explicit statement by the agent about an unknown constraint (e.g., brand tone, device tier, user reading speed) that influences the animation but was not provided in the prompt.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'assumption' or describes this scenario."
     },
     {
-      "name": "review loop",
-      "definition": "A human-in-the-loop cycle of generation, review against criteria, feedback capture, and revision — repeated until quality thresholds are met."
+      "id": "review_loop",
+      "one_sentence": "A human-in-the-loop cycle of generation, review against criteria, feedback capture, and revision — repeated until quality thresholds are met.",
+      "essence": "A human-in-the-loop cycle of generation, review against criteria, feedback capture, and revision — repeated until quality thresholds are met.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'review loop' or describes this scenario."
     },
     {
-      "name": "quality signal",
-      "definition": "A measurable or observable indicator that animation quality improved or degraded after a revision."
+      "id": "quality_signal",
+      "one_sentence": "A measurable or observable indicator that animation quality improved or degraded after a revision.",
+      "essence": "A measurable or observable indicator that animation quality improved or degraded after a revision.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'quality signal' or describes this scenario."
     },
     {
-      "name": "expansion trap",
-      "definition": "The agent pattern of adding more tweens, variants, or secondary motion before the primary animation has been reviewed and approved."
+      "id": "expansion_trap",
+      "one_sentence": "The agent pattern of adding more tweens, variants, or secondary motion before the primary animation has been reviewed and approved.",
+      "essence": "The agent pattern of adding more tweens, variants, or secondary motion before the primary animation has been reviewed and approved.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'expansion trap' or describes this scenario."
     }
   ],
   "frameworks": [
     {
       "id": "FW_AGENT_BRIEF",
       "name": "Agent animation brief template",
+      "when_to_use": "Apply when the task matches the 'Agent animation brief template' pattern.",
       "steps": [
         "state the primary viewer task",
         "define the attention path (what, when, where)",
@@ -66,6 +86,7 @@
     {
       "id": "FW_REVIEW_LOOP",
       "name": "Four-step review loop",
+      "when_to_use": "Apply when the task matches the 'Four-step review loop' pattern.",
       "steps": [
         "generate minimal viable animation from brief",
         "human reviews and marks: keep / adjust / replace for each beat",
@@ -74,19 +95,20 @@
       ]
     }
   ],
-  "core_structure": {
-    "input": "user prompt with animation request (potentially vague), implementation environment, existing codebase",
-    "judgment": "brief completeness, assumption clarity, review loop readiness, human taste signal availability",
-    "output": "structured brief, stated assumptions, minimal viable animation, review artifacts, revision log"
-  },
-  "stances": [
+  "core_structure": [
     {
-      "id": "ST_NEVER_GUESS_TASTE",
-      "stance": "When taste is required and unspecified, ask the human — never substitute the agent's default aesthetic."
+      "from": "user prompt with animation request (potentially vague), implementation environment, existing codebase",
+      "to": "brief completeness, assumption clarity, review loop readiness, human taste signal availability",
+      "via": "domain axioms and frameworks"
     },
     {
-      "id": "ST_SMALL_FIRST",
-      "stance": "Ship the 3-beat reviewed animation over the 12-beat unreviewed one every time."
+      "from": "brief completeness, assumption clarity, review loop readiness, human taste signal availability",
+      "to": "structured brief, stated assumptions, minimal viable animation, review artifacts, revision log",
+      "via": "scenario-specific action orientation"
     }
+  ],
+  "stances": [
+    "When taste is required and unspecified, ask the human — never substitute the agent's default aesthetic.",
+    "Ship the 3-beat reviewed animation over the 12-beat unreviewed one every time."
   ]
 }

@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "frontend_motion_system",
     "created": "2026-05-21",
     "purpose": "Reasoning chains for why a motion decision is right or wrong.",
@@ -9,7 +10,7 @@
   "reasoning_chains": [
     {
       "id": "RC_TOKENS_SCALE",
-      "conclusion": "A motion design system must define token scales before building any primitives.",
+      "one_sentence": "A motion design system must define token scales before building any primitives.",
       "logic": [
         "Without tokens, every primitive decision is arbitrary and unreviewable.",
         "Tokens create a shared language between designers and engineers.",
@@ -20,7 +21,7 @@
     },
     {
       "id": "RC_PRIMITIVES_MAINTAINABLE",
-      "conclusion": "Motion primitives reduce long-term maintenance cost by 10x or more.",
+      "one_sentence": "Motion primitives reduce long-term maintenance cost by 10x or more.",
       "logic": [
         "Inline animation values in 40+ components create 40+ points of failure and inconsistency.",
         "Changing the brand's motion feel requires touching every component individually.",
@@ -31,7 +32,7 @@
     },
     {
       "id": "RC_TOKEN_BY_INTERACTION_CATEGORY",
-      "conclusion": "One universal animation duration scale produces uniform, uncommunicative motion. Different interaction categories need different timing scales.",
+      "one_sentence": "One universal animation duration scale produces uniform, uncommunicative motion. Different interaction categories need different timing scales.",
       "logic": [
         "A button hover and a page transition serve completely different cognitive purposes — micro-feedback vs. macro-navigation.",
         "Using the same duration for both erases the information hierarchy that timing is supposed to create.",
@@ -42,7 +43,7 @@
     },
     {
       "id": "RC_DOCUMENTATION_MUST_BE_EXECUTABLE",
-      "conclusion": "Motion system documentation that cannot be copied and pasted into a codebase and run immediately is documentation that will not be used.",
+      "one_sentence": "Motion system documentation that cannot be copied and pasted into a codebase and run immediately is documentation that will not be used.",
       "logic": [
         "Motion is inherently temporal — static screenshots of animation are useless.",
         "Engineers adopt what they can copy. If the docs show a code example that doesn't work without additional setup, the engineer will write their own animation instead.",
@@ -53,7 +54,7 @@
     },
     {
       "id": "RC_CI_AS_QUALITY_GATE",
-      "conclusion": "A motion system without CI enforcement is a suggestion, not a system. CI lint rules are the difference between a documented library and an enforced standard.",
+      "one_sentence": "A motion system without CI enforcement is a suggestion, not a system. CI lint rules are the difference between a documented library and an enforced standard.",
       "logic": [
         "Documentation alone cannot prevent drift. Under deadline pressure, even well-intentioned developers write `transition: all 0.3s`.",
         "CI enforcement creates a hard boundary: raw animation values cannot be merged. The only path to shipping is through the primitive library.",

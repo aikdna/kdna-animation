@@ -1,31 +1,96 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "frontend_motion_system",
     "created": "2026-05-21",
     "purpose": "Scenario signals and action orientation.",
     "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
   },
-  "scenarios": [
+  "scenes": [
     {
       "id": "SCN_TOKEN_BUILD",
-      "trigger": "Team wants to standardize motion across the product.",
-      "orientation": "Start with an audit of existing animations, extract common patterns, define 3-5 values per token scale, build one primitive as proof of concept, then expand."
+      "name": "Team wants to standardize motion across the product.",
+      "trigger_signal": "Team wants to standardize motion across the product.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-001",
+          "trap_belief": "Team wants to standardize motion across the product.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Start with an audit of existing animations, extract common patterns, define 3-5 values per token scale, build one primitive as proof of concept, then expand."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_PRIMITIVE_GAP",
-      "trigger": "Developer writes a one-off animation when a primitive exists.",
-      "orientation": "Check if the existing primitive can cover the use case or needs a variant. If a new pattern is genuinely needed, add it to the system — don't allow bypass."
+      "name": "Developer writes a one-off animation when a primitive exists.",
+      "trigger_signal": "Developer writes a one-off animation when a primitive exists.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-002",
+          "trap_belief": "Developer writes a one-off animation when a primitive exists.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Check if the existing primitive can cover the use case or needs a variant. If a new pattern is genuinely needed, add it to the system — don't allow bypass."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_DESIGNER_ENGINEER_GAP",
-      "trigger": "Designer specifies animation that cannot be built as a token.",
-      "orientation": "Translate the designer's intent into the token system: identify the semantic purpose, map to existing duration and easing scales, and prototype together."
+      "name": "Designer specifies animation that cannot be built as a token.",
+      "trigger_signal": "Designer specifies animation that cannot be built as a token.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-003",
+          "trap_belief": "Designer specifies animation that cannot be built as a token.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Translate the designer's intent into the token system: identify the semantic purpose, map to existing duration and easing scales, and prototype together."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_ADOPTION_AUDIT",
-      "trigger": "Need to measure motion system adoption.",
-      "orientation": "Run lint rules to count raw animation values vs. token references. Track per-component adoption rate. Focus migration effort on the 20% of components driving 80% of animation code."
+      "name": "Need to measure motion system adoption.",
+      "trigger_signal": "Need to measure motion system adoption.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-004",
+          "trap_belief": "Need to measure motion system adoption.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Run lint rules to count raw animation values vs. token references. Track per-component adoption rate. Focus migration effort on the 20% of components driving 80% of animation code."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     }
   ]
 }

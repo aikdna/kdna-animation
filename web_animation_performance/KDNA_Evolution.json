@@ -1,15 +1,17 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "web_animation_performance",
     "created": "2026-05-21",
     "purpose": "Capability stages, practice loops, and measurable indicators.",
     "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
   },
-  "capability_layers": [
+  "stages": [
     {
-      "level": "L1",
+      "id": "STG-L1",
       "name": "Animation hygiene",
+      "description": "Stage L1: Animation hygiene",
       "indicators": [
         "no layout-triggering property animations",
         "reduced-motion fallbacks present",
@@ -17,8 +19,9 @@
       ]
     },
     {
-      "level": "L2",
+      "id": "STG-L2",
       "name": "Profile-driven performance",
+      "description": "Stage L2: Profile-driven performance",
       "indicators": [
         "every animation profiled on throttled hardware",
         "frame budget defined and enforced per interaction",
@@ -27,8 +30,9 @@
       ]
     },
     {
-      "level": "L3",
+      "id": "STG-L3",
       "name": "Performance engineering culture",
+      "description": "Stage L3: Performance engineering culture",
       "indicators": [
         "animation frame budget enforced in CI",
         "team has shared performance vocabulary",
@@ -37,20 +41,58 @@
       ]
     }
   ],
-  "practice_loop": [
-    "profile the current animation with DevTools",
-    "identify the bottleneck phase",
-    "replace layout-triggering properties with compositor equivalents",
-    "re-profile to confirm improvement",
-    "test on throttled hardware and with reduced-motion",
-    "document the frame budget in the component"
+  "evolution_layers": [
+    {
+      "id": "EVL-001",
+      "name": "Animation hygiene → Profile-driven performance",
+      "capability": "Progress from Animation hygiene to Profile-driven performance",
+      "from_stage": "STG-L1",
+      "to_stage": "STG-L2"
+    },
+    {
+      "id": "EVL-002",
+      "name": "Profile-driven performance → Performance engineering culture",
+      "capability": "Progress from Profile-driven performance to Performance engineering culture",
+      "from_stage": "STG-L2",
+      "to_stage": "STG-L3"
+    }
   ],
-  "measurable_indicators": [
-    "frames_per_second_at_budget",
-    "layout_trigger_count",
-    "forced_sync_layout_count",
-    "gpu_memory_usage_mb",
-    "scroll_jank_percentage",
-    "reduced_motion_coverage"
+  "measurement": [
+    {
+      "id": "MSR-frames_per_second_at",
+      "what": "frames_per_second_at_budget",
+      "how": "Track frames_per_second_at_budget over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-layout_trigger_count",
+      "what": "layout_trigger_count",
+      "how": "Track layout_trigger_count over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-forced_sync_layout_c",
+      "what": "forced_sync_layout_count",
+      "how": "Track forced_sync_layout_count over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-gpu_memory_usage_mb",
+      "what": "gpu_memory_usage_mb",
+      "how": "Track gpu_memory_usage_mb over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-scroll_jank_percenta",
+      "what": "scroll_jank_percentage",
+      "how": "Track scroll_jank_percentage over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-reduced_motion_cover",
+      "what": "reduced_motion_coverage",
+      "how": "Track reduced_motion_coverage over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    }
   ]
 }

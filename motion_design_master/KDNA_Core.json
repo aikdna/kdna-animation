@@ -1,56 +1,73 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_design_master",
     "created": "2026-05-21",
     "purpose": "Encode director-level motion judgment: attention, timing, easing, choreography, emotional intent, and restraint before implementation.",
     "load_condition": "Load for any task involving animation direction, motion quality decisions, or when the user describes desired feel (premium, playful, urgent, calm) without concrete motion parameters."
   },
-  "domain_title": "Motion Design Master",
   "axioms": [
     {
       "id": "AX_ATTENTION_FIRST",
-      "statement": "Motion exists to control attention before it exists to decorate.",
+      "one_sentence": "Motion exists to control attention before it exists to decorate.",
+      "full_statement": "Motion exists to control attention before it exists to decorate.",
       "why": "If the viewer does not know where to look, the animation has failed."
     },
     {
       "id": "AX_TIMING_IS_MEANING",
-      "statement": "Timing communicates confidence, urgency, elegance, playfulness, or friction.",
+      "one_sentence": "Timing communicates confidence, urgency, elegance, playfulness, or friction.",
+      "full_statement": "Timing communicates confidence, urgency, elegance, playfulness, or friction.",
       "why": "The same movement with different duration and easing changes meaning."
     },
     {
       "id": "AX_RESTRAINT_CREATES_PREMIUM",
-      "statement": "Premium motion is usually precise, sparse, and intentional.",
+      "one_sentence": "Premium motion is usually precise, sparse, and intentional.",
+      "full_statement": "Premium motion is usually precise, sparse, and intentional.",
       "why": "Overanimated scenes feel cheap, anxious, and AI-generated."
     },
     {
       "id": "AX_CHOREOGRAPHY_OVER_EFFECTS",
-      "statement": "The sequence of events matters more than the novelty of individual effects.",
+      "one_sentence": "The sequence of events matters more than the novelty of individual effects.",
+      "full_statement": "The sequence of events matters more than the novelty of individual effects.",
       "why": "A good animation guides thought; an effect only attracts attention."
     }
   ],
   "ontology": [
     {
-      "name": "subject",
-      "definition": "The element that should receive primary attention."
+      "id": "subject",
+      "one_sentence": "The element that should receive primary attention.",
+      "essence": "The element that should receive primary attention.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'subject' or describes this scenario."
     },
     {
-      "name": "supporting motion",
-      "definition": "Secondary movement that clarifies relationships without competing."
+      "id": "supporting_motion",
+      "one_sentence": "Secondary movement that clarifies relationships without competing.",
+      "essence": "Secondary movement that clarifies relationships without competing.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'supporting motion' or describes this scenario."
     },
     {
-      "name": "tempo",
-      "definition": "The rhythm of a scene across all movements."
+      "id": "tempo",
+      "one_sentence": "The rhythm of a scene across all movements.",
+      "essence": "The rhythm of a scene across all movements.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'tempo' or describes this scenario."
     },
     {
-      "name": "hold",
-      "definition": "Intentional stillness that lets meaning land."
+      "id": "hold",
+      "one_sentence": "Intentional stillness that lets meaning land.",
+      "essence": "Intentional stillness that lets meaning land.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'hold' or describes this scenario."
     }
   ],
   "frameworks": [
     {
       "id": "FW_AIM",
       "name": "AIM: Attention, Intent, Motion",
+      "when_to_use": "Apply when the task matches the 'AIM: Attention, Intent, Motion' pattern.",
       "steps": [
         "define the viewer attention path",
         "state the communication intent",
@@ -60,6 +77,7 @@
     {
       "id": "FW_3L",
       "name": "Three-layer choreography",
+      "when_to_use": "Apply when the task matches the 'Three-layer choreography' pattern.",
       "steps": [
         "anchor movement",
         "supporting reveal",
@@ -67,19 +85,20 @@
       ]
     }
   ],
-  "core_structure": {
-    "input": "brief, audience, surface, constraints, brand tone, implementation environment",
-    "judgment": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
-    "output": "motion direction, implementation guidance, critique, and measurable acceptance criteria"
-  },
-  "stances": [
+  "core_structure": [
     {
-      "id": "ST_NO_DECORATIVE_NOISE",
-      "stance": "Reject animation that competes with the message."
+      "from": "brief, audience, surface, constraints, brand tone, implementation environment",
+      "to": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+      "via": "domain axioms and frameworks"
     },
     {
-      "id": "ST_WORLD_CLASS_IS_LEGIBLE",
-      "stance": "The highest standard is not complexity; it is legible emotional precision."
+      "from": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+      "to": "motion direction, implementation guidance, critique, and measurable acceptance criteria",
+      "via": "scenario-specific action orientation"
     }
+  ],
+  "stances": [
+    "Reject animation that competes with the message.",
+    "The highest standard is not complexity; it is legible emotional precision."
   ]
 }

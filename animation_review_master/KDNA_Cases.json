@@ -1,6 +1,7 @@
 {
   "meta": {
-    "version": "0.1.1",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "animation_review_master",
     "created": "2026-05-21",
     "purpose": "Examples that show judgment structure rather than scripts.",
@@ -9,33 +10,43 @@
   "cases": [
     {
       "id": "CASE_OVERANIMATED_HERO",
-      "brief": "A SaaS hero section has 7 elements animating simultaneously with mixed easings.",
-      "bad_pattern": "Title fades in from left, subtitle scales from center, CTA bounces from bottom, background image zooms, floating icons orbit, gradient shifts, and a counter ticks up — all at once. Result: viewer cannot identify the primary message.",
-      "master_pattern": "Diagnose: 7 motion groups active simultaneously, 3 different easing characters, no holds. Fix: title enters first (hold 500ms), subtitle reveals (hold 400ms), CTA appears (hold), background and decorative elements remain still. Result: clear attention path, 3 groups max at any moment."
+      "title": "A SaaS hero section has 7 elements animating simultaneously with mixed easings.",
+      "context": "A SaaS hero section has 7 elements animating simultaneously with mixed easings.",
+      "what_happened": "Title fades in from left, subtitle scales from center, CTA bounces from bottom, background image zooms, floating icons orbit, gradient shifts, and a counter ticks up — all at once. Result: viewer cannot identify the primary message.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Diagnose: 7 motion groups active simultaneously, 3 different easing characters, no holds. Fix: title enters first (hold 500ms), subtitle reveals (hold 400ms), CTA appears (hold), background and decorative elements remain still. Result: clear attention path, 3 groups max at any moment."
     },
     {
       "id": "CASE_AI_LOOKING_VIDEO",
-      "brief": "An AI-generated explainer video feels robotic and emotionally flat.",
-      "bad_pattern": "All scene transitions are uniform 400ms with power2.inOut. Every hold is exactly 200ms. Objects appear and disappear at regular intervals. No timing accent, no surprise, no rhythm.",
-      "master_pattern": "Diagnose: uniform timing across all beats, uniform easing, no variation in hold length. Fix: make one transition snappier (200ms with power3.in), one slower (700ms with power4.out), one hold longer (800ms before the key insight). Add one rhythmic surprise where something appears slightly early."
+      "title": "An AI-generated explainer video feels robotic and emotionally flat.",
+      "context": "An AI-generated explainer video feels robotic and emotionally flat.",
+      "what_happened": "All scene transitions are uniform 400ms with power2.inOut. Every hold is exactly 200ms. Objects appear and disappear at regular intervals. No timing accent, no surprise, no rhythm.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Diagnose: uniform timing across all beats, uniform easing, no variation in hold length. Fix: make one transition snappier (200ms with power3.in), one slower (700ms with power4.out), one hold longer (800ms before the key insight). Add one rhythmic surprise where something appears slightly early."
     },
     {
       "id": "CASE_READING_COMPETITION",
-      "brief": "A long-form article page animates parallax backgrounds and floating illustrations while the user is trying to read body text.",
-      "bad_pattern": "As the user scrolls, a parallax illustration shifts in the opposite direction, gradient blobs drift across the background, and floating shapes orbit the text column. The user is trying to read 800 words of technical content while the page is in continuous motion. Reading comprehension drops because the peripheral visual system is constantly tracking movement. Users abandon the article without knowing why — they just feel it's 'hard to read.'",
-      "master_pattern": "Diagnose: motion is competing with the viewer's primary task (reading). Fix: freeze all decorative motion when text is in the viewport. If parallax is essential for brand atmosphere, reduce amplitude to under 15px and duration to 3+ seconds — below the threshold of conscious distraction. The rule: when text is present, motion must not compete with reading. This is the single most common failure in content-heavy animated pages."
+      "title": "A long-form article page animates parallax backgrounds and floating illustrations while the user is trying to read body text.",
+      "context": "A long-form article page animates parallax backgrounds and floating illustrations while the user is trying to read body text.",
+      "what_happened": "As the user scrolls, a parallax illustration shifts in the opposite direction, gradient blobs drift across the background, and floating shapes orbit the text column. The user is trying to read 800 words of technical content while the page is in continuous motion. Reading comprehension drops because the peripheral visual system is constantly tracking movement. Users abandon the article without knowing why — they just feel it's 'hard to read.'",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Diagnose: motion is competing with the viewer's primary task (reading). Fix: freeze all decorative motion when text is in the viewport. If parallax is essential for brand atmosphere, reduce amplitude to under 15px and duration to 3+ seconds — below the threshold of conscious distraction. The rule: when text is present, motion must not compete with reading. This is the single most common failure in content-heavy animated pages."
     },
     {
       "id": "CASE_EASING_MISMATCH_DISASTER",
-      "brief": "A cybersecurity company's product launch video uses elastic easing on every element.",
-      "bad_pattern": "The headline wobbles in with elastic.out, the lock icon overshoots and settles, the 'Secure Your Data' CTA bounces twice before stopping. The animation reads as playful and casual — a toy demo, not a security product. The motion grammar directly undermines the brand's core promise of stability and trustworthiness.",
-      "master_pattern": "Diagnose: easing character contradicts brand tone. Fix: switch to power3.inOut or power4.out for all entrances — no overshoot, no bounce. Add a subtle deceleration at the end of each movement (the element settles with deliberate weight). The headline should feel like it locks into place, not like it wobbled in. Motion must reinforce the brand promise — stability for security, precision for finance, warmth for healthcare, playfulness for games."
+      "title": "A cybersecurity company's product launch video uses elastic easing on every element.",
+      "context": "A cybersecurity company's product launch video uses elastic easing on every element.",
+      "what_happened": "The headline wobbles in with elastic.out, the lock icon overshoots and settles, the 'Secure Your Data' CTA bounces twice before stopping. The animation reads as playful and casual — a toy demo, not a security product. The motion grammar directly undermines the brand's core promise of stability and trustworthiness.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Diagnose: easing character contradicts brand tone. Fix: switch to power3.inOut or power4.out for all entrances — no overshoot, no bounce. Add a subtle deceleration at the end of each movement (the element settles with deliberate weight). The headline should feel like it locks into place, not like it wobbled in. Motion must reinforce the brand promise — stability for security, precision for finance, warmth for healthcare, playfulness for games."
     },
     {
       "id": "CASE_SCROLL_HIJACK",
-      "brief": "A portfolio site uses smooth scrolling that overrides native scroll behavior for 'a premium experience.'",
-      "bad_pattern": "The page intercepts all scroll events and replaces them with a custom smooth-scroll animation. The scroll wheel no longer behaves as expected — a small flick scrolls through 3 sections, a large scroll barely moves. Users who rely on scroll gestures for navigation (accessibility, muscle memory) find the page unusable. The 'premium' feel destroys usability.",
-      "master_pattern": "Diagnose: scroll behavior conflicts with user expectations and accessibility. Fix: never override native scroll for navigation — it breaks muscle memory and assistive technology. Use scroll-linked animation (ScrollTrigger scrub) to enhance content within sections, not to control navigation between sections. Users must retain full scroll control. If smooth section transitions are essential, use a 'snap to section' behavior that activates only after the user stops scrolling, not during."
+      "title": "A portfolio site uses smooth scrolling that overrides native scroll behavior for 'a premium experience.'",
+      "context": "A portfolio site uses smooth scrolling that overrides native scroll behavior for 'a premium experience.'",
+      "what_happened": "The page intercepts all scroll events and replaces them with a custom smooth-scroll animation. The scroll wheel no longer behaves as expected — a small flick scrolls through 3 sections, a large scroll barely moves. Users who rely on scroll gestures for navigation (accessibility, muscle memory) find the page unusable. The 'premium' feel destroys usability.",
+      "what_was_learned": "The root cause is a structural problem that can be diagnosed and fixed with domain-specific patterns.",
+      "structural_pattern": "Diagnose: scroll behavior conflicts with user expectations and accessibility. Fix: never override native scroll for navigation — it breaks muscle memory and assistive technology. Use scroll-linked animation (ScrollTrigger scrub) to enhance content within sections, not to control navigation between sections. Users must retain full scroll control. If smooth section transitions are essential, use a 'snap to section' behavior that activates only after the user stops scrolling, not during."
     }
   ]
 }

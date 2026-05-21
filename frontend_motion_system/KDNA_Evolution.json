@@ -1,15 +1,17 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "frontend_motion_system",
     "created": "2026-05-21",
     "purpose": "Capability stages, practice loops, and measurable indicators.",
     "load_condition": "Load for learning, team standards, audits, or progressive quality improvement."
   },
-  "capability_layers": [
+  "stages": [
     {
-      "level": "L1",
+      "id": "STG-L1",
       "name": "Consistent motion",
+      "description": "Stage L1: Consistent motion",
       "indicators": [
         "duration and easing values are consistent across components",
         "no copy-pasted animation blocks",
@@ -17,8 +19,9 @@
       ]
     },
     {
-      "level": "L2",
+      "id": "STG-L2",
       "name": "Tokenized motion system",
+      "description": "Stage L2: Tokenized motion system",
       "indicators": [
         "full token scale defined (duration, easing, distance)",
         "shared motion primitives cover 80% of animation patterns",
@@ -27,8 +30,9 @@
       ]
     },
     {
-      "level": "L3",
+      "id": "STG-L3",
       "name": "Motion-as-infrastructure",
+      "description": "Stage L3: Motion-as-infrastructure",
       "indicators": [
         "new components automatically inherit motion behavior from context",
         "animation telemetry tracks real-user rendering performance",
@@ -37,20 +41,58 @@
       ]
     }
   ],
-  "practice_loop": [
-    "audit one product surface for inline animation values",
-    "extract the most common patterns into tokens",
-    "build one primitive as a proof of concept",
-    "migrate 5 components to use the primitive",
-    "get designer feedback on live previews, not mockups",
-    "repeat for remaining animation patterns"
+  "evolution_layers": [
+    {
+      "id": "EVL-001",
+      "name": "Consistent motion → Tokenized motion system",
+      "capability": "Progress from Consistent motion to Tokenized motion system",
+      "from_stage": "STG-L1",
+      "to_stage": "STG-L2"
+    },
+    {
+      "id": "EVL-002",
+      "name": "Tokenized motion system → Motion-as-infrastructure",
+      "capability": "Progress from Tokenized motion system to Motion-as-infrastructure",
+      "from_stage": "STG-L2",
+      "to_stage": "STG-L3"
+    }
   ],
-  "measurable_indicators": [
-    "percentage_of_components_using_primitives",
-    "duration_variance_across_components",
-    "easing_consistency_score",
-    "token_coverage_of_animation_patterns",
-    "time_to_migrate_one_component",
-    "designer_accessible_primitive_count"
+  "measurement": [
+    {
+      "id": "MSR-percentage_of_compon",
+      "what": "percentage_of_components_using_primitives",
+      "how": "Track percentage_of_components_using_primitives over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-duration_variance_ac",
+      "what": "duration_variance_across_components",
+      "how": "Track duration_variance_across_components over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-easing_consistency_s",
+      "what": "easing_consistency_score",
+      "how": "Track easing_consistency_score over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-token_coverage_of_an",
+      "what": "token_coverage_of_animation_patterns",
+      "how": "Track token_coverage_of_animation_patterns over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-time_to_migrate_one_",
+      "what": "time_to_migrate_one_component",
+      "how": "Track time_to_migrate_one_component over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    },
+    {
+      "id": "MSR-designer_accessible_",
+      "what": "designer_accessible_primitive_count",
+      "how": "Track designer_accessible_primitive_count over iterations of the practice loop.",
+      "threshold": "Improving trend over 3+ iterations"
+    }
   ]
 }

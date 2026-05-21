@@ -1,56 +1,73 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_canvas_master",
     "created": "2026-05-21",
     "purpose": "Encode world-class judgment for programmatic video animation with Motion Canvas: scenes, signals, layout, camera rhythm, explainers, and code maintainability.",
     "load_condition": "Load when the task involves Motion Canvas, programmatic video generation, technical explainer videos, or converting code architecture into visual animations."
   },
-  "domain_title": "Motion Canvas Master",
   "axioms": [
     {
       "id": "AX_SCENE_IS_ARGUMENT",
-      "statement": "A Motion Canvas scene should express one argument or one visual transformation.",
+      "one_sentence": "A Motion Canvas scene should express one argument or one visual transformation.",
+      "full_statement": "A Motion Canvas scene should express one argument or one visual transformation.",
       "why": "Overloaded scenes become hard to read, review, and reuse."
     },
     {
       "id": "AX_CODE_IS_STORYBOARD",
-      "statement": "Animation code must remain readable as a storyboard.",
+      "one_sentence": "Animation code must remain readable as a storyboard.",
+      "full_statement": "Animation code must remain readable as a storyboard.",
       "why": "If timing logic is scattered, the video cannot be directed."
     },
     {
       "id": "AX_VISUAL_PROOF",
-      "statement": "Technical animations should prove an idea visually, not merely decorate narration.",
+      "one_sentence": "Technical animations should prove an idea visually, not merely decorate narration.",
+      "full_statement": "Technical animations should prove an idea visually, not merely decorate narration.",
       "why": "The viewer should understand the logic even with the sound muted."
     },
     {
       "id": "AX_REUSABLE_MOTIFS",
-      "statement": "Repeated visual motifs create cognitive continuity.",
+      "one_sentence": "Repeated visual motifs create cognitive continuity.",
+      "full_statement": "Repeated visual motifs create cognitive continuity.",
       "why": "Explainers become memorable when transformations reuse visual grammar."
     }
   ],
   "ontology": [
     {
-      "name": "scene",
-      "definition": "A self-contained motion unit with one communication purpose."
+      "id": "scene",
+      "one_sentence": "A self-contained motion unit with one communication purpose.",
+      "essence": "A self-contained motion unit with one communication purpose.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'scene' or describes this scenario."
     },
     {
-      "name": "signal",
-      "definition": "A reactive value that drives animation state over time."
+      "id": "signal",
+      "one_sentence": "A reactive value that drives animation state over time.",
+      "essence": "A reactive value that drives animation state over time.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'signal' or describes this scenario."
     },
     {
-      "name": "layout",
-      "definition": "A composition structure that determines spatial hierarchy."
+      "id": "layout",
+      "one_sentence": "A composition structure that determines spatial hierarchy.",
+      "essence": "A composition structure that determines spatial hierarchy.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'layout' or describes this scenario."
     },
     {
-      "name": "beat",
-      "definition": "A time segment where one idea changes visually."
+      "id": "beat",
+      "one_sentence": "A time segment where one idea changes visually.",
+      "essence": "A time segment where one idea changes visually.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'beat' or describes this scenario."
     }
   ],
   "frameworks": [
     {
       "id": "FW_SCENE_BEAT",
       "name": "Scene-beat structure",
+      "when_to_use": "Apply when the task matches the 'Scene-beat structure' pattern.",
       "steps": [
         "one scene goal",
         "3-5 visual beats",
@@ -61,6 +78,7 @@
     {
       "id": "FW_EXPLAINER_LADDER",
       "name": "Explainer ladder",
+      "when_to_use": "Apply when the task matches the 'Explainer ladder' pattern.",
       "steps": [
         "concrete object",
         "relationship",
@@ -70,19 +88,20 @@
       ]
     }
   ],
-  "core_structure": {
-    "input": "brief, audience, surface, constraints, brand tone, implementation environment",
-    "judgment": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
-    "output": "motion direction, implementation guidance, critique, and measurable acceptance criteria"
-  },
-  "stances": [
+  "core_structure": [
     {
-      "id": "ST_READABLE_CODE",
-      "stance": "Prefer composable scene components and named animation beats over clever but opaque code."
+      "from": "brief, audience, surface, constraints, brand tone, implementation environment",
+      "to": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+      "via": "domain axioms and frameworks"
     },
     {
-      "id": "ST_SHOW_CAUSALITY",
-      "stance": "Use motion to reveal cause and effect, not just make diagrams move."
+      "from": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+      "to": "motion direction, implementation guidance, critique, and measurable acceptance criteria",
+      "via": "scenario-specific action orientation"
     }
+  ],
+  "stances": [
+    "Prefer composable scene components and named animation beats over clever but opaque code.",
+    "Use motion to reveal cause and effect, not just make diagrams move."
   ]
 }

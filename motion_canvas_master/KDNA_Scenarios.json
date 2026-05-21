@@ -1,26 +1,75 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "motion_canvas_master",
     "created": "2026-05-21",
     "purpose": "Scenario signals and action orientation.",
     "load_condition": "Load when user intent includes a concrete production situation, implementation target, failure symptom, or review request."
   },
-  "scenarios": [
+  "scenes": [
     {
       "id": "SCN_TECH_DEMO",
-      "trigger": "Need animated video explaining a technical concept.",
-      "orientation": "Turn abstract terms into visible objects, animate relationships, then show the consequence."
+      "name": "Need animated video explaining a technical concept.",
+      "trigger_signal": "Need animated video explaining a technical concept.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-001",
+          "trap_belief": "Need animated video explaining a technical concept.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Turn abstract terms into visible objects, animate relationships, then show the consequence."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_CODE_TO_VIDEO",
-      "trigger": "Need to convert code architecture into an animation.",
-      "orientation": "Build reusable visual components for modules, data flow, state, and failure points."
+      "name": "Need to convert code architecture into an animation.",
+      "trigger_signal": "Need to convert code architecture into an animation.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-002",
+          "trap_belief": "Need to convert code architecture into an animation.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Build reusable visual components for modules, data flow, state, and failure points."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     },
     {
       "id": "SCN_AI_GENERATED_SCRIPT",
-      "trigger": "Agent generated a Motion Canvas script that looks messy.",
-      "orientation": "Refactor into named beats, reusable components, and explicit pauses."
+      "name": "Agent generated a Motion Canvas script that looks messy.",
+      "trigger_signal": "Agent generated a Motion Canvas script that looks messy.",
+      "sub_scenarios": [
+        {
+          "id": "SUB-003",
+          "trap_belief": "Agent generated a Motion Canvas script that looks messy.",
+          "three_questions": {
+            "belief": "What does the user believe is the problem?",
+            "state": "What is the actual state of the animation?",
+            "need": "What structural change does the animation need?"
+          },
+          "action_template": [
+            "Refactor into named beats, reusable components, and explicit pauses."
+          ],
+          "replace": [],
+          "expected_result": "Animation quality improves according to measurable indicators."
+        }
+      ]
     }
   ]
 }

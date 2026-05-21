@@ -1,56 +1,73 @@
 {
   "meta": {
-    "version": "0.1.0",
+    "version": "0.4",
+    "spec_version": "0.4",
     "domain": "gsap_master",
     "created": "2026-05-21",
     "purpose": "Encode expert judgment for using GSAP as a production animation engine, including timelines, ScrollTrigger, React integration, plugin choice, and performance tradeoffs.",
     "load_condition": "Load when the task involves GSAP implementation, timeline architecture, ScrollTrigger, or when the user is working within a React/Vue/Svelte context using GSAP."
   },
-  "domain_title": "GSAP Master",
   "axioms": [
     {
       "id": "AX_TIMELINE_AS_SYSTEM",
-      "statement": "Use timelines to express choreography, not scattered one-off tweens.",
+      "one_sentence": "Use timelines to express choreography, not scattered one-off tweens.",
+      "full_statement": "Use timelines to express choreography, not scattered one-off tweens.",
       "why": "Timelines preserve sequence, reversibility, maintainability, and reviewability."
     },
     {
       "id": "AX_CONTEXT_CLEANUP",
-      "statement": "Framework integrations must clean up animations according to component lifecycle.",
+      "one_sentence": "Framework integrations must clean up animations according to component lifecycle.",
+      "full_statement": "Framework integrations must clean up animations according to component lifecycle.",
       "why": "Leaked animations cause duplicated effects and broken state after navigation."
     },
     {
       "id": "AX_SCROLL_IS_DIRECTING_ATTENTION",
-      "statement": "ScrollTrigger should guide reading, not hijack it.",
+      "one_sentence": "ScrollTrigger should guide reading, not hijack it.",
+      "full_statement": "ScrollTrigger should guide reading, not hijack it.",
       "why": "Scroll-driven motion can easily make content feel trapped or gimmicky."
     },
     {
       "id": "AX_PERFORMANCE_IS_AESTHETIC",
-      "statement": "A dropped frame destroys premium perception.",
+      "one_sentence": "A dropped frame destroys premium perception.",
+      "full_statement": "A dropped frame destroys premium perception.",
       "why": "Smoothness is part of visual quality, not an implementation detail."
     }
   ],
   "ontology": [
     {
-      "name": "timeline",
-      "definition": "A structured animation sequence with coordinated tweens and labels."
+      "id": "timeline",
+      "one_sentence": "A structured animation sequence with coordinated tweens and labels.",
+      "essence": "A structured animation sequence with coordinated tweens and labels.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'timeline' or describes this scenario."
     },
     {
-      "name": "ScrollTrigger",
-      "definition": "A scroll-linked trigger system for controlling animation progress or timing."
+      "id": "scrolltrigger",
+      "one_sentence": "A scroll-linked trigger system for controlling animation progress or timing.",
+      "essence": "A scroll-linked trigger system for controlling animation progress or timing.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'ScrollTrigger' or describes this scenario."
     },
     {
-      "name": "stagger",
-      "definition": "A controlled offset across similar elements to create rhythm and hierarchy."
+      "id": "stagger",
+      "one_sentence": "A controlled offset across similar elements to create rhythm and hierarchy.",
+      "essence": "A controlled offset across similar elements to create rhythm and hierarchy.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'stagger' or describes this scenario."
     },
     {
-      "name": "cleanup",
-      "definition": "Removing or reverting animation side effects when a component unmounts or re-renders."
+      "id": "cleanup",
+      "one_sentence": "Removing or reverting animation side effects when a component unmounts or re-renders.",
+      "essence": "Removing or reverting animation side effects when a component unmounts or re-renders.",
+      "boundary": "This is not the same as a generic implementation detail or unrelated concept.",
+      "trigger_signal": "User input mentions 'cleanup' or describes this scenario."
     }
   ],
   "frameworks": [
     {
       "id": "FW_GSAP_CHOICE",
       "name": "GSAP decision ladder",
+      "when_to_use": "Apply when the task matches the 'GSAP decision ladder' pattern.",
       "steps": [
         "can CSS solve it simply?",
         "is sequence/timeline control required?",
@@ -62,6 +79,7 @@
     {
       "id": "FW_TIMELINE_REVIEW",
       "name": "Timeline review",
+      "when_to_use": "Apply when the task matches the 'Timeline review' pattern.",
       "steps": [
         "name beats",
         "define labels",
@@ -71,19 +89,20 @@
       ]
     }
   ],
-  "core_structure": {
-    "input": "brief, audience, surface, constraints, brand tone, implementation environment",
-    "judgment": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
-    "output": "motion direction, implementation guidance, critique, and measurable acceptance criteria"
-  },
-  "stances": [
+  "core_structure": [
     {
-      "id": "ST_TIMELINES_OVER_SCATTER",
-      "stance": "Prefer timeline-based architecture for anything beyond simple hover states."
+      "from": "brief, audience, surface, constraints, brand tone, implementation environment",
+      "to": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+      "via": "domain axioms and frameworks"
     },
     {
-      "id": "ST_SCROLL_RESTRAINT",
-      "stance": "Do not use scroll animation when it reduces reading comfort."
+      "from": "attention path, timing, hierarchy, motion grammar, technical feasibility, review criteria",
+      "to": "motion direction, implementation guidance, critique, and measurable acceptance criteria",
+      "via": "scenario-specific action orientation"
     }
+  ],
+  "stances": [
+    "Prefer timeline-based architecture for anything beyond simple hover states.",
+    "Do not use scroll animation when it reduces reading comfort."
   ]
 }

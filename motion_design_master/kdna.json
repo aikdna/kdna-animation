@@ -1,14 +1,15 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/motion_design_master",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
     "name": "KDNA Team",
     "id": "kdna-team",
-    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
     "type": "MIT"
@@ -18,5 +19,5 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:3beae2adee2175d0c685cf733faae82c2cbe9e0f48b410b7536af277d387dc932a3c1a5a70a7ac1685c55f36fa6a987dcca9c38225e953bb25fc30a0ea06f709"
+  "signature": "ed25519:7d55a18cb4ea47dfa413168f73d44c827a117db67543db235c19b798c299453e457e371102518ab92c22ea455154ded2356a700a4884d0e98a5c3e5296addf03"
 }

@@ -1,14 +1,15 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/ai_animation_workflow",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
     "name": "KDNA Team",
     "id": "kdna-team",
-    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
     "type": "MIT"
@@ -18,5 +19,5 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:6fd442e4300f14de10676ce24e5618039bdba00af4f676dd4aff7879079140117ee4046fcfb4228b1eecf6ce24a15191b2a50026adc0ff474fc1a5b6439c9702"
+  "signature": "ed25519:758c98a08101554e4a50f73f9860575f84a8718df90b65a0c97f11278123b23225b4a8c08a59d4c9eb8db996c082f7518b5a828da5f55dc6d27bf8c3e636940a"
 }

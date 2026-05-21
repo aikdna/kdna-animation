@@ -1,14 +1,15 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/web_animation_performance",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
     "name": "KDNA Team",
     "id": "kdna-team",
-    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
     "type": "MIT"
@@ -18,5 +19,5 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:d2e2659b756468da93cec8341788ae5fcc8bfe45f787fc696a5e75c5039be82af8965e0fd71962c914ac3ae594558b46761bf75da75865c4426929136f2c1e0a"
+  "signature": "ed25519:4b31b10f04360e73d21e7e35bbf75e08ad58f0b166b858c18376bdd222e3041cda184fe825e3f03469a8533972705e2b4931e1c310cd0be43b4e0b54b3002c01"
 }

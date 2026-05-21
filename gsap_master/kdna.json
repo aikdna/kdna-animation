@@ -1,14 +1,15 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/gsap_master",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
     "name": "KDNA Team",
     "id": "kdna-team",
-    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
     "type": "MIT"
@@ -18,5 +19,5 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:8e9e2b5b92d83fdf3543bca99cfff0d2dec15ca2a9c4a24aa48b0b07d6f815a2a1b0be7bc602ffbbb213fdf9f1676ea595171ec965c880615976506cf7aa6805"
+  "signature": "ed25519:c3a9b724324b1930c5fac8a9b152a663c9cd2eb76fd1ae08c4ec92299f362c033c844d4ca12bb774d0e4491391bf1c0551eaad03becb7a53e6fd7af4eda3a104"
 }

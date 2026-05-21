@@ -1,14 +1,15 @@
 {
   "kdna_spec": "0.4",
   "name": "@aikdna/motion_canvas_master",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
     "name": "KDNA Team",
     "id": "kdna-team",
-    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
     "type": "MIT"
@@ -18,5 +19,5 @@
   "created": "2026-05-21",
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
-  "signature": "ed25519:181bee04f44436d052d8a8cf5183911b8542bc2381d6c9d9a14bfd466a61ee862a865e95919e61a17f940b7671afa01a50d809a5f9f9198d3829a3286556aa0d"
+  "signature": "ed25519:642c4d2c93a818529f51dcc2c53ca2ad6c7361198674e617cc468cc2005fbc8a4b925d60d0e9fab12d6b27d2550d10449799bb8a97fa6fa82c24e8b7ad830d01"
 }

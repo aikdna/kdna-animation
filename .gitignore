@@ -18,6 +18,9 @@ Icon
 node_modules/
 *.log
 
+# KDNA packaged files (distribution artifacts, not source)
+*.kdna
+
 # Backups
 .backup_v0.3/
 

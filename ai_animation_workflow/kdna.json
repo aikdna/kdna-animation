@@ -1,0 +1,22 @@
+{
+  "kdna_spec": "0.4",
+  "name": "@aikdna/ai_animation_workflow",
+  "version": "0.3.0",
+  "status": "experimental",
+  "access": "open",
+  "language": "en",
+  "author": {
+    "name": "KDNA Team",
+    "id": "kdna-team",
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+  },
+  "license": {
+    "type": "MIT"
+  },
+  "description": "Encode agent workflows for briefing, generating, reviewing, refactoring, and shipping animation with AI assistance.",
+  "file_count": 6,
+  "created": "2026-05-21",
+  "updated": "2026-05-21",
+  "part_of_cluster": "@aikdna/animation",
+  "signature": "ed25519:6fd442e4300f14de10676ce24e5618039bdba00af4f676dd4aff7879079140117ee4046fcfb4228b1eecf6ce24a15191b2a50026adc0ff474fc1a5b6439c9702"
+}

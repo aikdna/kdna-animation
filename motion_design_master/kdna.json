@@ -1,0 +1,22 @@
+{
+  "kdna_spec": "0.4",
+  "name": "@aikdna/motion_design_master",
+  "version": "0.3.0",
+  "status": "experimental",
+  "access": "open",
+  "language": "en",
+  "author": {
+    "name": "KDNA Team",
+    "id": "kdna-team",
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+  },
+  "license": {
+    "type": "MIT"
+  },
+  "description": "Encode director-level motion judgment: attention, timing, easing, choreography, emotional intent, and restraint before implementation.",
+  "file_count": 6,
+  "created": "2026-05-21",
+  "updated": "2026-05-21",
+  "part_of_cluster": "@aikdna/animation",
+  "signature": "ed25519:3beae2adee2175d0c685cf733faae82c2cbe9e0f48b410b7536af277d387dc932a3c1a5a70a7ac1685c55f36fa6a987dcca9c38225e953bb25fc30a0ea06f709"
+}

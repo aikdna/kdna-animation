@@ -1,0 +1,22 @@
+{
+  "kdna_spec": "0.4",
+  "name": "@aikdna/frontend_motion_system",
+  "version": "0.3.0",
+  "status": "experimental",
+  "access": "open",
+  "language": "en",
+  "author": {
+    "name": "KDNA Team",
+    "id": "kdna-team",
+    "pubkey": "ed25519:43d22af8f0e189b6fd42bfaab710f52f4bc5f0ae3f5e04719a1a1d9ce9760fbe"
+  },
+  "license": {
+    "type": "MIT"
+  },
+  "description": "Encode how teams turn motion into reusable product design systems with tokens, primitives, and shared language.",
+  "file_count": 6,
+  "created": "2026-05-21",
+  "updated": "2026-05-21",
+  "part_of_cluster": "@aikdna/animation",
+  "signature": "ed25519:140362963a6ee9e97e7e421984e09460f9a38fc7b5ef25f56da1eb470bb8875f3d393ed7c612da2d8620f764c6c2ef419337159da7045b502e0319bcb3638f03"
+}

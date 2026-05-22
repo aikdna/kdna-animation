@@ -6,7 +6,7 @@
   "language": "en",
   "created": "2026-05-21",
   "updated": "2026-05-21",
-  "description": "World-class animation judgment cluster: seven domains teaching agents what quality means, what to reject, and when to choose restraint — before they write a line of code. Covers motion design, GSAP, Motion Canvas, web animation performance, frontend motion systems, AI animation workflows, and animation review.",
+  "description": "World-class animation judgment cluster: seven domains teaching agents what quality means, what to reject, and when to choose restraint \u2014 before they write a line of code. Covers motion design, GSAP, Motion Canvas, web animation performance, frontend motion systems, AI animation workflows, and animation review.",
   "core_insight": "Animation is not an API problem. It is an attention, timing, restraint, performance, and taste judgment problem. Tools teach syntax; KDNA teaches direction.",
   "keywords": [
     "animation",
@@ -67,7 +67,7 @@
   "registry": {
     "repo": "https://github.com/knowledge-dna/kdna-animation"
   },
-  "file_count": 44,
+  "file_count": 43,
   "files": [
     "motion_design_master/KDNA_Core.json",
     "motion_design_master/KDNA_Patterns.json",
@@ -121,5 +121,8 @@
     "ai_animation_workflow",
     "animation_review_master"
   ],
-  "quality_badge": "untested"
+  "quality_badge": "untested",
+  "spec_version": "1.0-rc",
+  "kdna_file_count": 43,
+  "domain_count": 7
 }

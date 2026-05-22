@@ -63,7 +63,7 @@
     "allow_redistribution": true,
     "allow_training": true
   },
-  "status": "reference",
+  "status": "stable",
   "registry": {
     "repo": "https://github.com/knowledge-dna/kdna-animation"
   },
@@ -120,5 +120,6 @@
     "frontend_motion_system",
     "ai_animation_workflow",
     "animation_review_master"
-  ]
+  ],
+  "quality_badge": "untested"
 }

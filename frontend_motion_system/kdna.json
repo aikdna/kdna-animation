@@ -2,7 +2,7 @@
   "kdna_spec": "1.0",
   "name": "@aikdna/frontend_motion_system",
   "version": "0.3.2",
-  "status": "experimental",
+  "status": "stable",
   "access": "open",
   "language": "en",
   "author": {
@@ -20,5 +20,6 @@
   "updated": "2026-05-21",
   "part_of_cluster": "@aikdna/animation",
   "judgment_version": "2026.05",
-  "signature": "ed25519:e9f5d5d5f44553dd1fe495e24778bbe6abe92d5a706e5ffb9c36bc935b494cf54dbddf6db506ebebbd3cf5d2a682b9c4af10724da918ecdc3f4e197fcd2c1305"
+  "signature": "ed25519:e9f5d5d5f44553dd1fe495e24778bbe6abe92d5a706e5ffb9c36bc935b494cf54dbddf6db506ebebbd3cf5d2a682b9c4af10724da918ecdc3f4e197fcd2c1305",
+  "quality_badge": "untested"
 }

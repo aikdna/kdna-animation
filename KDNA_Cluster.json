@@ -1,6 +1,6 @@
 {
   "name": "animation_kdna_cluster",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "purpose": "Open-source KDNA cluster for animation, motion design, GSAP, Motion Canvas, frontend motion systems, AI animation workflows, and review judgment.",
   "packages": [
     {

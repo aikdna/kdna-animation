@@ -1,7 +1,7 @@
 {
   "kdna_spec": "1.0",
   "name": "@aikdna/animation",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "cluster": true,
   "language": "en",
   "created": "2026-05-21",

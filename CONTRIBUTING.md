@@ -1,6 +1,6 @@
 ## Prerequisites
 
-- **kdna CLI**: Install via `npm i -g @aikdna/kdna`
+- **kdna CLI**: Install via `npm i -g @aikdna/kdna-cli`
 - **Node.js >= 18**
 
 # Contributing

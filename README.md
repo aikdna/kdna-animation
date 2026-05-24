@@ -86,7 +86,7 @@ When domains conflict, the following rules apply:
 
 ## Open-source use
 
-MIT licensed. You may publish this as a standalone repo, merge it into a registry, or use it as a reference cluster for building other design/engineering KDNA domains.
+CC-BY-4.0 licensed. You may publish this as a standalone repo, merge it into a registry, or use it as a reference cluster for building other design/engineering KDNA domains.
 
 ## Contributing
 
@@ -94,4 +94,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. Contributions must includ
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+CC-BY-4.0 — see [LICENSE](LICENSE) for details.

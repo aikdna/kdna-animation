@@ -92,6 +92,6 @@ KDNA is the judgment infrastructure that makes the skill layer produce consisten
 
 ## Read more
 
-- [Animation KDNA Cluster](https://github.com/knowledge-dna/kdna-animation) — the seven-domain cluster
-- [KDNA Protocol](https://github.com/knowledge-dna/KDNA) — the specification and tooling
-- [KDNA Registry](https://github.com/knowledge-dna/kdna-registry) — domain discovery and installation
+- [Animation KDNA Cluster](https://github.com/aikdna/kdna-animation) — the seven-domain cluster
+- [KDNA Protocol](https://github.com/aikdna/KDNA) — the specification and tooling
+- [KDNA Registry](https://github.com/aikdna/kdna-registry) — domain discovery and installation

@@ -54,10 +54,11 @@
   "access": "open",
   "author": {
     "name": "KDNA Team",
-    "id": "kdna-team"
+    "id": "kdna-team",
+    "pubkey": {"type": "ed25519", "value": "placeholder-animation-key"}
   },
   "license": {
-    "type": "MIT",
+    "type": "CC-BY-4.0",
     "commercial": true,
     "allow_agent_use": true,
     "allow_redistribution": true,
@@ -65,7 +66,7 @@
   },
   "status": "stable",
   "registry": {
-    "repo": "https://github.com/knowledge-dna/kdna-animation"
+    "repo": "https://github.com/aikdna/kdna-animation"
   },
   "file_count": 43,
   "files": [
@@ -123,6 +124,10 @@
   ],
   "quality_badge": "untested",
   "spec_version": "1.0-rc",
+  "judgment_version": "0.3.2",
+  "signature": "aikdna-ed25519-placeholder-pending-signing",
+  "default_language": "en",
+  "i18n_level": "L1",
   "kdna_file_count": 43,
   "domain_count": 7
 }

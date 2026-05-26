@@ -1,12 +1,12 @@
 {
-  "kdna_spec": "1.0",
+  "kdna_spec": "1.0-rc",
   "name": "@aikdna/animation",
   "version": "0.3.2",
   "cluster": true,
   "language": "en",
   "created": "2026-05-21",
   "updated": "2026-05-21",
-  "description": "World-class animation judgment cluster: seven domains teaching agents what quality means, what to reject, and when to choose restraint \u2014 before they write a line of code. Covers motion design, GSAP, Motion Canvas, web animation performance, frontend motion systems, AI animation workflows, and animation review.",
+  "description": "World-class animation judgment cluster: seven domains teaching agents what quality means, what to reject, and when to choose restraint — before they write a line of code. Covers motion design, GSAP, Motion Canvas, web animation performance, frontend motion systems, AI animation workflows, and animation review.",
   "core_insight": "Animation is not an API problem. It is an attention, timing, restraint, performance, and taste judgment problem. Tools teach syntax; KDNA teaches direction.",
   "keywords": [
     "animation",
@@ -55,64 +55,16 @@
   "author": {
     "name": "KDNA Team",
     "id": "kdna-team",
-    "pubkey": {"type": "ed25519", "value": "placeholder-animation-key"}
+    "pubkey": {
+      "type": "ed25519",
+      "value": "placeholder-animation-key"
+    }
   },
   "license": {
-    "type": "CC-BY-4.0",
-    "commercial": true,
-    "allow_agent_use": true,
-    "allow_redistribution": true,
-    "allow_training": true
+    "type": "CC-BY-4.0"
   },
-  "status": "stable",
-  "registry": {
-    "repo": "https://github.com/aikdna/kdna-animation"
-  },
+  "status": "experimental",
   "file_count": 43,
-  "files": [
-    "motion_design_master/KDNA_Core.json",
-    "motion_design_master/KDNA_Patterns.json",
-    "motion_design_master/KDNA_Scenarios.json",
-    "motion_design_master/KDNA_Cases.json",
-    "motion_design_master/KDNA_Reasoning.json",
-    "motion_design_master/KDNA_Evolution.json",
-    "gsap_master/KDNA_Core.json",
-    "gsap_master/KDNA_Patterns.json",
-    "gsap_master/KDNA_Scenarios.json",
-    "gsap_master/KDNA_Cases.json",
-    "gsap_master/KDNA_Reasoning.json",
-    "gsap_master/KDNA_Evolution.json",
-    "motion_canvas_master/KDNA_Core.json",
-    "motion_canvas_master/KDNA_Patterns.json",
-    "motion_canvas_master/KDNA_Scenarios.json",
-    "motion_canvas_master/KDNA_Cases.json",
-    "motion_canvas_master/KDNA_Reasoning.json",
-    "motion_canvas_master/KDNA_Evolution.json",
-    "web_animation_performance/KDNA_Core.json",
-    "web_animation_performance/KDNA_Patterns.json",
-    "web_animation_performance/KDNA_Scenarios.json",
-    "web_animation_performance/KDNA_Cases.json",
-    "web_animation_performance/KDNA_Reasoning.json",
-    "web_animation_performance/KDNA_Evolution.json",
-    "frontend_motion_system/KDNA_Core.json",
-    "frontend_motion_system/KDNA_Patterns.json",
-    "frontend_motion_system/KDNA_Scenarios.json",
-    "frontend_motion_system/KDNA_Cases.json",
-    "frontend_motion_system/KDNA_Reasoning.json",
-    "frontend_motion_system/KDNA_Evolution.json",
-    "ai_animation_workflow/KDNA_Core.json",
-    "ai_animation_workflow/KDNA_Patterns.json",
-    "ai_animation_workflow/KDNA_Scenarios.json",
-    "ai_animation_workflow/KDNA_Cases.json",
-    "ai_animation_workflow/KDNA_Reasoning.json",
-    "ai_animation_workflow/KDNA_Evolution.json",
-    "animation_review_master/KDNA_Core.json",
-    "animation_review_master/KDNA_Patterns.json",
-    "animation_review_master/KDNA_Scenarios.json",
-    "animation_review_master/KDNA_Cases.json",
-    "animation_review_master/KDNA_Reasoning.json",
-    "animation_review_master/KDNA_Evolution.json"
-  ],
   "sub_domains": [
     "motion_design_master",
     "gsap_master",
@@ -123,11 +75,11 @@
     "animation_review_master"
   ],
   "quality_badge": "untested",
-  "spec_version": "1.0-rc",
   "judgment_version": "0.3.2",
-  "signature": "aikdna-ed25519-placeholder-pending-signing",
+  "signature": null,
   "default_language": "en",
   "i18n_level": "L1",
   "kdna_file_count": 43,
-  "domain_count": 7
+  "domain_count": 7,
+  "risk_level": "R0"
 }

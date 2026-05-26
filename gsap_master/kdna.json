@@ -1,8 +1,8 @@
 {
-  "kdna_spec": "1.0",
+  "kdna_spec": "1.0-rc",
   "name": "@aikdna/gsap_master",
   "version": "0.3.2",
-  "status": "stable",
+  "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
@@ -12,7 +12,7 @@
     "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
-    "type": "MIT"
+    "type": "CC-BY-4.0"
   },
   "description": "Encode expert judgment for using GSAP as a production animation engine, including timelines, ScrollTrigger, React integration, plugin choice, and performance tradeoffs.",
   "file_count": 6,
@@ -21,5 +21,7 @@
   "part_of_cluster": "@aikdna/animation",
   "judgment_version": "2026.05",
   "signature": "ed25519:616cfe1378f3fd6b4104195b712a02c0f245394edc1185e7f4b70d11f5e8cccba6822754fa54b5b93da3647e1974515a29676afb2e4ab1316327cb9b47f37103",
-  "quality_badge": "untested"
+  "quality_badge": "untested",
+  "risk_level": "R0",
+  "release_status": "published_signed"
 }

@@ -1,8 +1,8 @@
 {
-  "kdna_spec": "1.0",
+  "kdna_spec": "1.0-rc",
   "name": "@aikdna/animation_review_master",
   "version": "0.3.2",
-  "status": "stable",
+  "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
@@ -12,7 +12,7 @@
     "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
-    "type": "MIT"
+    "type": "CC-BY-4.0"
   },
   "description": "Encode critique standards for diagnosing cheap, noisy, slow, AI-looking, or incoherent animation.",
   "file_count": 6,
@@ -21,5 +21,7 @@
   "part_of_cluster": "@aikdna/animation",
   "judgment_version": "2026.05",
   "signature": "ed25519:8e8ae820a52b436404fe8a563b9abf04205af1296de66d66a273c61b668024ee79dc99150a8a587f7a994a026ab9aed6b9a7d0c40b25e3cf843e97c7e59a8c0f",
-  "quality_badge": "untested"
+  "quality_badge": "untested",
+  "risk_level": "R0",
+  "release_status": "published_signed"
 }

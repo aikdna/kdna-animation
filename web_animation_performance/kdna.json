@@ -1,8 +1,8 @@
 {
-  "kdna_spec": "1.0",
+  "kdna_spec": "1.0-rc",
   "name": "@aikdna/web_animation_performance",
   "version": "0.3.2",
-  "status": "stable",
+  "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
@@ -12,7 +12,7 @@
     "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
-    "type": "MIT"
+    "type": "CC-BY-4.0"
   },
   "description": "Encode performance judgment for smooth, battery-aware, accessible web animation.",
   "file_count": 6,
@@ -21,5 +21,7 @@
   "part_of_cluster": "@aikdna/animation",
   "judgment_version": "2026.05",
   "signature": "ed25519:da75cfc29fa0ceaf311010fa92d5132d31531e3ce36348b1f33d6f3d4ed1e5561711fc8532f28bac5541d4c2b502577774d6cab693741256d9495491fff77b05",
-  "quality_badge": "untested"
+  "quality_badge": "untested",
+  "risk_level": "R0",
+  "release_status": "published_signed"
 }

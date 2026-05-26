@@ -1,8 +1,8 @@
 {
-  "kdna_spec": "1.0",
+  "kdna_spec": "1.0-rc",
   "name": "@aikdna/motion_canvas_master",
   "version": "0.3.2",
-  "status": "stable",
+  "status": "experimental",
   "access": "open",
   "language": "en",
   "author": {
@@ -12,7 +12,7 @@
     "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABYTSKqskFWFgPEykI648/YlhENQJkIZ6bQ6HcznYzKc=\n-----END PUBLIC KEY-----\n"
   },
   "license": {
-    "type": "MIT"
+    "type": "CC-BY-4.0"
   },
   "description": "Encode world-class judgment for programmatic video animation with Motion Canvas: scenes, signals, layout, camera rhythm, explainers, and code maintainability.",
   "file_count": 6,
@@ -21,5 +21,7 @@
   "part_of_cluster": "@aikdna/animation",
   "judgment_version": "2026.05",
   "signature": "ed25519:6faf540e021af7da77cf0be85887e1d310c4d911daca7b36f497f43996bb09919e2d45330c70e6ed28463721d3567eb9dd802cc24531935a5397872106e1da0a",
-  "quality_badge": "untested"
+  "quality_badge": "untested",
+  "risk_level": "R0",
+  "release_status": "published_signed"
 }

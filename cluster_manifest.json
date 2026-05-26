@@ -2,7 +2,7 @@
   "name": "animation_kdna_cluster",
   "version": "0.3.2",
   "created": "2026-05-21",
-  "license": "MIT",
+  "license": "CC-BY-4.0",
   "purpose": "Open-source KDNA cluster for animation, motion design, GSAP, Motion Canvas, frontend motion systems, AI animation workflows, and review judgment.",
   "domains": [
     "motion_design_master",

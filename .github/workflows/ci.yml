@@ -15,7 +15,5 @@ jobs:
           node-version: 22
       - name: Install kdna-cli
         run: npm install -g @aikdna/kdna-cli
-      - name: Validate KDNA domain
-        run: kdna validate .
-      - name: Verify structure
-        run: kdna verify . --structure
+      - name: Validate dev source
+        run: kdna dev validate .

@@ -1,5 +1,5 @@
 {
-  "kdna_spec": "1.0-rc",
+  "spec_version": "1.0-rc",
   "name": "@aikdna/motion_canvas_master",
   "version": "0.3.2",
   "status": "experimental",
